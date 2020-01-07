@@ -1,0 +1,12 @@
+﻿{ 
+    "Batch": {
+        "Name": "First batch", 
+        "FromFolders": [
+            "A",
+            "B",
+            "C"
+        ], 
+        "CopyStyle": "NoSolution", 
+        "ToFolder": "../Output" }
+    }
+}
