@@ -5,39 +5,38 @@ using System.Collections.Generic;
 namespace BadCopy.Core.Test.Scenario01
 {
     [TestClass]
-    public class UnitTest1
+    public class GetFilesToCopyTests
     {
-        const string TestProjectRoot = "C:\\Project\\BadCopy\\BadCopy.Core.Test\\";
-        const string Scenario01Root = TestProjectRoot + "Scenario01\\";
+
+
+        //[TestMethod]
+        //public void TestMethod1()
+        //{
+        //    //JavascriptSerializer
+        //    string s = JsonConvert.SerializeObject(new Batch
+        //    {
+        //        CopyStyle = CopyStyle.NoSolution,
+        //        FromFolders = new List<string> { "fromfolder" },
+        //        Name = "name",
+        //        ToFolder = "tofolder"
+        //    });
+        //}
 
         [TestMethod]
-        public void TestMethod1()
-        {
-            //JavascriptSerializer
-            string s = JsonConvert.SerializeObject(new Batch
-            {
-                CopyStyle = CopyStyle.NoSolution,
-                FromFolders = new List<string> { "fromfolder" },
-                Name = "name",
-                ToFolder = "tofolder"
-            });
-        }
-
-        [TestMethod]
-        public void MyTestMethod()
+        public void should_give_correct_filepaths_from_a_batch()
         {
             var b1 = new Batch
             {
                 Name = "First batch",
-                FromFolderBase = Scenario01Root + "Input",
+                FromFolderBase = Common.Scenario01Root + "Input",
                 FromFolders = new List<string> {
                     "A",
                     "B",
                     "C"
                 },
                 CopyStyle = CopyStyle.NoSolution,
-                ToFolder = Scenario01Root + "Output",
-                SearchPattern="*"
+                ToFolder = Common.Scenario01Root + "Output",
+                SearchPattern="*.txt"
             };
 
             var bs = new BadCopyService();
@@ -47,26 +46,26 @@ namespace BadCopy.Core.Test.Scenario01
             {
                 new FileInfo{ 
                     BatchName="First batch", 
-                    FromFile= Scenario01Root + "Input\\A\\File1.txt", 
-                    ToFile = Scenario01Root + "Output\\A\\File1.txt", 
+                    FromFile= Common.Scenario01Root + "Input\\A\\File1.txt", 
+                    ToFile = Common.Scenario01Root + "Output\\A\\File1.txt", 
                     CopyStyle=CopyStyle.NoSolution
                 },
                 new FileInfo{
                     BatchName="First batch",
-                    FromFile= Scenario01Root + "Input\\A\\File1b.txt",
-                    ToFile = Scenario01Root + "Output\\A\\File1b.txt",
+                    FromFile= Common.Scenario01Root + "Input\\A\\File1b.txt",
+                    ToFile = Common.Scenario01Root + "Output\\A\\File1b.txt",
                     CopyStyle=CopyStyle.NoSolution
                 },
                 new FileInfo{
                     BatchName="First batch",
-                    FromFile= Scenario01Root + "Input\\B\\File2.txt",
-                    ToFile = Scenario01Root + "Output\\B\\File2.txt",
+                    FromFile= Common.Scenario01Root + "Input\\B\\File2.txt",
+                    ToFile = Common.Scenario01Root + "Output\\B\\File2.txt",
                     CopyStyle=CopyStyle.NoSolution
                 },
                 new FileInfo{
                     BatchName="First batch",
-                    FromFile= Scenario01Root + "Input\\C\\File3.txt",
-                    ToFile = Scenario01Root + "Output\\C\\File3.txt",
+                    FromFile= Common.Scenario01Root + "Input\\C\\File3.txt",
+                    ToFile = Common.Scenario01Root + "Output\\C\\File3.txt",
                     CopyStyle=CopyStyle.NoSolution
                 },
             };
