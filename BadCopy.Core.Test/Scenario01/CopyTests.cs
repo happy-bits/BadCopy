@@ -18,8 +18,8 @@ namespace BadCopy.Core.Test.Scenario01
             {
                 new FileInfo{
                     BatchName="First batch",
-                    FromFile= Common.Scenario01Root + "Input\\A\\1.txt",
-                    ToFile = Common.Scenario01Root + "Output\\A\\1.txt",
+                    FromFile = InputFile("A\\1.txt"),
+                    ToFile = OutputFile("A\\1.txt"),
                     CopyStyle=CopyStyle.NoSolution
                 }
             };
@@ -30,9 +30,25 @@ namespace BadCopy.Core.Test.Scenario01
 
             Assert.IsTrue(result.AllSucceded);
 
-            CompareContentOfFiles(Common.Scenario01Root + "Output\\A\\1.txt", Common.Scenario01Root + "ExpectedOutput\\A\\1.txt");
+            CompareContentOfFiles(OutputFile("A\\1.txt"), ExpectedOutputFile("A\\1.txt"));
 
         }
+
+        private string InputFile(string filenamewithpath)
+        {
+            return Path.Combine(Common.Scenario01Root, "Input", filenamewithpath);
+        }
+
+        private string OutputFile(string filenamewithpath)
+        {
+            return Path.Combine(Common.Scenario01Root, "Output", filenamewithpath);
+        }
+
+        private string ExpectedOutputFile(string filenamewithpath)
+        {
+            return Path.Combine(Common.Scenario01Root, "ExpectedOutput", filenamewithpath);
+        }
+
 
         [TestMethod]
         public void clone_one_file()
@@ -41,8 +57,8 @@ namespace BadCopy.Core.Test.Scenario01
             {
                 new FileInfo{
                     BatchName="First batch",
-                    FromFile= Common.Scenario01Root + "Input\\A\\2-Clone.txt",
-                    ToFile = Common.Scenario01Root + "Output\\A\\2-Clone.txt",
+                    FromFile= InputFile("A\\2-Clone.txt"),
+                    ToFile = OutputFile("A\\2-Clone.txt"),
                     CopyStyle=CopyStyle.Clone
                 }
             };
@@ -53,9 +69,47 @@ namespace BadCopy.Core.Test.Scenario01
 
             Assert.IsTrue(result.AllSucceded);
 
-            CompareContentOfFiles(Common.Scenario01Root + "Output\\A\\2-Clone.txt", Common.Scenario01Root + "ExpectedOutput\\A\\2-Clone.txt");
+            CompareContentOfFiles(OutputFile("A\\2-Clone.txt"), ExpectedOutputFile("A\\2-Clone.txt"));
 
         }
+
+        [TestMethod]
+        public void copy_three_files()
+        {
+            List<FileInfo> files = new List<FileInfo>
+            {
+                new FileInfo{
+                    BatchName="First batch",
+                    FromFile= InputFile("A\\1.txt"),
+                    ToFile = OutputFile("A\\1.txt"),
+                    CopyStyle=CopyStyle.NoSolution
+                },
+                new FileInfo{
+                    BatchName="First batch",
+                    FromFile= InputFile("A\\2-Clone.txt"),
+                    ToFile = OutputFile("A\\2-Clone.txt"),
+                    CopyStyle=CopyStyle.Clone
+                },
+                new FileInfo{
+                    BatchName="First batch",
+                    FromFile= InputFile("A\\3-Simple.txt"),
+                    ToFile = OutputFile("A\\3-Simple.txt"),
+                    CopyStyle=CopyStyle.NoSolution
+                },
+            };
+
+            var bs = new BadCopyService();
+
+            BadCopyService.CopyResult result = bs.Copy(files);
+
+            Assert.IsTrue(result.AllSucceded);
+
+            CompareContentOfFiles(OutputFile("A\\1.txt"), ExpectedOutputFile("A\\1.txt"));
+            CompareContentOfFiles(OutputFile("A\\2-Clone.txt"), ExpectedOutputFile("A\\2-Clone.txt"));
+            CompareContentOfFiles(OutputFile("A\\3-Simple.txt"), ExpectedOutputFile("A\\3-Simple.txt"));
+
+        }
+
 
         private void CompareContentOfFiles(string v1, string v2)
         {
@@ -66,37 +120,5 @@ namespace BadCopy.Core.Test.Scenario01
 
         }
 
-        //[TestMethod]
-        //public void MyTestMethod2()
-        //{
-        //    List<FileInfo> expected = new List<FileInfo>
-        //    {
-        //        new FileInfo{
-        //            BatchName="First batch",
-        //            FromFile= Common.Scenario01Root + "Input\\A\\File1.txt",
-        //            ToFile = Common.Scenario01Root + "Output\\A\\File1.txt",
-        //            CopyStyle=CopyStyle.NoSolution
-        //        },
-        //        new FileInfo{
-        //            BatchName="First batch",
-        //            FromFile= Common.Scenario01Root + "Input\\A\\File1b.txt",
-        //            ToFile = Common.Scenario01Root + "Output\\A\\File1b.txt",
-        //            CopyStyle=CopyStyle.NoSolution
-        //        },
-        //        new FileInfo{
-        //            BatchName="First batch",
-        //            FromFile= Common.Scenario01Root + "Input\\B\\File2.txt",
-        //            ToFile = Common.Scenario01Root + "Output\\B\\File2.txt",
-        //            CopyStyle=CopyStyle.NoSolution
-        //        },
-        //        new FileInfo{
-        //            BatchName="First batch",
-        //            FromFile= Common.Scenario01Root + "Input\\C\\File3.txt",
-        //            ToFile = Common.Scenario01Root + "Output\\C\\File3.txt",
-        //            CopyStyle=CopyStyle.NoSolution
-        //        },
-        //    };
-
-        //}    
     }
 }

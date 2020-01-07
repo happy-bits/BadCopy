@@ -44,6 +44,12 @@ namespace BadCopy.Core.Test.Scenario01
                     ToFile = Common.Scenario01Root + "Output\\A\\2-Clone.txt",
                     CopyStyle=CopyStyle.NoSolution
                 },
+                new FileInfo{
+                    BatchName="First batch",
+                    FromFile= Common.Scenario01Root + "Input\\A\\3-Simple.txt",
+                    ToFile = Common.Scenario01Root + "Output\\A\\3-Simple.txt",
+                    CopyStyle=CopyStyle.NoSolution
+                },
                 //new FileInfo{
                 //    BatchName="First batch",
                 //    FromFile= Common.Scenario01Root + "Input\\A\\File1b.txt",
