@@ -1,5 +1,0 @@
-﻿xx
-#region solution
-yy                
-#endregion
-zz

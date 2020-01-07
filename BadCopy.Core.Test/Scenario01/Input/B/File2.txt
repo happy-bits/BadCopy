@@ -1,9 +1,0 @@
-﻿aaa
-#region solution
-bbb                
-#endregion
-ccc
-#region solution
-ddd                
-#endregion
-eee
