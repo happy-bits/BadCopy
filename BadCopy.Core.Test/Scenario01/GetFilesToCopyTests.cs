@@ -1,6 +1,8 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using static BadCopy.Core.Test.Scenario01.Common;
+
 
 namespace BadCopy.Core.Test.Scenario01
 {
@@ -8,22 +10,20 @@ namespace BadCopy.Core.Test.Scenario01
     public class GetFilesToCopyTests
     {
 
-
-
         [TestMethod]
         public void should_give_correct_filepaths_from_a_batch()
         {
             var b1 = new Batch
             {
                 Name = "First batch",
-                FromFolderBase = Common.Scenario01Root + "Input",
+                FromFolderBase = Scenario01Root + "Input",
                 FromFolders = new List<string> {
                     "A",
                     //"B",
                     //"C"
                 },
                 CopyStyle = CopyStyle.NoSolution,
-                ToFolder = Common.Scenario01Root + "Output",
+                ToFolder = Scenario01Root + "Output",
                 SearchPattern="*.txt"
             };
 
@@ -33,47 +33,30 @@ namespace BadCopy.Core.Test.Scenario01
             List<FileInfo> expected = new List<FileInfo>
             {
                 new FileInfo{ 
-                    BatchName="First batch", 
-                    FromFile= Common.Scenario01Root + "Input\\A\\1.txt", 
-                    ToFile = Common.Scenario01Root + "Output\\A\\1.txt", 
+                    BatchName="First batch",
+                    FromFile= InputFile("A\\1.txt"),
+                    ToFile = OutputFile("A\\1.txt"),
                     CopyStyle=CopyStyle.NoSolution
                 },
                 new FileInfo{
                     BatchName="First batch",
-                    FromFile= Common.Scenario01Root + "Input\\A\\2-Clone.txt",
-                    ToFile = Common.Scenario01Root + "Output\\A\\2-Clone.txt",
+                    FromFile= InputFile("A\\2-Clone.txt"),
+                    ToFile = OutputFile("A\\2-Clone.txt"),
                     CopyStyle=CopyStyle.NoSolution
                 },
                 new FileInfo{
                     BatchName="First batch",
-                    FromFile= Common.Scenario01Root + "Input\\A\\3-Simple.txt",
-                    ToFile = Common.Scenario01Root + "Output\\A\\3-Simple.txt",
+                    FromFile= InputFile("A\\3-Simple.txt"),
+                    ToFile = OutputFile("A\\3-Simple.txt"),
                     CopyStyle=CopyStyle.NoSolution
                 },
-                //new FileInfo{
-                //    BatchName="First batch",
-                //    FromFile= Common.Scenario01Root + "Input\\A\\File1b.txt",
-                //    ToFile = Common.Scenario01Root + "Output\\A\\File1b.txt",
-                //    CopyStyle=CopyStyle.NoSolution
-                //},
-                //new FileInfo{
-                //    BatchName="First batch",
-                //    FromFile= Common.Scenario01Root + "Input\\A\\File1-Clone.txt",
-                //    ToFile = Common.Scenario01Root + "Output\\A\\File1-Clone.txt",
-                //    CopyStyle=CopyStyle.NoSolution
-                //},
-                //new FileInfo{
-                //    BatchName="First batch",
-                //    FromFile= Common.Scenario01Root + "Input\\B\\File2.txt",
-                //    ToFile = Common.Scenario01Root + "Output\\B\\File2.txt",
-                //    CopyStyle=CopyStyle.NoSolution
-                //},
-                //new FileInfo{
-                //    BatchName="First batch",
-                //    FromFile= Common.Scenario01Root + "Input\\C\\File3.txt",
-                //    ToFile = Common.Scenario01Root + "Output\\C\\File3.txt",
-                //    CopyStyle=CopyStyle.NoSolution
-                //},
+                new FileInfo{
+                    BatchName="First batch",
+                    FromFile= InputFile("A\\4-Multiple.txt"),
+                    ToFile = OutputFile("A\\4-Multiple.txt"),
+                    CopyStyle=CopyStyle.NoSolution
+                },
+
             };
 
             Assert.AreEqual(JsonConvert.SerializeObject(expected), JsonConvert.SerializeObject(result));

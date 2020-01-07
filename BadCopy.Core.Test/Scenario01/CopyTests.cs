@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static BadCopy.Core.Test.Scenario01.Common;
 
 namespace BadCopy.Core.Test.Scenario01
 {
@@ -32,21 +33,6 @@ namespace BadCopy.Core.Test.Scenario01
 
             CompareContentOfFiles(OutputFile("A\\1.txt"), ExpectedOutputFile("A\\1.txt"));
 
-        }
-
-        private string InputFile(string filenamewithpath)
-        {
-            return Path.Combine(Common.Scenario01Root, "Input", filenamewithpath);
-        }
-
-        private string OutputFile(string filenamewithpath)
-        {
-            return Path.Combine(Common.Scenario01Root, "Output", filenamewithpath);
-        }
-
-        private string ExpectedOutputFile(string filenamewithpath)
-        {
-            return Path.Combine(Common.Scenario01Root, "ExpectedOutput", filenamewithpath);
         }
 
 
