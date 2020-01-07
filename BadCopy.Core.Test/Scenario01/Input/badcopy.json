@@ -1,0 +1,13 @@
+﻿{
+  "Batch": {
+    "Name": "First batch",
+    "FromFolderBase": "C:\\Project\\BadCopy\\BadCopy.Core.Test\\Scenario01\\Input",
+    "FromFolders": [
+      "A",
+      "B",
+      "C"
+    ],
+    "CopyStyle": "NoSolution",
+    "ToFolder": "C:\\Project\\BadCopy\\BadCopy.Core.Test\\Scenario01\\Output"
+  }
+} 
