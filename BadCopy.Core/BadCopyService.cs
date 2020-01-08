@@ -68,8 +68,8 @@ namespace BadCopy.Core
         public class CopyResult
         {
             public List<CopyResultFile> CopyResultFiles { get; set; } = new List<CopyResultFile>();
-            public bool AllSucceded => CopyResultFiles.All(x=>
-                x.State == CopyResultFileState.SuccessNoSolution || 
+            public bool AllSucceded => CopyResultFiles.All(x =>
+                x.State == CopyResultFileState.SuccessNoSolution ||
                 x.State == CopyResultFileState.SuccessClone);
         }
 
@@ -171,18 +171,24 @@ namespace BadCopy.Core
 
             var allFiles = Directory.EnumerateFiles(folder, "*.*", SearchOption.AllDirectories).ToArray();
 
-            if (specificLineEndings!=null)
-                allFiles = allFiles.Where(x => x.EndsWith("." + x)).ToArray();
-
-            // todo: lyft in som övning i MethodsAndLists
+            if (specificLineEndings != null)
+                allFiles = allFiles.Where(x => EndsWithAny(x, specificLineEndings)).ToArray();
 
             if (specificFiles != null)
-                allFiles = allFiles.Where(file => specificFiles.Any(specific => file.EndsWith("\\"+specific))).ToArray();
+                allFiles = allFiles.Where(file => EndsWithAny("\\" + file, specificFiles)).ToArray();
+
+            //allFiles = allFiles.Where(file => specificFiles.Any(specific => file.EndsWith("\\" + specific))).ToArray();
 
             return allFiles;
 
 
         }
 
+        // todo: lyft in som övning i MethodsAndLists
+
+        private bool EndsWithAny(string comparestring, List<string> candidates)
+        {
+            return candidates.Any(candidate => comparestring.EndsWith(candidate));
+        }
     }
 }

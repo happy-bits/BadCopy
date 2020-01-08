@@ -9,12 +9,14 @@ namespace BadCopy.UI
 {
     class Program
     {
-        static ConsoleCompanion cc = new ConsoleCompanion();
+        static readonly ConsoleCompanion cc = new ConsoleCompanion();
 
         static void Main()
         {
             try
             {
+
+                // todo: låt konfiguration i jsonfilen cascade'a ner, t.ex "FromFolderBase"
                 BadCopyConfig config = ReadBadCopyConfigurationFile();
 
                 var bcs = new BadCopyService();
@@ -132,17 +134,3 @@ namespace BadCopy.UI
         }
     }
 }
-
-//var config = new BadCopyConfig();
-//config.Batches = new List<Batch> { b1 };
-//            string s = JsonConvert.SerializeObject(config);
-//File.WriteAllText("badcopy.json", s);
-
-
-////string s = JsonConvert.SerializeObject(new Batch
-////{
-////    CopyStyle = CopyStyle.NoSolution,
-////    FromFolders = new List<string> { "fromfolder" },
-////    Name = "name",
-////    ToFolder = "tofolder"
-////});
