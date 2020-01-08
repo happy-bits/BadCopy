@@ -27,7 +27,7 @@ namespace BadCopy.Core
             var result = new List<FileInfo>();
             foreach (var folder in batch.FromFolders)
             {
-                string[] files = GetAllFilesInFolderAndSubfolders(Path.Combine(batch.FromFolderBase, folder), batch.SpecificFiles, batch.SpecificFileEndings);
+                string[] files = GetAllFilesInFolderAndSubfolders(Path.Combine(batch.FromFolderBase, folder), batch.SpecificFiles, batch.SpecificFileEndings, batch.SkipFolders);
                 foreach (var fullfilename in files)
                 {
                     var fullfilenameWithoutFromFolder = RemoveFirstPartOfString(fullfilename, batch.FromFolderBase).TrimStart('\\');
@@ -164,23 +164,31 @@ namespace BadCopy.Core
             return fullfilename.Substring(0, fullfilename.LastIndexOf('\\'));
         }
 
-        private string[] GetAllFilesInFolderAndSubfolders(string folder, List<string> specificFiles, List<string> specificLineEndings)
+        private string[] GetAllFilesInFolderAndSubfolders(string folder, List<string> specificFiles, List<string> specificLineEndings, List<string> skipFolders)
         {
             if (!Directory.Exists(folder))
                 throw new BadCopyServiceException("Folder " + folder + " don't exist");
 
             var allFiles = Directory.EnumerateFiles(folder, "*.*", SearchOption.AllDirectories).ToArray();
 
+            if (skipFolders != null)
+                allFiles = allFiles.Where(file => !ContainsAny("\\" + file, skipFolders)).ToArray(); 
+
             if (specificLineEndings != null)
-                allFiles = allFiles.Where(x => EndsWithAny(x, specificLineEndings)).ToArray();
+                allFiles = allFiles.Where(file => EndsWithAny(file, specificLineEndings)).ToArray();
 
             if (specificFiles != null)
                 allFiles = allFiles.Where(file => EndsWithAny("\\" + file, specificFiles)).ToArray();
 
-            //allFiles = allFiles.Where(file => specificFiles.Any(specific => file.EndsWith("\\" + specific))).ToArray();
-
             return allFiles;
 
+        }
+
+        // todo: lyft in som övning i MethodsAndLists
+
+        private bool ContainsAny(string comparestring, List<string> candidates)
+        {
+            return candidates.Any(candidate => comparestring.Contains(candidate));
 
         }
 

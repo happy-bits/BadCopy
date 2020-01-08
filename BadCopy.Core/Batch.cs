@@ -12,5 +12,6 @@ namespace BadCopy.Core
         public string ToFolder { get; set; }
         public List<string> SpecificFiles { get; set; }
         public List<string> SpecificFileEndings { get; set; }
+        public List<string> SkipFolders { get; set; }
     }
 }

@@ -6,7 +6,7 @@
       "FromFolders": [
         "AdvancedCsharp.Test\\Parallels"
       ],
-      "CopyStyle": "NoSolution",
+      "CopyStyle": "Clone",
       "FromFolderBase": "C:\\Project\\AdvancedC#\\AdvancedCsharp\\",
       "CopyFilter": "NoFilter",
       "ToFolder": "C:\\TMP\\AdvancedCsharpStudent",
@@ -21,7 +21,8 @@
       "FromFolderBase": "C:\\Project\\AdvancedC#\\AdvancedCsharp\\",
       "CopyFilter": "NoFilter",
       "ToFolder": "C:\\TMP\\AdvancedCsharpStudent",
-      "SpecificFileEndings": [ "cs", "csproj" ]
+     // "SpecificFileEndings": [ "cs", "csproj" ],
+      "SkipFolders": ["obj", "bin"]
     }
   ]
 

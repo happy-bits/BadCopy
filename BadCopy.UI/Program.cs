@@ -15,8 +15,10 @@ namespace BadCopy.UI
         {
             try
             {
+                // todo: inställning: börja med att ta bort allt i målet
 
                 // todo: låt konfiguration i jsonfilen cascade'a ner, t.ex "FromFolderBase"
+
                 BadCopyConfig config = ReadBadCopyConfigurationFile();
 
                 var bcs = new BadCopyService();
