@@ -134,8 +134,11 @@ namespace BadCopy.Core
         public string RemoveSolutionRegion(string content)
         {
             content = content.Replace("\r\n", "\n"); // todo: rätt att göra det här?
-            //return Regex.Replace(content, @"\s*#region solution\s*\n[\s\S]*?\n\s*#endregion\s*\n", "\n", RegexOptions.Multiline);
-            return Regex.Replace(content, @"\n[ \t]*#region solution\s*\n[\s\S]*?\n\s*#endregion[ \t]*\n", "\n", RegexOptions.Multiline);
+
+            if (content.Trim().EndsWith("#endregion"))
+                content += "\n";
+
+            return Regex.Replace(content, @"[ \t]*#region solution\s*\n[\s\S]*?\n\s*#endregion[ \t]*\n", "", RegexOptions.Multiline);
         }
 
         private string GetDirectory(string fullfilename)

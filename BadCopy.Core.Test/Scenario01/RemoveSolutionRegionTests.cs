@@ -47,12 +47,44 @@ namespace BadCopy.Core.Test.Scenario01
         }
 
         [TestMethod]
-        public void MyTestMethod()
+        public void different_type_of_line_breaks()
         {
             string input = "\r\n\t\taaa\r\n\t\t#region solution\r\n\t\t\tbbb                \r\n\t\t#endregion\r\n\t\tccc";
             var x = new BadCopyService();
             var result = x.RemoveSolutionRegion(input);
             Assert.AreEqual("\n\t\taaa\n\t\tccc", result);
+        }
+
+        [TestMethod]
+        public void starts_with_region()
+        {
+            var x = new BadCopyService();
+            var result = x.RemoveSolutionRegion("#region solution\nbb\n#endregion\ncc");
+            Assert.AreEqual("cc", result);
+        }
+
+        [TestMethod]
+        public void starts_with_region_with_spaces()
+        {
+            var x = new BadCopyService();
+            var result = x.RemoveSolutionRegion("\t \t\t   #region solution\nbb\n#endregion\ncc");
+            Assert.AreEqual("cc", result);
+        }
+
+        [TestMethod]
+        public void ends_with_region()
+        {
+            var x = new BadCopyService();
+            var result = x.RemoveSolutionRegion("aa\n#region solution\nbb\n#endregion");
+            Assert.AreEqual("aa\n", result);
+        }
+
+        [TestMethod]
+        public void ends_with_region_with_spaces()
+        {
+            var x = new BadCopyService();
+            var result = x.RemoveSolutionRegion("aa\n#region solution\nbb\n#endregion\t \t   ");
+            Assert.AreEqual("aa\n", result);
         }
     }
 }
