@@ -60,7 +60,7 @@ namespace BadCopy.Core.Test.Scenario01
         }
 
         [TestMethod]
-        public void copy_three_files()
+        public void copy_four_files()
         {
             List<FileInfo> files = new List<FileInfo>
             {
@@ -82,6 +82,19 @@ namespace BadCopy.Core.Test.Scenario01
                     ToFile = OutputFile("A\\3-Simple.txt"),
                     CopyStyle=CopyStyle.NoSolution
                 },
+                new FileInfo{
+                    BatchName="First batch",
+                    FromFile= InputFile("A\\4-Multiple.txt"),
+                    ToFile = OutputFile("A\\4-Multiple.txt"),
+                    CopyStyle=CopyStyle.NoSolution
+                }
+                ,
+                new FileInfo{
+                    BatchName="First batch",
+                    FromFile= InputFile("B\\5-Onemore.txt"),
+                    ToFile = OutputFile("B\\5-Onemore.txt"),
+                    CopyStyle=CopyStyle.NoSolution
+                },
             };
 
             var bs = new BadCopyService();
@@ -93,6 +106,8 @@ namespace BadCopy.Core.Test.Scenario01
             CompareContentOfFiles(OutputFile("A\\1.txt"), ExpectedOutputFile("A\\1.txt"));
             CompareContentOfFiles(OutputFile("A\\2-Clone.txt"), ExpectedOutputFile("A\\2-Clone.txt"));
             CompareContentOfFiles(OutputFile("A\\3-Simple.txt"), ExpectedOutputFile("A\\3-Simple.txt"));
+            CompareContentOfFiles(OutputFile("A\\4-Multiple.txt"), ExpectedOutputFile("A\\4-Multiple.txt"));
+            CompareContentOfFiles(OutputFile("B\\5-Onemore.txt"), ExpectedOutputFile("B\\5-Onemore.txt"));
 
         }
 

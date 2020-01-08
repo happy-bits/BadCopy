@@ -19,12 +19,11 @@ namespace BadCopy.Core.Test.Scenario01
                 FromFolderBase = Scenario01Root + "Input",
                 FromFolders = new List<string> {
                     "A",
-                    //"B",
-                    //"C"
+                    "B",
                 },
                 CopyStyle = CopyStyle.NoSolution,
                 ToFolder = Scenario01Root + "Output",
-                SearchPattern="*.txt"
+                SearchPattern = "*.txt"
             };
 
             var bs = new BadCopyService();
@@ -32,7 +31,7 @@ namespace BadCopy.Core.Test.Scenario01
 
             List<FileInfo> expected = new List<FileInfo>
             {
-                new FileInfo{ 
+                new FileInfo{
                     BatchName="First batch",
                     FromFile= InputFile("A\\1.txt"),
                     ToFile = OutputFile("A\\1.txt"),
@@ -56,9 +55,16 @@ namespace BadCopy.Core.Test.Scenario01
                     ToFile = OutputFile("A\\4-Multiple.txt"),
                     CopyStyle=CopyStyle.NoSolution
                 },
+                new FileInfo{
+                    BatchName="First batch",
+                    FromFile= InputFile("B\\5-Onemore.txt"),
+                    ToFile = OutputFile("B\\5-Onemore.txt"),
+                    CopyStyle=CopyStyle.NoSolution
+                },
 
             };
 
+            // todo: bättre jämförelse
             Assert.AreEqual(JsonConvert.SerializeObject(expected), JsonConvert.SerializeObject(result));
 
         }
