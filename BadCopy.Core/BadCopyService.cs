@@ -27,7 +27,7 @@ namespace BadCopy.Core
             var result = new List<FileInfo>();
             foreach (var folder in batch.FromFolders)
             {
-                string[] files = GetAllFilesInFolderAndSubfolders(Path.Combine(batch.FromFolderBase, folder), batch.SearchPattern);
+                string[] files = GetAllFilesInFolderAndSubfolders(Path.Combine(batch.FromFolderBase, folder), batch.SpecificFiles, batch.SpecificFileEndings);
                 foreach (var fullfilename in files)
                 {
                     var fullfilenameWithoutFromFolder = RemoveFirstPartOfString(fullfilename, batch.FromFolderBase).TrimStart('\\');
@@ -164,23 +164,25 @@ namespace BadCopy.Core
             return fullfilename.Substring(0, fullfilename.LastIndexOf('\\'));
         }
 
-        private string GetFilenameFromFullFilename(string fullfilename)
-        {
-            // todo: kan finnas bättre sätt
-
-            return fullfilename.Split('\\').Last();
-        }
-
-        private string[] GetAllFilesInFolderAndSubfolders(string folder, string searchpattern)
+        private string[] GetAllFilesInFolderAndSubfolders(string folder, List<string> specificFiles, List<string> specificLineEndings)
         {
             if (!Directory.Exists(folder))
                 throw new BadCopyServiceException("Folder " + folder + " don't exist");
 
-            return Directory.EnumerateFiles(folder, searchpattern, SearchOption.AllDirectories).ToArray();
+            var allFiles = Directory.EnumerateFiles(folder, "*.*", SearchOption.AllDirectories).ToArray();
 
-            //return Directory.GetFiles(folder, searchpattern);
+            if (specificLineEndings!=null)
+                allFiles = allFiles.Where(x => x.EndsWith("." + x)).ToArray();
 
-            // todo: hantera underbibliotek
+            // todo: lyft in som övning i MethodsAndLists
+
+            if (specificFiles != null)
+                allFiles = allFiles.Where(file => specificFiles.Any(specific => file.EndsWith("\\"+specific))).ToArray();
+
+            return allFiles;
+
+
         }
+
     }
 }

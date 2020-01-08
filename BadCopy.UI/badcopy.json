@@ -2,15 +2,27 @@
   "ReplaceSolutionWith": "\n// todo: add code here\n",
   "Batches": [
     {
-      "Name": "First batch",
+      "Name": "Parallels",
       "FromFolders": [
         "AdvancedCsharp.Test\\Parallels"
       ],
-      "CopyStyle": 1,
+      "CopyStyle": "NoSolution",
       "FromFolderBase": "C:\\Project\\AdvancedC#\\AdvancedCsharp\\",
-      "CopyFilter": 0,
+      "CopyFilter": "NoFilter",
       "ToFolder": "C:\\TMP\\AdvancedCsharpStudent",
-      "SearchPattern": "*.cs"
+      "SpecificFiles": [ "Demo1.cs", "Test1.cs", "Test2.cs" ]
+    },
+    {
+      "Name": "TaskLab",
+      "FromFolders": [
+        "TaskLab"
+      ],
+      "CopyStyle": "NoSolution",
+      "FromFolderBase": "C:\\Project\\AdvancedC#\\AdvancedCsharp\\",
+      "CopyFilter": "NoFilter",
+      "ToFolder": "C:\\TMP\\AdvancedCsharpStudent",
+      "SpecificFileEndings": [ "cs", "csproj" ]
     }
   ]
+
 }

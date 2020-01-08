@@ -27,13 +27,35 @@ namespace BadCopy.UI
                     
                     if (result.AllSucceded)
                     {
-                        int noSolution = result.CopyResultFiles.Count(x => x.State == BadCopyService.CopyResultFileState.SuccessNoSolution);
-                        int clonedFiles = result.CopyResultFiles.Count(x => x.State == BadCopyService.CopyResultFileState.SuccessClone);
+                        var noSolution = result.CopyResultFiles.Where(x => x.State == BadCopyService.CopyResultFileState.SuccessNoSolution);
+                        var clonedFiles = result.CopyResultFiles.Where(x => x.State == BadCopyService.CopyResultFileState.SuccessClone);
 
-                        cc.WriteLineGreen($"Batch {batch.Name} succeeded. {noSolution} files without solution. {clonedFiles} cloned files.");
+                        if (noSolution.Count()+clonedFiles.Count() == 0)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            Console.WriteLine($"Batch '{batch.Name}' finished but nothing copied.");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            continue;
+                        }
+
+                        cc.WriteLineGreen($"Batch '{batch.Name}' succeeded.");
+
+                        if (noSolution.Any())
+                        {
+                            cc.WriteLineGreen($"\n\tWithout solution:\n");
+                            foreach (var file in noSolution)
+                                cc.WriteLineGreen($"\t\t{file.FileInfo.ToFile}");
+                        }
+                        if (clonedFiles.Any())
+                        {
+                            cc.WriteLineGreen($"\n\tCloned:\n");
+                            foreach (var file in clonedFiles)
+                                cc.WriteLineGreen($"\t\t{file.FileInfo.ToFile}");
+                        }
+                        cc.Space();
                     } else
                     {
-                        cc.WriteLineRed($"Batch {batch.Name} failed. ");
+                        cc.WriteLineRed($"Batch '{batch.Name}' failed. ");
 
                         // todo: refactor, förkorta
 
@@ -44,16 +66,14 @@ namespace BadCopy.UI
 
                         if (failedReads.Any())
                         {
-                            cc.Space();
-                            cc.WriteLineRed($"\tFailed to read:");
+                            cc.WriteLineRed($"\n\tFailed to read:\n");
                             foreach (var file in failedReads)
                                 cc.WriteLineRed($"\t\t{file.FileInfo.FromFile}");
                         }
 
                         if (failedWrites.Any())
                         {
-                            cc.Space();
-                            cc.WriteLineRed($"\tFailed to write:");
+                            cc.WriteLineRed($"\n\tFailed to write:\n");
                             foreach (var file in failedWrites)
                                 cc.WriteLineRed($"\t\t{file.FileInfo.ToFile}");
                         }
@@ -61,19 +81,18 @@ namespace BadCopy.UI
 
                         if (unknownCopyStyle.Any())
                         {
-                            cc.Space();
-                            cc.WriteLineRed($"\tUnknown copy style:");
+                            cc.WriteLineRed($"\n\tUnknown copy style:\n");
                             foreach (var file in unknownCopyStyle)
                                 cc.WriteLineRed($"\t\t{file.FileInfo.FromFile}");
                         }
 
                         if (incompleted.Any())
                         {
-                            cc.Space();
-                            cc.WriteLineRed($"\nIncompleted:");
+                            cc.WriteLineRed($"\n\tIncompleted:\n");
                             foreach (var file in incompleted)
                                 cc.WriteLineRed($"\t\t{file.FileInfo.FromFile}");
                         }
+                        cc.Space();
                     }
                 }
             }

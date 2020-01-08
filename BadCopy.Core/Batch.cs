@@ -10,6 +10,7 @@ namespace BadCopy.Core
         public string FromFolderBase { get; set; }
         public CopyFilter CopyFilter { get; set; }
         public string ToFolder { get; set; }
-        public string SearchPattern { get; set; }
+        public List<string> SpecificFiles { get; set; }
+        public List<string> SpecificFileEndings { get; set; }
     }
 }

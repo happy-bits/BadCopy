@@ -2,7 +2,7 @@
 {
     public enum CopyFilter
     {
-        CopyFile,               // kopiera filen
+        NoFilter,               // kopiera filen
         OnlyCopyIfNotInHistory  // kopiera bara om den inte redan är kopiera (och finns i historik-log)
     }
 }

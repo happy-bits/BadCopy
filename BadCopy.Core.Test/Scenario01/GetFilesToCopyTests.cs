@@ -23,7 +23,6 @@ namespace BadCopy.Core.Test.Scenario01
                 },
                 CopyStyle = CopyStyle.NoSolution,
                 ToFolder = Scenario01Root + "Output",
-                SearchPattern = "*.txt"
             };
 
             var bs = new BadCopyService();
