@@ -57,6 +57,12 @@ namespace BadCopy.Core.Test.Scenario01
                 },
                 new FileInfo{
                     BatchName="First batch",
+                    FromFile= InputFile("A\\Sub1\\Sub2\\6.txt"),
+                    ToFile = OutputFile("A\\Sub1\\Sub2\\6.txt"),
+                    CopyStyle=CopyStyle.NoSolution
+                },
+                new FileInfo{
+                    BatchName="First batch",
                     FromFile= InputFile("B\\5-Onemore.txt"),
                     ToFile = OutputFile("B\\5-Onemore.txt"),
                     CopyStyle=CopyStyle.NoSolution
@@ -64,8 +70,7 @@ namespace BadCopy.Core.Test.Scenario01
 
             };
 
-            // todo: bättre jämförelse
-            Assert.AreEqual(JsonConvert.SerializeObject(expected), JsonConvert.SerializeObject(result));
+            CollectionAssert.AreEqual(expected, result);
 
         }
     }

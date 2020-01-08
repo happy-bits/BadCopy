@@ -55,12 +55,12 @@ namespace BadCopy.Core.Test.Scenario01
 
             Assert.IsTrue(result.AllSucceded);
 
-            CompareContentOfFiles(OutputFile("A\\2-Clone.txt"), ExpectedOutputFile("A\\2-Clone.txt"));
+            CompareContentOfFiles(ExpectedOutputFile("A\\2-Clone.txt"), OutputFile("A\\2-Clone.txt"));
 
         }
 
         [TestMethod]
-        public void copy_four_files()
+        public void copy_multiple_files()
         {
             List<FileInfo> files = new List<FileInfo>
             {
@@ -68,6 +68,12 @@ namespace BadCopy.Core.Test.Scenario01
                     BatchName="First batch",
                     FromFile= InputFile("A\\1.txt"),
                     ToFile = OutputFile("A\\1.txt"),
+                    CopyStyle=CopyStyle.NoSolution
+                },
+                new FileInfo{
+                    BatchName="First batch",
+                    FromFile= InputFile("A\\Sub1\\Sub2\\6.txt"),
+                    ToFile = OutputFile("A\\Sub1\\Sub2\\6.txt"),
                     CopyStyle=CopyStyle.NoSolution
                 },
                 new FileInfo{
@@ -104,6 +110,7 @@ namespace BadCopy.Core.Test.Scenario01
             Assert.IsTrue(result.AllSucceded);
 
             CompareContentOfFiles(OutputFile("A\\1.txt"), ExpectedOutputFile("A\\1.txt"));
+            CompareContentOfFiles(OutputFile("A\\Sub1\\Sub2\\6.txt"), ExpectedOutputFile("A\\Sub1\\Sub2\\6.txt"));
             CompareContentOfFiles(OutputFile("A\\2-Clone.txt"), ExpectedOutputFile("A\\2-Clone.txt"));
             CompareContentOfFiles(OutputFile("A\\3-Simple.txt"), ExpectedOutputFile("A\\3-Simple.txt"));
             CompareContentOfFiles(OutputFile("A\\4-Multiple.txt"), ExpectedOutputFile("A\\4-Multiple.txt"));
@@ -112,12 +119,12 @@ namespace BadCopy.Core.Test.Scenario01
         }
 
 
-        private void CompareContentOfFiles(string v1, string v2)
+        private void CompareContentOfFiles(string actualFilename, string expectedFilename)
         {
-            var actual = File.ReadAllText(v1).Replace("\r\n", "\n");
-            var expected = File.ReadAllText(v2).Replace("\r\n", "\n");
+            var actual = File.ReadAllText(actualFilename).Replace("\r\n", "\n");
+            var expected = File.ReadAllText(expectedFilename).Replace("\r\n", "\n");
 
-            Assert.AreEqual(actual, expected);
+            Assert.AreEqual(expected, actual);
 
         }
 

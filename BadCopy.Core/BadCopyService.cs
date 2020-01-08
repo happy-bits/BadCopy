@@ -28,17 +28,25 @@ namespace BadCopy.Core
                 string[] files = GetAllFilesInFolderAndSubfolders(Path.Combine(batch.FromFolderBase, folder), batch.SearchPattern);
                 foreach (var fullfilename in files)
                 {
-                    string filename = GetFilenameFromFullFilename(fullfilename);
+                    var fullfilenameWithoutFromFolder = RemoveFirstPartOfString(fullfilename, batch.FromFolderBase).TrimStart('\\');
                     result.Add(new FileInfo
                     {
                         BatchName = batch.Name,
                         CopyStyle = batch.CopyStyle,
                         FromFile = Path.Combine(fullfilename),
-                        ToFile = Path.Combine(batch.ToFolder, folder, filename),
+                        ToFile = Path.Combine(batch.ToFolder, fullfilenameWithoutFromFolder),
                     });
                 }
             }
             return result;
+        }
+
+        private string RemoveFirstPartOfString(string original, string stringToRemove)
+        {
+            if (!original.StartsWith(stringToRemove))
+                return original;
+
+            return original.Substring(stringToRemove.Length);
         }
 
         public enum CopyResultFileState
@@ -146,7 +154,9 @@ namespace BadCopy.Core
             if (!Directory.Exists(folder))
                 throw new BadCopyServiceException("Folder " + folder + " don't exist");
 
-            return Directory.GetFiles(folder, searchpattern);
+            return Directory.EnumerateFiles(folder, searchpattern, SearchOption.AllDirectories).ToArray();
+
+            //return Directory.GetFiles(folder, searchpattern);
 
             // todo: hantera underbibliotek
         }
