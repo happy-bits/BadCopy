@@ -34,5 +34,25 @@ namespace BadCopy.Core.Test.Scenario01
             var result = x.RemoveSolutionRegion("aa\n#region solution\n  bbb  \n#endregion\ncc\n#region solution\n  ddd  \n#endregion\nee");
             Assert.AreEqual("aa\ncc\nee", result);
         }
+
+
+        [TestMethod]
+        public void spaces_and_tabs()
+        {
+
+            string input = "\t aaa \t\n \t \t #region solution    \nbbb\n    #endregion\t    \n\t ccc";
+            var x = new BadCopyService();
+            var result = x.RemoveSolutionRegion(input);
+            Assert.AreEqual("\t aaa \t\n\t ccc", result);
+        }
+
+        [TestMethod]
+        public void MyTestMethod()
+        {
+            string input = "\r\n\t\taaa\r\n\t\t#region solution\r\n\t\t\tbbb                \r\n\t\t#endregion\r\n\t\tccc";
+            var x = new BadCopyService();
+            var result = x.RemoveSolutionRegion(input);
+            Assert.AreEqual("\n\t\taaa\n\t\tccc", result);
+        }
     }
 }
