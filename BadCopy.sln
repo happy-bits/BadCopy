@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29409.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BadCopy.Core.Test", "BadCopy.Core.Test\BadCopy.Core.Test.csproj", "{EA16392B-D589-4098-920F-1EB8C68EAED2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BadCopy.Core.Test", "BadCopy.Core.Test\BadCopy.Core.Test.csproj", "{EA16392B-D589-4098-920F-1EB8C68EAED2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BadCopy.Core", "BadCopy.Core\BadCopy.Core.csproj", "{F013BD8F-6000-4D4B-A7BE-395772D80992}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BadCopy.Core", "BadCopy.Core\BadCopy.Core.csproj", "{F013BD8F-6000-4D4B-A7BE-395772D80992}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BadCopy.UI", "BadCopy.UI\BadCopy.UI.csproj", "{99B47B68-F365-4284-B0B3-29ADAC96854F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BadCopy.UI", "BadCopy.UI\BadCopy.UI.csproj", "{99B47B68-F365-4284-B0B3-29ADAC96854F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -12,6 +12,8 @@ namespace BadCopy.Core
 
     public class BadCopyService
     {
+        public string ReplaceSolutionWith { get; set; } = "";
+
         public class BadCopyServiceException : Exception
         {
             public BadCopyServiceException(string message) : base(message)
@@ -51,7 +53,10 @@ namespace BadCopy.Core
 
         public enum CopyResultFileState
         {
-            Unknown, Success, FailedRead, FailedWrite, UnknownCopyStyle
+            Incomplete,
+            FailedRead, FailedWrite, UnknownCopyStyle,
+            SuccessNoSolution,
+            SuccessClone
         }
 
         public class CopyResultFile
@@ -63,7 +68,9 @@ namespace BadCopy.Core
         public class CopyResult
         {
             public List<CopyResultFile> CopyResultFiles { get; set; } = new List<CopyResultFile>();
-            public bool AllSucceded => CopyResultFiles.All(x=>x.State == CopyResultFileState.Success);
+            public bool AllSucceded => CopyResultFiles.All(x=>
+                x.State == CopyResultFileState.SuccessNoSolution || 
+                x.State == CopyResultFileState.SuccessClone);
         }
 
         public CopyResult Copy(List<FileInfo> files)
@@ -75,7 +82,7 @@ namespace BadCopy.Core
                 var crf = new CopyResultFile
                 {
                     FileInfo = FileInfo.Clone(file),
-                    State = CopyResultFileState.Unknown
+                    State = CopyResultFileState.Incomplete
                 };
                 result.CopyResultFiles.Add(crf);
             }
@@ -94,20 +101,26 @@ namespace BadCopy.Core
                     continue;
                 }
                 string newcontent = null;
+
+                CopyResultFileState? successState = null;
+
                 switch (file.FileInfo.CopyStyle)
                 {
                     case CopyStyle.NoSolution:
                         newcontent = RemoveSolutionRegion(content);
+                        successState = CopyResultFileState.SuccessNoSolution;
+                        break;
+                    case CopyStyle.Clone:
+                        newcontent = content;
+                        successState = CopyResultFileState.SuccessClone;
                         break;
                     case CopyStyle.NoSolutionNoHash:
                         throw new NotImplementedException();
-                    case CopyStyle.Clone:
-                        newcontent = content;
-                        break;
                     default:
                         file.State = CopyResultFileState.UnknownCopyStyle;
                         continue;
                 }
+
                 try
                 {
                     var directory = GetDirectory(file.FileInfo.ToFile);
@@ -120,7 +133,7 @@ namespace BadCopy.Core
                     continue;
                 }
 
-                file.State = CopyResultFileState.Success;
+                file.State = (CopyResultFileState)successState;
             }
             return result;
         }
@@ -131,14 +144,18 @@ namespace BadCopy.Core
                 Directory.CreateDirectory(directory);
         }
 
+        // todo: gör mer generisk så det inte behöver vara exakt "#region solution" (kunna skicka in ett regex)
+
         public string RemoveSolutionRegion(string content)
         {
             content = content.Replace("\r\n", "\n"); // todo: rätt att göra det här?
 
+            // todo: snyggare sätt där detta inte behövs?
+
             if (content.Trim().EndsWith("#endregion"))
                 content += "\n";
 
-            return Regex.Replace(content, @"[ \t]*#region solution\s*\n[\s\S]*?\n\s*#endregion[ \t]*\n", "", RegexOptions.Multiline);
+            return Regex.Replace(content, @"[ \t]*#region solution\s*\n[\s\S]*?\n\s*#endregion[ \t]*\n", ReplaceSolutionWith, RegexOptions.Multiline);
         }
 
         private string GetDirectory(string fullfilename)

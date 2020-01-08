@@ -6,7 +6,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="happybits.ConsoleUtilities" Version="1.0.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\BadCopy.Core\BadCopy.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="badcopy.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

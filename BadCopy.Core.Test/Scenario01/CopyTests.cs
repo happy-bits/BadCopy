@@ -9,6 +9,8 @@ using static BadCopy.Core.Test.Scenario01.Common;
 
 namespace BadCopy.Core.Test.Scenario01
 {
+    // todo: tester för fel
+
     [TestClass]
     public class CopyTests
     {
