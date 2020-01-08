@@ -13,15 +13,12 @@ namespace BadCopy.UI
 
         static void Main()
         {
-           // var defaultColor = Console.ForegroundColor;
             try
             {
                 BadCopyConfig config = ReadBadCopyConfigurationFile();
 
-                var bcs = new BadCopyService
-                {
-                    ReplaceSolutionWith = "// todo: add code here\n"
-                };
+                var bcs = new BadCopyService();
+                bcs.ReplaceSolutionWith = config.ReplaceSolutionWith;
 
                 foreach (var batch in config.Batches)
                 {
