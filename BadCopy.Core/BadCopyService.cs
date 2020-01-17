@@ -76,25 +76,38 @@ namespace BadCopy.Core
 
         public int DeleteFolder(string folderToDelete)
         {
+            if (!Directory.Exists(folderToDelete))
+                return 0;
+
             var allFolders = Directory.EnumerateDirectories(folderToDelete, "*.*", SearchOption.AllDirectories).ToArray();
             var deletedFolders = 0;
             foreach (var folder in allFolders)
             {
-                if (folder.Contains(@"\.vs\") || folder.EndsWith(@"\.vs") || folder.Contains(@"\.git\") || folder.EndsWith(@"\.git"))
+                //if (folder.Contains(@"\.vs\") || folder.EndsWith(@"\.vs") || folder.Contains(@"\.git\") || folder.EndsWith(@"\.git"))
+                if (folder.Contains(@"\.git\") || folder.EndsWith(@"\.git"))
                     continue;
-                Directory.Delete(folder, true); 
-                deletedFolders++;
+
+                if (Directory.Exists(folder))
+                {
+                    Directory.Delete(folder, true);
+                    deletedFolders++;
+                }
             }
             return deletedFolders;
         }
 
+        // todo: behövs båda dessa metoder?
         public int DeleteFiles(string folderToDelete)
         {
+            if (!Directory.Exists(folderToDelete))
+                return 0;
+
             var allFiles = Directory.EnumerateFiles(folderToDelete, "*.*", SearchOption.AllDirectories).ToArray();
             var deletedFiles = 0;
             foreach (var file in allFiles)
             {
-                if (file.Contains(@"\.vs\") || file.Contains(@"\.git\"))
+                //if (file.Contains(@"\.vs\") || file.Contains(@"\.git\"))
+                if (file.Contains(@"\.git\"))
                     continue;
                 File.Delete(file);
                 deletedFiles++;

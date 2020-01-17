@@ -12,7 +12,6 @@ namespace BadCopy.Core
 
         public string FromFolderBase { get; set; }
         public string ToFolder { get; set; }
-        public CopyFilter? CopyFilter { get; set; }
         public CopyStyle? CopyStyle { get; set; }
         public List<string> FromFolders { get; set; }
         public List<string> SpecificFiles { get; set; }
@@ -36,7 +35,6 @@ namespace BadCopy.Core
                 if (b.FromFolderBase == null) b.FromFolderBase = FromFolderBase;
                 if (b.FromFolders == null) b.FromFolders = FromFolders;
                 if (b.ToFolder == null) b.ToFolder = ToFolder;
-                if (b.CopyFilter == null) b.CopyFilter = CopyFilter;
                 if (b.CopyStyle == null) b.CopyStyle = CopyStyle;
                 if (b.FromFolders == null) b.FromFolders = FromFolders;
                 if (b.SpecificFiles == null) b.SpecificFiles = SpecificFiles;

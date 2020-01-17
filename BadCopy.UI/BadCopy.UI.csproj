@@ -18,9 +18,6 @@
     <None Update="badcopy-root.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="badcopy-old.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Update="badcopy.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

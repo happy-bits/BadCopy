@@ -16,103 +16,107 @@ namespace BadCopy.UI
 
             //try
             //{
-                // todo: inställning: börja med att ta bort allt i målet
-                // todo: validering av badconfig.json (ex att FromFolders finns)
+            // todo: inställning: börja med att ta bort allt i målet
+            // todo: validering av badconfig.json (ex att FromFolders finns)
 
-                var bcs = new BadCopyService();
+            var bcs = new BadCopyService();
 
-                var configFileName = TryGetArgument(args, "config-file", "badcopy.json");
+            var configFileName = TryGetArgument(args, "config-file", "badcopy.json");
 
-                BadCopyConfigFile configFile = ReadBadCopyConfigurationFile(configFileName);
+            BadCopyConfigFile configFile = ReadBadCopyConfigurationFile(configFileName);
 
-                BadCopyConfig config = configFile.MergeConfiguration();
+            BadCopyConfig config = configFile.MergeConfiguration();
 
-                if (config.StartByDeletingDestinationFolder)
+            cc.Space();
+
+            if (config.StartByDeletingDestinationFolder)
+            {
+                var countDeletedFiles = bcs.DeleteFiles(config.ToFolder);
+                cc.WriteLineGreen($"Deleted {countDeletedFiles} files in destination folder.");
+
+                var countDeletedFolders = bcs.DeleteFolder(config.ToFolder);
+                cc.WriteLineGreen($"Deleted {countDeletedFolders} folders in destination folder.");
+                cc.Space();
+            }
+
+            bcs.ReplaceSolutionWith = config.ReplaceSolutionWith;
+
+            foreach (var batch in config.Batches)
+            {
+                var files = bcs.GetFilesToCopy(batch);
+                var result = bcs.Copy(files);
+
+                if (result.AllSucceded)
                 {
-                    //var countDeletedFiles = bcs.DeleteFiles(config.ToFolder);
-                    //cc.WriteLineGreen($"\nDeleted {countDeletedFiles} files in destination folder.\n");
+                    var noSolution = result.CopyResultFiles.Where(x => x.State == BadCopyService.CopyResultFileState.SuccessNoSolution);
+                    var clonedFiles = result.CopyResultFiles.Where(x => x.State == BadCopyService.CopyResultFileState.SuccessClone);
 
-                    var countDeletedFolders = bcs.DeleteFolder(config.ToFolder);
-                    cc.WriteLineGreen($"\nDeleted {countDeletedFolders} folders in destination folder.\n");
-                }
-
-                bcs.ReplaceSolutionWith = config.ReplaceSolutionWith;
-
-                foreach (var batch in config.Batches)
-                {
-                    var files = bcs.GetFilesToCopy(batch);
-                    var result = bcs.Copy(files);
-                    
-                    if (result.AllSucceded)
+                    if (noSolution.Count() + clonedFiles.Count() == 0)
                     {
-                        var noSolution = result.CopyResultFiles.Where(x => x.State == BadCopyService.CopyResultFileState.SuccessNoSolution);
-                        var clonedFiles = result.CopyResultFiles.Where(x => x.State == BadCopyService.CopyResultFileState.SuccessClone);
-
-                        if (noSolution.Count()+clonedFiles.Count() == 0)
-                        {
-                            Console.ForegroundColor = ConsoleColor.Yellow;
-                            Console.WriteLine($"Batch '{batch.Name}' finished but nothing copied.");
-                            Console.ForegroundColor = ConsoleColor.White;
-                            continue;
-                        }
-
-                        cc.WriteLineGreen($"Batch '{batch.Name}' succeeded.");
-
-                        if (noSolution.Any())
-                        {
-                            cc.WriteLineGreen($"\n\tWithout solution:\n");
-                            foreach (var file in noSolution)
-                                cc.WriteLineGreen($"\t\t{file.FileInfo.ToFile}");
-                        }
-                        if (clonedFiles.Any())
-                        {
-                            cc.WriteLineGreen($"\n\tCloned:\n");
-                            foreach (var file in clonedFiles)
-                                cc.WriteLineGreen($"\t\t{file.FileInfo.ToFile}");
-                        }
-                        cc.Space();
-                    } else
-                    {
-                        cc.WriteLineRed($"Batch '{batch.Name}' failed. ");
-
-                        // todo: refactor, förkorta
-
-                        var failedReads = result.CopyResultFiles.Where(x => x.State == BadCopyService.CopyResultFileState.FailedRead).ToArray();
-                        var failedWrites = result.CopyResultFiles.Where(x => x.State == BadCopyService.CopyResultFileState.FailedWrite).ToArray();
-                        var unknownCopyStyle = result.CopyResultFiles.Where(x => x.State == BadCopyService.CopyResultFileState.UnknownCopyStyle).ToArray();
-                        var incompleted = result.CopyResultFiles.Where(x => x.State == BadCopyService.CopyResultFileState.Incomplete).ToArray();
-
-                        if (failedReads.Any())
-                        {
-                            cc.WriteLineRed($"\n\tFailed to read:\n");
-                            foreach (var file in failedReads)
-                                cc.WriteLineRed($"\t\t{file.FileInfo.FromFile}");
-                        }
-
-                        if (failedWrites.Any())
-                        {
-                            cc.WriteLineRed($"\n\tFailed to write:\n");
-                            foreach (var file in failedWrites)
-                                cc.WriteLineRed($"\t\t{file.FileInfo.ToFile}");
-                        }
-
-
-                        if (unknownCopyStyle.Any())
-                        {
-                            cc.WriteLineRed($"\n\tUnknown copy style:\n");
-                            foreach (var file in unknownCopyStyle)
-                                cc.WriteLineRed($"\t\t{file.FileInfo.FromFile}");
-                        }
-
-                        if (incompleted.Any())
-                        {
-                            cc.WriteLineRed($"\n\tIncompleted:\n");
-                            foreach (var file in incompleted)
-                                cc.WriteLineRed($"\t\t{file.FileInfo.FromFile}");
-                        }
-                        cc.Space();
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine($"Batch '{batch.Name}' finished but nothing copied.");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        continue;
                     }
+
+                    cc.WriteLineGreen($"Batch '{batch.Name}' succeeded.");
+
+                    if (noSolution.Any())
+                    {
+                        cc.WriteLineGreen($"\n\tWithout solution:\n");
+                        foreach (var file in noSolution)
+                            cc.WriteLineGreen($"\t\t{file.FileInfo.ToFile}");
+                    }
+                    if (clonedFiles.Any())
+                    {
+                        cc.WriteLineGreen($"\n\tCloned:\n");
+                        foreach (var file in clonedFiles)
+                            cc.WriteLineGreen($"\t\t{file.FileInfo.ToFile}");
+                    }
+                    cc.Space();
                 }
+                else
+                {
+                    cc.WriteLineRed($"Batch '{batch.Name}' failed. ");
+
+                    // todo: refactor, förkorta
+
+                    var failedReads = result.CopyResultFiles.Where(x => x.State == BadCopyService.CopyResultFileState.FailedRead).ToArray();
+                    var failedWrites = result.CopyResultFiles.Where(x => x.State == BadCopyService.CopyResultFileState.FailedWrite).ToArray();
+                    var unknownCopyStyle = result.CopyResultFiles.Where(x => x.State == BadCopyService.CopyResultFileState.UnknownCopyStyle).ToArray();
+                    var incompleted = result.CopyResultFiles.Where(x => x.State == BadCopyService.CopyResultFileState.Incomplete).ToArray();
+
+                    if (failedReads.Any())
+                    {
+                        cc.WriteLineRed($"\n\tFailed to read:\n");
+                        foreach (var file in failedReads)
+                            cc.WriteLineRed($"\t\t{file.FileInfo.FromFile}");
+                    }
+
+                    if (failedWrites.Any())
+                    {
+                        cc.WriteLineRed($"\n\tFailed to write:\n");
+                        foreach (var file in failedWrites)
+                            cc.WriteLineRed($"\t\t{file.FileInfo.ToFile}");
+                    }
+
+
+                    if (unknownCopyStyle.Any())
+                    {
+                        cc.WriteLineRed($"\n\tUnknown copy style:\n");
+                        foreach (var file in unknownCopyStyle)
+                            cc.WriteLineRed($"\t\t{file.FileInfo.FromFile}");
+                    }
+
+                    if (incompleted.Any())
+                    {
+                        cc.WriteLineRed($"\n\tIncompleted:\n");
+                        foreach (var file in incompleted)
+                            cc.WriteLineRed($"\t\t{file.FileInfo.FromFile}");
+                    }
+                    cc.Space();
+                }
+            }
             //}
             //catch (Exception ex)
             //{
@@ -153,7 +157,7 @@ namespace BadCopy.UI
         static private string TryGetArgument(string[] args, string parameterName, string defaultValue)
         {
             // --config-file=badcopy-root.json
-            var hits =  args.Where(x => x.Trim().StartsWith("--"+ parameterName));
+            var hits = args.Where(x => x.Trim().StartsWith("--" + parameterName));
 
             if (hits.Count() == 0)
                 return defaultValue;
