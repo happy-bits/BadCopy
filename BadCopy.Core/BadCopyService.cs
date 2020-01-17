@@ -25,7 +25,8 @@ namespace BadCopy.Core
         public List<FileInfo> GetFilesToCopy(Batch batch)
         {
             var result = new List<FileInfo>();
-            foreach (var folder in batch.FromFolders)
+            var fromfolders = batch.FromFolders ?? new List<string> { "" };
+            foreach (var folder in fromfolders)
             {
                 string[] files = GetAllFilesInFolderAndSubfolders(Path.Combine(batch.FromFolderBase, folder), batch.SpecificFiles, batch.SpecificFileEndings, batch.SkipFolders);
                 foreach (var fullfilename in files)
@@ -34,7 +35,7 @@ namespace BadCopy.Core
                     result.Add(new FileInfo
                     {
                         BatchName = batch.Name,
-                        CopyStyle = (CopyStyle) batch.CopyStyle,
+                        CopyStyle = (CopyStyle)batch.CopyStyle,
                         FromFile = Path.Combine(fullfilename),
                         ToFile = Path.Combine(batch.ToFolder, fullfilenameWithoutFromFolder),
                     });
@@ -71,6 +72,34 @@ namespace BadCopy.Core
             public bool AllSucceded => CopyResultFiles.All(x =>
                 x.State == CopyResultFileState.SuccessNoSolution ||
                 x.State == CopyResultFileState.SuccessClone);
+        }
+
+        public int DeleteFolder(string folderToDelete)
+        {
+            var allFolders = Directory.EnumerateDirectories(folderToDelete, "*.*", SearchOption.AllDirectories).ToArray();
+            var deletedFolders = 0;
+            foreach (var folder in allFolders)
+            {
+                if (folder.Contains(@"\.vs\") || folder.EndsWith(@"\.vs") || folder.Contains(@"\.git\") || folder.EndsWith(@"\.git"))
+                    continue;
+                Directory.Delete(folder, true); 
+                deletedFolders++;
+            }
+            return deletedFolders;
+        }
+
+        public int DeleteFiles(string folderToDelete)
+        {
+            var allFiles = Directory.EnumerateFiles(folderToDelete, "*.*", SearchOption.AllDirectories).ToArray();
+            var deletedFiles = 0;
+            foreach (var file in allFiles)
+            {
+                if (file.Contains(@"\.vs\") || file.Contains(@"\.git\"))
+                    continue;
+                File.Delete(file);
+                deletedFiles++;
+            }
+            return deletedFiles;
         }
 
         public CopyResult Copy(List<FileInfo> files)
@@ -171,8 +200,10 @@ namespace BadCopy.Core
 
             var allFiles = Directory.EnumerateFiles(folder, "*.*", SearchOption.AllDirectories).ToArray();
 
+            // todo: verifiera att det verkligen är filer
+
             if (skipFolders != null)
-                allFiles = allFiles.Where(file => !ContainsAny("\\" + file, skipFolders)).ToArray(); 
+                allFiles = allFiles.Where(file => !ContainsAny("\\" + file, skipFolders)).ToArray();
 
             if (specificLineEndings != null)
                 allFiles = allFiles.Where(file => EndsWithAny(file, specificLineEndings)).ToArray();

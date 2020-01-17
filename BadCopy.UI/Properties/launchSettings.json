@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "BadCopy.UI": {
+      "commandName": "Project"
+    },
+    "Root config": {
+      "commandName": "Project",
+      "commandLineArgs": "--config-file=badcopy-root.json"
+    }
+  }
+}

@@ -11,7 +11,7 @@ namespace BadCopy.Core.Test
     public class BadCopyConfigFileTests
     {
         [TestMethod]
-        public void MyTestMethod()
+        public void merge_configuration()
         {
             var b = new BadCopyConfigFile
             {

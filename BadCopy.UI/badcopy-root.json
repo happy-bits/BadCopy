@@ -1,0 +1,14 @@
+{
+  "FromFolderBase": "C:\\Project\\CSharpCourse\\CSharpCourse\\",
+  "CopyStyle": "Clone",
+  "CopyFilter": "NoFilter",
+  "ToFolder": "C:\\TMP\\Student\\",
+  "Batches": [
+    {
+      "FromFolders": [""],
+      "Name": "Solution file",
+      "SpecificFiles": [ "CSharpCourse.sln" ]
+    }
+  ]
+
+}

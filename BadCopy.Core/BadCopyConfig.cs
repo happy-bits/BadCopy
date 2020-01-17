@@ -6,5 +6,7 @@ namespace BadCopy.Core
     {
         public List<Batch> Batches { get; set; }
         public string ReplaceSolutionWith { get; set; }
+        public bool StartByDeletingDestinationFolder { get; set; }
+        public string ToFolder { get; set; }
     }
 }

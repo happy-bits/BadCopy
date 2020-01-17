@@ -6,6 +6,7 @@ namespace BadCopy.Core
     {
         public List<Batch> Batches { get; set; }
         public string ReplaceSolutionWith { get; set; }
+        public bool StartByDeletingDestinationFolder { get; set; }
 
         // Här är samma properties som i "Batch", fast nullable
 
@@ -23,7 +24,9 @@ namespace BadCopy.Core
             var result = new BadCopyConfig
             {
                 Batches = Batches,
-                ReplaceSolutionWith = ReplaceSolutionWith
+                ReplaceSolutionWith = ReplaceSolutionWith,
+                StartByDeletingDestinationFolder = StartByDeletingDestinationFolder,
+                ToFolder = ToFolder
             };
 
             // todo: refactor, går det att göra mer generiskt?
@@ -31,6 +34,7 @@ namespace BadCopy.Core
             foreach (var b in Batches)
             {
                 if (b.FromFolderBase == null) b.FromFolderBase = FromFolderBase;
+                if (b.FromFolders == null) b.FromFolders = FromFolders;
                 if (b.ToFolder == null) b.ToFolder = ToFolder;
                 if (b.CopyFilter == null) b.CopyFilter = CopyFilter;
                 if (b.CopyStyle == null) b.CopyStyle = CopyStyle;

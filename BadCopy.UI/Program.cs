@@ -11,18 +11,31 @@ namespace BadCopy.UI
     {
         static readonly ConsoleCompanion cc = new ConsoleCompanion();
 
-        static void Main()
+        static void Main(params string[] args)
         {
-            try
-            {
+
+            //try
+            //{
                 // todo: inställning: börja med att ta bort allt i målet
-                // todo: låt konfiguration i jsonfilen cascade'a ner, t.ex "FromFolderBase"
                 // todo: validering av badconfig.json (ex att FromFolders finns)
 
-                BadCopyConfigFile configFile = ReadBadCopyConfigurationFile();
+                var bcs = new BadCopyService();
+
+                var configFileName = TryGetArgument(args, "config-file", "badcopy.json");
+
+                BadCopyConfigFile configFile = ReadBadCopyConfigurationFile(configFileName);
+
                 BadCopyConfig config = configFile.MergeConfiguration();
 
-                var bcs = new BadCopyService();
+                if (config.StartByDeletingDestinationFolder)
+                {
+                    //var countDeletedFiles = bcs.DeleteFiles(config.ToFolder);
+                    //cc.WriteLineGreen($"\nDeleted {countDeletedFiles} files in destination folder.\n");
+
+                    var countDeletedFolders = bcs.DeleteFolder(config.ToFolder);
+                    cc.WriteLineGreen($"\nDeleted {countDeletedFolders} folders in destination folder.\n");
+                }
+
                 bcs.ReplaceSolutionWith = config.ReplaceSolutionWith;
 
                 foreach (var batch in config.Batches)
@@ -100,29 +113,30 @@ namespace BadCopy.UI
                         cc.Space();
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                cc.WriteLineRed(ex.Message);
-                return;
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    throw ex;
+            //    cc.WriteLineRed(ex.Message);
+            //    return;
+            //}
 
             // todo: fixa i ConsoleCompanion så att förra färgen automatiskt kommer tillbaka efter t.ex WriteLineRed (då behövs inte denna raden)
             cc.WriteLine("");
 
         }
 
-        private static BadCopyConfigFile ReadBadCopyConfigurationFile()
+        static private BadCopyConfigFile ReadBadCopyConfigurationFile(string configFileName)
         {
             string filecontent;
 
             try
             {
-                filecontent = File.ReadAllText("badcopy.json");
+                filecontent = File.ReadAllText(configFileName);
             }
             catch
             {
-                throw new Exception("Could not find the file 'badcopy.json'. Check that it exist in the current folder.");
+                throw new Exception($"Could not find the file '{configFileName}'. Check that it exist in the current folder.");
             }
 
             try
@@ -133,6 +147,26 @@ namespace BadCopy.UI
             {
                 throw new Exception("Found the file 'badcopy.json' but it was in the wrong format. Check the format of the file.");
             }
+
+        }
+
+        static private string TryGetArgument(string[] args, string parameterName, string defaultValue)
+        {
+            // --config-file=badcopy-root.json
+            var hits =  args.Where(x => x.Trim().StartsWith("--"+ parameterName));
+
+            if (hits.Count() == 0)
+                return defaultValue;
+
+            if (hits.Count() >= 2)
+                throw new Exception($"Too many parameters with parameter {parameterName}");
+
+            var split = hits.First().Split('=');
+
+            if (split.Count() != 2)
+                throw new Exception($"Wrong format for {parameterName}");
+
+            return split[1];
 
         }
     }
