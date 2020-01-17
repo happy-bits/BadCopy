@@ -1,36 +1,23 @@
 {
   "ReplaceSolutionWith": "\n// todo: add code here\n",
+  "FromFolderBase": "C:\\Project\\CSharpCourse\\CSharpCourse\\CSharpCourse",
+  "CopyStyle": "Clone",
+  "CopyFilter": "NoFilter",
+  "ToFolder": "C:\\TMP\\Student\\CSharpCourse",
   "Batches": [
     {
       "Name": "Files in root",
       "FromFolders": [ "" ],
-      "CopyStyle": "Clone",
-      "FromFolderBase": "C:\\Project\\CSharpCourse\\CSharpCourse\\CSharpCourse",
-      "CopyFilter": "NoFilter",
-      "ToFolder": "C:\\TMP\\Student\\CSharpCourse",
       "SpecificFiles": [ "CSharpCourse.csproj", "Program.cs" ]
     },
     {
       "Name": "Classes Cars Demo",
-      "FromFolders": [
-        "Classes\\Cars"
-      ],
-      "CopyStyle": "Clone",
-      "FromFolderBase": "C:\\Project\\CSharpCourse\\CSharpCourse\\CSharpCourse",
-      "CopyFilter": "NoFilter",
-      "ToFolder": "C:\\TMP\\Student\\CSharpCourse"
+      "FromFolders": ["Classes\\Cars"],
     },
     {
       "Name": "Cars exercises",
-      "FromFolders": [
-        "Classes\\_Ex\\Cars"
-      ],
-      "CopyStyle": "Clone",
-      "FromFolderBase": "C:\\Project\\CSharpCourse\\CSharpCourse\\CSharpCourse",
-      "CopyFilter": "NoFilter",
-      "ToFolder": "C:\\TMP\\Student\\CSharpCourse"
+      "FromFolders": ["Classes\\_Ex\\Cars"],
     },
-    
 
   ]
 

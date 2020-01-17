@@ -19,7 +19,8 @@ namespace BadCopy.UI
                 // todo: låt konfiguration i jsonfilen cascade'a ner, t.ex "FromFolderBase"
                 // todo: validering av badconfig.json (ex att FromFolders finns)
 
-                BadCopyConfig config = ReadBadCopyConfigurationFile();
+                BadCopyConfigFile configFile = ReadBadCopyConfigurationFile();
+                BadCopyConfig config = configFile.MergeConfiguration();
 
                 var bcs = new BadCopyService();
                 bcs.ReplaceSolutionWith = config.ReplaceSolutionWith;
@@ -111,7 +112,7 @@ namespace BadCopy.UI
 
         }
 
-        private static BadCopyConfig ReadBadCopyConfigurationFile()
+        private static BadCopyConfigFile ReadBadCopyConfigurationFile()
         {
             string filecontent;
 
@@ -126,7 +127,7 @@ namespace BadCopy.UI
 
             try
             {
-                return JsonConvert.DeserializeObject<BadCopyConfig>(filecontent);
+                return JsonConvert.DeserializeObject<BadCopyConfigFile>(filecontent);
             }
             catch
             {

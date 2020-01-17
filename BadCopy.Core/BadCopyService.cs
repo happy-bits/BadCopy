@@ -34,7 +34,7 @@ namespace BadCopy.Core
                     result.Add(new FileInfo
                     {
                         BatchName = batch.Name,
-                        CopyStyle = batch.CopyStyle,
+                        CopyStyle = (CopyStyle) batch.CopyStyle,
                         FromFile = Path.Combine(fullfilename),
                         ToFile = Path.Combine(batch.ToFolder, fullfilenameWithoutFromFolder),
                     });
