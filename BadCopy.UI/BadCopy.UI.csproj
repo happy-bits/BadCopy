@@ -15,10 +15,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="badcopy-root.json">
+    <None Update="badcopy-csharp-intermediate-root.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="badcopy.json">
+    <None Update="badcopy-csharp-intermediate.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

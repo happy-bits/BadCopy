@@ -1,0 +1,87 @@
+{
+  "ReplaceSolutionWith": "\n// todo: add code here\n",
+  "FromFolderBase": "C:\\Project\\CSharpCourse\\CSharpCourse\\CSharpCourse",
+  "CopyStyle": "Clone",
+  "ToFolder": "C:\\TMP\\Student\\CSharpCourse",
+  "StartByDeletingDestinationFolder": true,
+  "Batches": [
+    // -------------- Classes --------------
+    {
+      "Name": "Files in root",
+      "SpecificFiles": [ "CSharpCourse.csproj", "Program.cs" ]
+    },
+    {
+      "Name": "Cars exercises",
+      "FromFolders": [ "Classes\\Cars\\Exercises" ]
+    },
+    {
+      "Name": "Cars solution",
+      "FromFolders": [ "Classes\\Cars" ]
+    },
+    {
+      "Name": "Books exercises",
+      "FromFolders": [ "Classes\\Books\\Exercises" ]
+    },
+    {
+      "Name": "Books solution",
+      "FromFolders": [ "Classes\\Books" ]
+    },
+    // -------------- Inheritance --------------
+    {
+      "Name": "Inheritance demo",
+      "FromFolders": [ "Inheritance\\Demo" ]
+    },
+    {
+      "Name": "Clas Ohlson exercise",
+      "FromFolders": [ "Inheritance\\ClasOhlson\\Exercises" ]
+    },
+    {
+      "Name": "Clas Ohlson solution",
+      "FromFolders": [ "Inheritance\\ClasOhlson" ]
+    },
+
+    // -------------- Interfaces --------------
+
+    {
+      "Name": "Axes and horses",
+      "FromFolders": [ "Interfaces\\AxesAndHorses\\Exercises" ]
+    },
+
+    {
+      "Name": "File loggers",
+      "FromFolders": [ "Interfaces\\FileLoggers\\Exercises" ]
+    },
+
+    {
+      "Name": "Rockstars",
+      "FromFolders": [ "Interfaces\\Rockstars\\Exercises" ]
+    },
+
+    {
+      "Name": "Axes and horses - solution",
+      "FromFolders": [ "Interfaces\\AxesAndHorses" ]
+    },
+
+    {
+      "Name": "File loggers - solution",
+      "FromFolders": [ "Interfaces\\FileLoggers" ]
+    },
+
+    {
+      "Name": "Rockstars - solution",
+      "FromFolders": [ "Interfaces\\Rockstars" ]
+    }
+
+
+    /*
+    - Jag kodar: AxesAndHorses och visar FileLoggers
+    - De gör exempel Rockstars
+
+    */
+    //{ C:\Project\CSharpCourse\CSharpCourse\CSharpCourse\Inheritance\ClasOhlson\Exercises\ClasOhlson.md
+    //  "Name": "Clas Ohlson solution",
+    //  "FromFolders": [ "ClasOhlson" ]
+    //}
+  ]
+
+}
