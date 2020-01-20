@@ -70,18 +70,65 @@
     {
       "Name": "Rockstars - solution",
       "FromFolders": [ "Interfaces\\Rockstars" ]
+    },
+
+    // -------------- Properties --------------
+
+    {
+      "Name": "Getters - demo",
+      "FromFolders": [ "Property\\DemoGetter" ]
+    },
+    {
+      "Name": "Getters - demo",
+      "FromFolders": [ "Property\\DemoSetter" ]
+    },
+    {
+      "Name": "Getters - exercises",
+      "FromFolders": [ "Property\\GetAccessor\\Exercises" ]
+    },
+    {
+      "Name": "Setters - exercises",
+      "FromFolders": [ "Property\\SetAccessor\\Exercises" ]
+    },
+    {
+      "Name": "Getters - solutions",
+      "FromFolders": [ "Property\\GetAccessor" ]
+    },
+    {
+      "Name": "Setters - solutions",
+      "FromFolders": [ "Property\\SetAccessor" ]
+    },
+
+    // -------------- DAY II --------------
+
+    // -------------- Indexers --------------
+
+    {
+      "Name": "Project file",
+      "FromFolderBase": "C:\\Project\\AdvancedC#\\AdvancedCsharp\\AdvancedCsharp.Test\\_ProjectFile01\\",
+      "ToFolder": "C:\\TMP\\Student\\AdvancedCsharp.Test",
+      "SpecificFiles": [ "AdvancedCsharp.Test.csproj" ]
+    },
+    {
+      "Name": "Solution file",
+      "FromFolderBase": "C:\\Project\\AdvancedC#\\AdvancedCsharp",
+      "ToFolder": "C:\\TMP\\Student\\",
+      "SpecificFiles": [ "Intermediate.sln" ]
+    },
+    {
+      "Name": "Indexers - demo",
+      "FromFolderBase": "C:\\Project\\AdvancedC#\\AdvancedCsharp\\AdvancedCsharp.Test",
+      "ToFolder": "C:\\TMP\\Student\\AdvancedCsharp.Test",
+      "FromFolders": [ "Indexers" ],
+      "SpecificFiles": [ "Demo1_StringDataStore.cs", "Demo2_SampleCollection.cs" ]
+    },
+    {
+      "Name": "Indexers - exercises",
+      "FromFolderBase": "C:\\Project\\AdvancedC#\\AdvancedCsharp\\AdvancedCsharp.Test",
+      "ToFolder": "C:\\TMP\\Student\\AdvancedCsharp.Test",
+      "FromFolders": [ "Indexers" ],
+      "SpecificFiles": [ "Ex1_MyArray.cs", "Ex2_AroundZero.cs" ],
+      //"CopyStyle": "NoSolution"
     }
-
-
-    /*
-    - Jag kodar: AxesAndHorses och visar FileLoggers
-    - De gör exempel Rockstars
-
-    */
-    //{ C:\Project\CSharpCourse\CSharpCourse\CSharpCourse\Inheritance\ClasOhlson\Exercises\ClasOhlson.md
-    //  "Name": "Clas Ohlson solution",
-    //  "FromFolders": [ "ClasOhlson" ]
-    //}
   ]
-
 }

@@ -156,8 +156,6 @@ namespace BadCopy.Core
                         newcontent = content;
                         successState = CopyResultFileState.SuccessClone;
                         break;
-                    case CopyStyle.NoSolutionNoHash:
-                        throw new NotImplementedException();
                     default:
                         file.State = CopyResultFileState.UnknownCopyStyle;
                         continue;
