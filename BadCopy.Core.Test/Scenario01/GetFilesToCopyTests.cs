@@ -21,7 +21,7 @@ namespace BadCopy.Core.Test.Scenario01
                     "A",
                     "B",
                 },
-                CopyStyle = CopyStyle.NoSolution,
+                Action = Action.CopyWithoutSolution,
                 ToFolder = Scenario01Root + "Output",
             };
 
@@ -34,37 +34,37 @@ namespace BadCopy.Core.Test.Scenario01
                     BatchName="First batch",
                     FromFile= InputFile("A\\1.txt"),
                     ToFile = OutputFile("A\\1.txt"),
-                    CopyStyle=CopyStyle.NoSolution
+                    Action = Action.CopyWithoutSolution
                 },
                 new FileInfo{
                     BatchName="First batch",
                     FromFile= InputFile("A\\2-Clone.txt"),
                     ToFile = OutputFile("A\\2-Clone.txt"),
-                    CopyStyle=CopyStyle.NoSolution
+                    Action = Action.CopyWithoutSolution
                 },
                 new FileInfo{
                     BatchName="First batch",
                     FromFile= InputFile("A\\3-Simple.txt"),
                     ToFile = OutputFile("A\\3-Simple.txt"),
-                    CopyStyle=CopyStyle.NoSolution
+                    Action = Action.CopyWithoutSolution
                 },
                 new FileInfo{
                     BatchName="First batch",
                     FromFile= InputFile("A\\4-Multiple.txt"),
                     ToFile = OutputFile("A\\4-Multiple.txt"),
-                    CopyStyle=CopyStyle.NoSolution
+                    Action = Action.CopyWithoutSolution
                 },
                 new FileInfo{
                     BatchName="First batch",
                     FromFile= InputFile("A\\Sub1\\Sub2\\6.txt"),
                     ToFile = OutputFile("A\\Sub1\\Sub2\\6.txt"),
-                    CopyStyle=CopyStyle.NoSolution
+                    Action = Action.CopyWithoutSolution
                 },
                 new FileInfo{
                     BatchName="First batch",
                     FromFile= InputFile("B\\5-Onemore.txt"),
                     ToFile = OutputFile("B\\5-Onemore.txt"),
-                    CopyStyle=CopyStyle.NoSolution
+                    Action =  Action.CopyWithoutSolution
                 },
 
             };

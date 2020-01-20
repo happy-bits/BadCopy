@@ -45,8 +45,9 @@ namespace BadCopy.UI
                         cc.Space();
 
                         break;
-                    case Core.Action.Copy:
 
+                    case Core.Action.Copy:
+                    case Core.Action.CopyWithoutSolution:
 
                         var files = bcs.GetFilesToCopy(batch);
                         var result = bcs.Copy(files);

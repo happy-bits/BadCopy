@@ -173,12 +173,12 @@
       "SpecificFiles": [ "Demo1_StringDataStore.cs", "Demo2_SampleCollection.cs" ]
     },
     {
+      //"Action": "CopyWithoutSolution",
       "Name": "Indexers - exercises",
       "FromFolderBase": "[AdvancedCsharp.Test]",
       "ToFolder": "[Destination-AdvancedCsharp.Test]",
       "FromFolders": [ "Indexers" ],
       "SpecificFiles": [ "Ex1_MyArray.cs", "Ex2_AroundZero.cs" ]
-      //"CopyStyle": "NoSolution"
     }
   ]
 }

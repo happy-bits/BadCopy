@@ -28,16 +28,17 @@ namespace BadCopy.Core
             var fromfolders = batch.FromFolders ?? new List<string> { "" };
             foreach (var folder in fromfolders)
             {
-                string[] files = GetAllFilesInFolderAndSubfolders(Path.Combine(batch.FromFolderBase, folder), batch.SpecificFiles, batch.SpecificFileEndings, batch.SkipFolders);
+                var path = batch.FromFolderBase == null ? folder : Path.Combine(batch.FromFolderBase, folder);
+                string[] files = GetAllFilesInFolderAndSubfolders(path, batch.SpecificFiles, batch.SpecificFileEndings, batch.SkipFolders);
                 foreach (var fullfilename in files)
                 {
                     var fullfilenameWithoutFromFolder = RemoveFirstPartOfString(fullfilename, batch.FromFolderBase).TrimStart('\\');
                     result.Add(new FileInfo
                     {
                         BatchName = batch.Name,
-                        CopyStyle = (CopyStyle)batch.CopyStyle,
                         FromFile = Path.Combine(fullfilename),
                         ToFile = Path.Combine(batch.ToFolder, fullfilenameWithoutFromFolder),
+                        Action = batch.Action
                     });
                 }
             }
@@ -146,13 +147,13 @@ namespace BadCopy.Core
 
                 CopyResultFileState? successState = null;
 
-                switch (file.FileInfo.CopyStyle)
+                switch (file.FileInfo.Action)
                 {
-                    case CopyStyle.NoSolution:
+                    case Action.CopyWithoutSolution:
                         newcontent = RemoveSolutionRegion(content);
                         successState = CopyResultFileState.SuccessNoSolution;
                         break;
-                    case CopyStyle.Clone:
+                    case Action.Copy:
                         newcontent = content;
                         successState = CopyResultFileState.SuccessClone;
                         break;

@@ -4,6 +4,7 @@
     {
         Unknown, 
         Copy,
+        CopyWithoutSolution,
         DeleteFolder
     }
 }

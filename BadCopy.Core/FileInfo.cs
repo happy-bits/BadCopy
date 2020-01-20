@@ -3,12 +3,12 @@ using System.Collections.Generic;
 
 namespace BadCopy.Core
 {
-    public class FileInfo //: IEquatable<FileInfo>
+    public class FileInfo
     {
         public string BatchName { get; set; }
         public string FromFile { get; set; }
         public string ToFile { get; set; }
-        public CopyStyle CopyStyle { get; set; }
+        public Action Action { get; set; }
 
         public static FileInfo Clone(FileInfo fi)
         {
@@ -17,7 +17,7 @@ namespace BadCopy.Core
                 BatchName = fi.BatchName,
                 FromFile = fi.FromFile,
                 ToFile = fi.ToFile,
-                CopyStyle = fi.CopyStyle
+                Action = fi.Action
             };
         }
 
@@ -27,7 +27,7 @@ namespace BadCopy.Core
             bool result = BatchName == other.BatchName &&
                 FromFile == other.FromFile &&
                 ToFile == other.ToFile &&
-                CopyStyle == other.CopyStyle;
+                Action == other.Action; 
             return result;
         }
 
@@ -37,18 +37,9 @@ namespace BadCopy.Core
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(BatchName);
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(FromFile);
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(ToFile);
-            hashCode = hashCode * -1521134295 + CopyStyle.GetHashCode();
+            hashCode = hashCode * -1521134295 + EqualityComparer<Action>.Default.GetHashCode(Action);
             return hashCode;
         }
 
-        //public bool Equals(FileInfo other)
-        //{
-        //    bool result = BatchName == other.BatchName &&
-        //        FromFile == other.FromFile &&
-        //        ToFile == other.ToFile &&
-        //        CopyStyle == other.CopyStyle;
-        //    return result;
-
-        //}
     }
 }
