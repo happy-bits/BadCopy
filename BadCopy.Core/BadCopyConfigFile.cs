@@ -17,6 +17,8 @@ namespace BadCopy.Core
         public List<string> SpecificFiles { get; set; }
         public List<string> SpecificFileEndings { get; set; }
         public List<string> SkipFolders { get; set; }
+        public List<Variable> Variables { get; set; }
+
 
         public BadCopyConfig MergeConfiguration()
         {
@@ -32,6 +34,7 @@ namespace BadCopy.Core
 
             foreach (var b in Batches)
             {
+                if (b.Variables == null) b.Variables = Variables; // måste vara först....
                 if (b.FromFolderBase == null) b.FromFolderBase = FromFolderBase;
                 if (b.FromFolders == null) b.FromFolders = FromFolders;
                 if (b.ToFolder == null) b.ToFolder = ToFolder;

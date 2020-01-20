@@ -1,9 +1,37 @@
 {
+  "Variables": [
+    {
+      "name": "[CSharpCourse]",
+      "value": "C:\\Project\\CSharpCourse\\CSharpCourse\\CSharpCourse"
+    },
+    {
+      "name": "[AdvancedCsharp]",
+      "value": "C:\\Project\\AdvancedC#\\AdvancedCsharp"
+    },
+    {
+      "name": "[AdvancedCsharp.Test]",
+      "value": "C:\\Project\\AdvancedC#\\AdvancedCsharp\\AdvancedCsharp.Test"
+    },
+    {
+      "name": "[Destination-Root]",
+      "value": "C:\\TMP\\Student\\"
+    },
+    {
+      "name": "[Destination-AdvancedCsharp.Test]",
+      "value": "C:\\TMP\\Student\\AdvancedCsharp.Test"
+    },
+    {
+      "name": "[Destination-CSharpCourse]",
+      "value": "C:\\TMP\\Student\\CSharpCourse"
+    }
+  ],
+
   "ReplaceSolutionWith": "\n// todo: add code here\n",
-  "FromFolderBase": "C:\\Project\\CSharpCourse\\CSharpCourse\\CSharpCourse",
+  "FromFolderBase": "[CSharpCourse]",
   "CopyStyle": "Clone",
-  "ToFolder": "C:\\TMP\\Student\\CSharpCourse",
+  "ToFolder": "[Destination-CSharpCourse]",
   "StartByDeletingDestinationFolder": true,
+
   "Batches": [
     // -------------- Classes --------------
     {
@@ -105,29 +133,29 @@
 
     {
       "Name": "Project file",
-      "FromFolderBase": "C:\\Project\\AdvancedC#\\AdvancedCsharp\\AdvancedCsharp.Test\\_ProjectFile01\\",
-      "ToFolder": "C:\\TMP\\Student\\AdvancedCsharp.Test",
+      "FromFolderBase": "[AdvancedCsharp.Test]\\_ProjectFile01\\",
+      "ToFolder": "[Destination-AdvancedCsharp.Test]",
       "SpecificFiles": [ "AdvancedCsharp.Test.csproj" ]
     },
     {
       "Name": "Solution file",
-      "FromFolderBase": "C:\\Project\\AdvancedC#\\AdvancedCsharp",
-      "ToFolder": "C:\\TMP\\Student\\",
+      "FromFolderBase": "[AdvancedCsharp]",
+      "ToFolder": "[Destination-Root]",
       "SpecificFiles": [ "Intermediate.sln" ]
     },
     {
       "Name": "Indexers - demo",
-      "FromFolderBase": "C:\\Project\\AdvancedC#\\AdvancedCsharp\\AdvancedCsharp.Test",
-      "ToFolder": "C:\\TMP\\Student\\AdvancedCsharp.Test",
+      "FromFolderBase": "[AdvancedCsharp.Test]",
+      "ToFolder": "[Destination-AdvancedCsharp.Test]",
       "FromFolders": [ "Indexers" ],
       "SpecificFiles": [ "Demo1_StringDataStore.cs", "Demo2_SampleCollection.cs" ]
     },
     {
       "Name": "Indexers - exercises",
-      "FromFolderBase": "C:\\Project\\AdvancedC#\\AdvancedCsharp\\AdvancedCsharp.Test",
-      "ToFolder": "C:\\TMP\\Student\\AdvancedCsharp.Test",
+      "FromFolderBase": "[AdvancedCsharp.Test]",
+      "ToFolder": "[Destination-AdvancedCsharp.Test]",
       "FromFolders": [ "Indexers" ],
-      "SpecificFiles": [ "Ex1_MyArray.cs", "Ex2_AroundZero.cs" ],
+      "SpecificFiles": [ "Ex1_MyArray.cs", "Ex2_AroundZero.cs" ]
       //"CopyStyle": "NoSolution"
     }
   ]
