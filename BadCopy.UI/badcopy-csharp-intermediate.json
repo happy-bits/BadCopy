@@ -1,6 +1,10 @@
 {
   "Variables": [
     {
+      "name": "[CSharpCourse-Root]",
+      "value": "C:\\Project\\CSharpCourse\\CSharpCourse"
+    },
+    {
       "name": "[CSharpCourse]",
       "value": "C:\\Project\\CSharpCourse\\CSharpCourse\\CSharpCourse"
     },
@@ -33,6 +37,15 @@
   "StartByDeletingDestinationFolder": true,
 
   "Batches": [
+    
+    // (solution file)
+
+    {
+      "Name": "Solution file",
+      "FromFolderBase": "[AdvancedCsharp.Test]\\_SolutionFile01",
+      "ToFolder": "[Destination-Root]",
+      "SpecificFiles": [ "CSharpCourse.sln" ]
+    },
     // -------------- Classes --------------
     {
       "Name": "Files in root",

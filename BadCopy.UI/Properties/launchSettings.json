@@ -3,10 +3,6 @@
     "BadCopy.UI": {
       "commandName": "Project"
     },
-    "C# Intermediate Root": {
-      "commandName": "Project",
-      "commandLineArgs": "--config-file=badcopy-csharp-intermediate-root.json"
-    },
     "C# Intermediate": {
       "commandName": "Project",
       "commandLineArgs": "--config-file=badcopy-csharp-intermediate.json"

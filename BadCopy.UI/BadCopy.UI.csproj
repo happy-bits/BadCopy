@@ -15,9 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="badcopy-csharp-intermediate-root.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Update="badcopy-csharp-intermediate.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
