@@ -37,8 +37,8 @@
   "StartByDeletingDestinationFolder": true,
 
   "Batches": [
-    
-    // (solution file)
+
+    // -------------- (solution file) --------------
 
     {
       "Name": "Solution file",
@@ -142,8 +142,7 @@
 
     // -------------- DAY II --------------
 
-    // -------------- Indexers --------------
-
+    // -------------- (project files and new solution file) --------------
     {
       "Name": "Project file",
       "FromFolderBase": "[AdvancedCsharp.Test]\\_ProjectFile01\\",
@@ -156,6 +155,9 @@
       "ToFolder": "[Destination-Root]",
       "SpecificFiles": [ "Intermediate.sln" ]
     },
+
+    // -------------- Indexers --------------
+
     {
       "Name": "Indexers - demo",
       "FromFolderBase": "[AdvancedCsharp.Test]",
