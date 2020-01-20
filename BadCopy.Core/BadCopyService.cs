@@ -83,8 +83,8 @@ namespace BadCopy.Core
             var deletedFolders = 0;
             foreach (var folder in allFolders)
             {
-                //if (folder.Contains(@"\.vs\") || folder.EndsWith(@"\.vs") || folder.Contains(@"\.git\") || folder.EndsWith(@"\.git"))
-                if (folder.Contains(@"\.git\") || folder.EndsWith(@"\.git"))
+                if (folder.Contains(@"\.vs\") || folder.EndsWith(@"\.vs") || folder.Contains(@"\.git\") || folder.EndsWith(@"\.git"))
+                //if (folder.Contains(@"\.git\") || folder.EndsWith(@"\.git"))
                     continue;
 
                 if (Directory.Exists(folder))
@@ -106,8 +106,8 @@ namespace BadCopy.Core
             var deletedFiles = 0;
             foreach (var file in allFiles)
             {
-                //if (file.Contains(@"\.vs\") || file.Contains(@"\.git\"))
-                if (file.Contains(@"\.git\"))
+                if (file.Contains(@"\.vs\") || file.Contains(@"\.git\"))
+                //if (file.Contains(@"\.git\"))
                     continue;
                 File.Delete(file);
                 deletedFiles++;

@@ -6,19 +6,19 @@ namespace BadCopy.Core
     {
         public List<Batch> Batches { get; set; }
         public string ReplaceSolutionWith { get; set; }
-        public bool StartByDeletingDestinationFolder { get; set; }
 
         // Här är samma properties som i "Batch", fast nullable
 
         public string FromFolderBase { get; set; }
         public string ToFolder { get; set; }
-        public CopyStyle? CopyStyle { get; set; }
+        
+        public CopyStyle? CopyStyle { get; set; } // todo: lägg in copystyle i Action
         public List<string> FromFolders { get; set; }
         public List<string> SpecificFiles { get; set; }
         public List<string> SpecificFileEndings { get; set; }
         public List<string> SkipFolders { get; set; }
         public List<Variable> Variables { get; set; }
-
+        public Action Action { get; set; }
 
         public BadCopyConfig MergeConfiguration()
         {
@@ -26,7 +26,6 @@ namespace BadCopy.Core
             {
                 Batches = Batches,
                 ReplaceSolutionWith = ReplaceSolutionWith,
-                StartByDeletingDestinationFolder = StartByDeletingDestinationFolder,
                 ToFolder = ToFolder
             };
 
@@ -43,6 +42,7 @@ namespace BadCopy.Core
                 if (b.SpecificFiles == null) b.SpecificFiles = SpecificFiles;
                 if (b.SpecificFileEndings == null) b.SpecificFileEndings = SpecificFileEndings;
                 if (b.SkipFolders == null) b.SkipFolders = SkipFolders;
+                if (b.Action == Action.Unknown) b.Action = Action;
             }
             return result;
         }

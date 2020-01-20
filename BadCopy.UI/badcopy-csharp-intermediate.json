@@ -29,14 +29,21 @@
       "value": "C:\\TMP\\Student\\CSharpCourse"
     }
   ],
-
+  "Action":  "Copy",
   "ReplaceSolutionWith": "\n// todo: add code here\n",
   "FromFolderBase": "[CSharpCourse]",
+  
   "CopyStyle": "Clone",
   "ToFolder": "[Destination-CSharpCourse]",
-  "StartByDeletingDestinationFolder": true,
 
   "Batches": [
+
+    // -------------- (delete all) --------------
+
+    {
+      "Action": "DeleteFolder",
+      "FolderToDelete": "[Destination-Root]"
+    },
 
     // -------------- (solution file) --------------
 
