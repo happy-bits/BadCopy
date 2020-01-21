@@ -19,11 +19,19 @@ namespace BadCopy.UI
             // todo: inställning: börja med att ta bort allt i målet
             // todo: validering av badconfig.json (ex att FromFolders finns)
 
+            Console.BufferWidth = 80;
+            Console.WindowWidth = 80;
+            Console.BufferHeight = 20;
+            Console.WindowHeight = 20;
+            //Console.WindowTop = 1;
+            //Console.WindowLeft = 1;
+
             var bcs = new BadCopyService();
 
-            var configFileName = TryGetArgument(args, "config-file", "badcopy.json");
+            CommandArguments commandargs = new CommandArguments(args);
 
-            BadCopyConfigFile configFile = ReadBadCopyConfigurationFile(configFileName);
+
+            BadCopyConfigFile configFile = ReadBadCopyConfigurationFile(commandargs.ConfigFileName);
 
             BadCopyConfig config = configFile.MergeConfiguration();
 
@@ -31,7 +39,8 @@ namespace BadCopy.UI
 
             bcs.ReplaceSolutionWith = config.ReplaceSolutionWith;
 
-            foreach (var batch in config.Batches)
+            var batchesToRun = commandargs.OnlyLastBatches == null ? config.Batches : config.Batches.TakeLast((int)commandargs.OnlyLastBatches);
+            foreach (var batch in batchesToRun)
             {
                 switch (batch.Action)
                 {
@@ -163,24 +172,5 @@ namespace BadCopy.UI
 
         }
 
-        static private string TryGetArgument(string[] args, string parameterName, string defaultValue)
-        {
-            // --config-file=badcopy-root.json
-            var hits = args.Where(x => x.Trim().StartsWith("--" + parameterName));
-
-            if (hits.Count() == 0)
-                return defaultValue;
-
-            if (hits.Count() >= 2)
-                throw new Exception($"Too many parameters with parameter {parameterName}");
-
-            var split = hits.First().Split('=');
-
-            if (split.Count() != 2)
-                throw new Exception($"Wrong format for {parameterName}");
-
-            return split[1];
-
-        }
     }
 }
