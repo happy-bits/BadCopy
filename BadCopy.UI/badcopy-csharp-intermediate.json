@@ -241,25 +241,35 @@
     },
     {
       "Name": "Linq - ListOfCustomers",
-      "Action": "CopyWithoutSolution",
+      //"Action": "CopyWithoutSolution",
       "FromFolders": [ "Linq\\ListOfCustomers" ]
-    }
+    },
+    // -------------- Operator overloading --------------
 
+    {
+      "Name": "Operator overloading - demos",
+      "FromFolderBase": "[AdvancedCsharp.Test]",
+      "ToFolder": "[Destination-AdvancedCsharp.Test]",
+      "FromFolders": [ "OperatorOverloading\\Demos" ]
+    },
+    {
+      "Name": "Operator overloading - exercises",
+     // "Action": "CopyWithoutSolution",
+      "FromFolderBase": "[AdvancedCsharp.Test]",
+      "ToFolder": "[Destination-AdvancedCsharp.Test]",
+      "FromFolders": [ "OperatorOverloading\\Exercises" ]
+    }
 
 
     /*
     
-## Day 3 
+### Operator Overloading
 
-### LINQ (Querying In-Memory Data by Using Query expressions)
+11-14
 
-9-11
+Demo: Advanced -> OperatorOverloading. 1-3 (vektorer, coordinater och fractions)
 
-Demo: Linq. 1-3.
-
-Övning: Work with a list of Customers
-
-Extra övning: TV-shows
+Övning: Exercise1_Tea (en kundkorg med teer, ganska svår)
 
 
     */
