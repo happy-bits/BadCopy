@@ -110,27 +110,30 @@ namespace BadCopy.Core
 
         private static string[] GetAllSubFolders(string folderToDelete)
         {
+            if (!Directory.Exists(folderToDelete))
+                return new string[] { };
+            
             return Directory.EnumerateDirectories(folderToDelete, "*.*", SearchOption.AllDirectories).ToArray();
         }
 
-        // todo: behövs båda dessa metoder?
-        public int DeleteFiles(string folderToDelete)
-        {
-            if (!Directory.Exists(folderToDelete))
-                return 0;
+        //// todo: behövs båda dessa metoder?
+        //public int DeleteFiles(string folderToDelete)¤
+        //{
+        //    if (!Directory.Exists(folderToDelete))
+        //        return 0;
 
-            var allFiles = Directory.EnumerateFiles(folderToDelete, "*.*", SearchOption.AllDirectories).ToArray();
-            var deletedFiles = 0;
-            foreach (var file in allFiles)
-            {
-                if (file.Contains(@"\.vs\") || file.Contains(@"\.git\"))
-                //if (file.Contains(@"\.git\"))
-                    continue;
-                File.Delete(file);
-                deletedFiles++;
-            }
-            return deletedFiles;
-        }
+        //    var allFiles = Directory.EnumerateFiles(folderToDelete, "*.*", SearchOption.AllDirectories).ToArray();
+        //    var deletedFiles = 0;
+        //    foreach (var file in allFiles)
+        //    {
+        //        if (file.Contains(@"\.vs\") || file.Contains(@"\.git\"))
+        //        //if (file.Contains(@"\.git\"))
+        //            continue;
+        //        File.Delete(file);
+        //        deletedFiles++;
+        //    }
+        //    return deletedFiles;
+        //}
 
         public CopyResult Copy(List<FileInfo> files)
         {

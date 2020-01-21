@@ -37,9 +37,6 @@ namespace BadCopy.UI
                 {
                     case Core.Action.DeleteFolder:
 
-                        var countDeletedFiles = bcs.DeleteFiles(batch.FolderToDelete);
-                        cc.WriteLineGreen($"Deleted {countDeletedFiles} files in destination folder.");
-
                         var countDeletedFolders = bcs.DeleteFolder(batch.FolderToDelete);
                         cc.WriteLineGreen($"Deleted {countDeletedFolders} folders in destination folder.");
                         cc.Space();
