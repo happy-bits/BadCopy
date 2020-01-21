@@ -94,7 +94,12 @@ namespace BadCopy.Core
 
                 foreach (var folder in allFolders)
                 {
-                    if (folder.Contains(@"\.vs\") || folder.EndsWith(@"\.vs"))
+                    if (!Directory.Exists(folder))
+                        continue;
+
+                    // todo: gör detta till en inställning
+
+                    if (IsFolderOrSubFolder(folder, ".vs") || IsFolderOrSubFolder(folder, ".git")) 
                         continue;
 
                     DeleteFilesInFolder(folder);
@@ -112,6 +117,11 @@ namespace BadCopy.Core
 
             return totaldeletedfolders;
 
+        }
+
+        private static bool IsFolderOrSubFolder(string folder, string subfolder)
+        {
+            return folder.Contains($"\\{subfolder}\\") || folder.EndsWith($"\\{subfolder}");
         }
 
         private static string[] GetAllSubFolders(string folderToDelete)

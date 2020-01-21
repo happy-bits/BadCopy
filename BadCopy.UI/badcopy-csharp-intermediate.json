@@ -9,13 +9,18 @@
       "value": "C:\\Project\\CSharpCourse\\CSharpCourse\\CSharpCourse"
     },
     {
+      "name": "[AdvancedCsharp-Root]",
+      "value": "C:\\Project\\AdvancedCsharp"
+      //"value": "C:\\Project\\AdvancedC#" // desktop
+    },
+    {
       "name": "[AdvancedCsharp]",
-      "value": "C:\\Project\\AdvancedCsharp\\AdvancedCsharp",
+      "value": "C:\\Project\\AdvancedCsharp\\AdvancedCsharp"
       //"value": "C:\\Project\\AdvancedC#\\AdvancedCsharp" // desktop
     },
     {
       "name": "[AdvancedCsharp.Test]",
-      "value": "C:\\Project\\AdvancedCsharp\\AdvancedCsharp\\AdvancedCsharp.Test",
+      "value": "C:\\Project\\AdvancedCsharp\\AdvancedCsharp\\AdvancedCsharp.Test"
       //"value": "C:\\Project\\AdvancedC#\\AdvancedCsharp\\AdvancedCsharp.Test", // desktop
     },
     {
@@ -47,31 +52,44 @@
       "FolderToDelete": "[Destination-Root]"
     },
 
-    // -------------- (solution file) --------------
+    //// -------------- (solution file) --------------
 
     {
       "Name": "Solution file",
-      "FromFolderBase": "[AdvancedCsharp.Test]\\_SolutionFile01",
+      "FromFolderBase": "[AdvancedCsharp-Root]\\SolutionFiles",
       "ToFolder": "[Destination-Root]",
-      "SpecificFiles": [ "CSharpCourse.sln" ]
+      "SpecificFiles": [ "Intermediate01.sln" ]
     },
-    // -------------- Classes --------------
     {
-      "Name": "Files in root",
-      "SpecificFiles": [ "CSharpCourse.csproj", "Program.cs" ]
+      "Name": "Project file",
+      "FromFolderBase": "[AdvancedCsharp-Root]\\ProjectFiles",
+      "ToFolder": "[Destination-CSharpCourse]",
+      "SpecificFiles": [ "CSharpCourse.csproj" ]
     },
+
+    {
+      "Name": "Program.cs",
+      "SpecificFiles": [ "Program.cs" ]
+    },
+    
+    // -------------- Classes --------------
     {
       "Name": "Cars exercises",
       "FromFolders": [ "Classes\\Cars\\Exercises" ]
     },
     {
       "Name": "Cars solution",
+      //"Action": "CopyWithoutSolution",
       "FromFolders": [ "Classes\\Cars" ]
     },
+    
+    // Extra 
+    
     {
       "Name": "Books exercises",
       "FromFolders": [ "Classes\\Books\\Exercises" ]
     },
+
     {
       "Name": "Books solution",
       "FromFolders": [ "Classes\\Books" ]
@@ -90,214 +108,214 @@
       "FromFolders": [ "Inheritance\\ClasOhlson" ]
     },
 
-    // -------------- Interfaces --------------
+    //// -------------- Interfaces --------------
 
-    {
-      "Name": "Axes and horses",
-      "FromFolders": [ "Interfaces\\AxesAndHorses\\Exercises" ]
-    },
+    //{
+    //  "Name": "Axes and horses",
+    //  "FromFolders": [ "Interfaces\\AxesAndHorses\\Exercises" ]
+    //},
 
-    {
-      "Name": "File loggers",
-      "FromFolders": [ "Interfaces\\FileLoggers\\Exercises" ]
-    },
+    //{
+    //  "Name": "File loggers",
+    //  "FromFolders": [ "Interfaces\\FileLoggers\\Exercises" ]
+    //},
 
-    {
-      "Name": "Rockstars",
-      "FromFolders": [ "Interfaces\\Rockstars\\Exercises" ]
-    },
+    //{
+    //  "Name": "Rockstars",
+    //  "FromFolders": [ "Interfaces\\Rockstars\\Exercises" ]
+    //},
 
-    {
-      "Name": "Axes and horses - solution",
-      "FromFolders": [ "Interfaces\\AxesAndHorses" ]
-    },
+    //{
+    //  "Name": "Axes and horses - solution",
+    //  "FromFolders": [ "Interfaces\\AxesAndHorses" ]
+    //},
 
-    {
-      "Name": "File loggers - solution",
-      "FromFolders": [ "Interfaces\\FileLoggers" ]
-    },
+    //{
+    //  "Name": "File loggers - solution",
+    //  "FromFolders": [ "Interfaces\\FileLoggers" ]
+    //},
 
-    {
-      "Name": "Rockstars - solution",
-      "FromFolders": [ "Interfaces\\Rockstars" ]
-    },
+    //{
+    //  "Name": "Rockstars - solution",
+    //  "FromFolders": [ "Interfaces\\Rockstars" ]
+    //},
 
-    // -------------- Properties --------------
+    //// -------------- Properties --------------
 
-    {
-      "Name": "Getters - demo",
-      "FromFolders": [ "Property\\DemoGetter" ]
-    },
-    {
-      "Name": "Getters - demo",
-      "FromFolders": [ "Property\\DemoSetter" ]
-    },
-    {
-      "Name": "Getters - exercises",
-      "FromFolders": [ "Property\\GetAccessor\\Exercises" ]
-    },
-    {
-      "Name": "Setters - exercises",
-      "FromFolders": [ "Property\\SetAccessor\\Exercises" ]
-    },
-    {
-      "Name": "Getters - solutions",
-      "FromFolders": [ "Property\\GetAccessor" ]
-    },
-    {
-      "Name": "Setters - solutions",
-      "FromFolders": [ "Property\\SetAccessor" ]
-    },
+    //{
+    //  "Name": "Getters - demo",
+    //  "FromFolders": [ "Property\\DemoGetter" ]
+    //},
+    //{
+    //  "Name": "Getters - demo",
+    //  "FromFolders": [ "Property\\DemoSetter" ]
+    //},
+    //{
+    //  "Name": "Getters - exercises",
+    //  "FromFolders": [ "Property\\GetAccessor\\Exercises" ]
+    //},
+    //{
+    //  "Name": "Setters - exercises",
+    //  "FromFolders": [ "Property\\SetAccessor\\Exercises" ]
+    //},
+    //{
+    //  "Name": "Getters - solutions",
+    //  "FromFolders": [ "Property\\GetAccessor" ]
+    //},
+    //{
+    //  "Name": "Setters - solutions",
+    //  "FromFolders": [ "Property\\SetAccessor" ]
+    //},
 
-    // -------------- DAY II --------------
+    //// -------------- DAY II --------------
 
-    // -------------- (project files and new solution file) --------------
-    {
-      "Name": "Project file",
-      "FromFolderBase": "[AdvancedCsharp.Test]\\_ProjectFile01\\",
-      "ToFolder": "[Destination-AdvancedCsharp.Test]",
-      "SpecificFiles": [ "AdvancedCsharp.Test.csproj" ]
-    },
-    {
-      "Name": "Solution file",
-      "FromFolderBase": "[AdvancedCsharp]",
-      "ToFolder": "[Destination-Root]",
-      "SpecificFiles": [ "Intermediate.sln" ]
-    },
+    //// -------------- (project files and new solution file) --------------
+    //{
+    //  "Name": "Project file",
+    //  "FromFolderBase": "[AdvancedCsharp.Test]\\_ProjectFile01\\",
+    //  "ToFolder": "[Destination-AdvancedCsharp.Test]",
+    //  "SpecificFiles": [ "AdvancedCsharp.Test.csproj" ]
+    //},
+    //{
+    //  "Name": "Solution file",
+    //  "FromFolderBase": "[AdvancedCsharp]",
+    //  "ToFolder": "[Destination-Root]",
+    //  "SpecificFiles": [ "Intermediate.sln" ]
+    //},
 
-    // -------------- Indexers --------------
+    //// -------------- Indexers --------------
 
-    {
-      "Name": "Indexers - demo",
-      "FromFolderBase": "[AdvancedCsharp.Test]",
-      "ToFolder": "[Destination-AdvancedCsharp.Test]",
-      "FromFolders": [ "Indexers" ],
-      "SpecificFiles": [ "Demo1_StringDataStore.cs", "Demo2_SampleCollection.cs" ]
-    },
-    {
-      "Name": "Indexers - exercises",
-      //"Action": "CopyWithoutSolution",
-      "FromFolderBase": "[AdvancedCsharp.Test]",
-      "ToFolder": "[Destination-AdvancedCsharp.Test]",
-      "FromFolders": [ "Indexers" ],
-      "SpecificFiles": [ "Ex1_MyArray.cs", "Ex2_AroundZero.cs" ]
-    },
-    // -------------- Generics --------------
-    {
-      "Name": "Generics - demos",
-      "FromFolderBase": "[AdvancedCsharp.Test]",
-      "ToFolder": "[Destination-AdvancedCsharp.Test]",
-      "FromFolders": [ "Generics\\Demos" ]
-    },
-    {
-      "Name": "Generics - exercises",
-      //"Action": "CopyWithoutSolution",
-      "FromFolderBase": "[AdvancedCsharp.Test]",
-      "ToFolder": "[Destination-AdvancedCsharp.Test]",
-      "FromFolders": [ "Generics\\Exercises" ]
-    },
-    // -------------- Collections --------------
-    {
-      "Name": "Collections - demo",
-      //"Action": "CopyWithoutSolution",
-      "FromFolderBase": "[AdvancedCsharp.Test]",
-      "ToFolder": "[Destination-AdvancedCsharp.Test]",
-      "FromFolders": [ "Collections\\Demos" ]
-    },
-    {
-      "Name": "Collections - exercises",
-      //"Action": "CopyWithoutSolution",
-      "FromFolderBase": "[AdvancedCsharp.Test]",
-      "ToFolder": "[Destination-AdvancedCsharp.Test]",
-      "FromFolders": [ "Collections\\Exercises" ]
-    },
+    //{
+    //  "Name": "Indexers - demo",
+    //  "FromFolderBase": "[AdvancedCsharp.Test]",
+    //  "ToFolder": "[Destination-AdvancedCsharp.Test]",
+    //  "FromFolders": [ "Indexers" ],
+    //  "SpecificFiles": [ "Demo1_StringDataStore.cs", "Demo2_SampleCollection.cs" ]
+    //},
+    //{
+    //  "Name": "Indexers - exercises",
+    //  //"Action": "CopyWithoutSolution",
+    //  "FromFolderBase": "[AdvancedCsharp.Test]",
+    //  "ToFolder": "[Destination-AdvancedCsharp.Test]",
+    //  "FromFolders": [ "Indexers" ],
+    //  "SpecificFiles": [ "Ex1_MyArray.cs", "Ex2_AroundZero.cs" ]
+    //},
+    //// -------------- Generics --------------
+    //{
+    //  "Name": "Generics - demos",
+    //  "FromFolderBase": "[AdvancedCsharp.Test]",
+    //  "ToFolder": "[Destination-AdvancedCsharp.Test]",
+    //  "FromFolders": [ "Generics\\Demos" ]
+    //},
+    //{
+    //  "Name": "Generics - exercises",
+    //  //"Action": "CopyWithoutSolution",
+    //  "FromFolderBase": "[AdvancedCsharp.Test]",
+    //  "ToFolder": "[Destination-AdvancedCsharp.Test]",
+    //  "FromFolders": [ "Generics\\Exercises" ]
+    //},
+    //// -------------- Collections --------------
+    //{
+    //  "Name": "Collections - demo",
+    //  //"Action": "CopyWithoutSolution",
+    //  "FromFolderBase": "[AdvancedCsharp.Test]",
+    //  "ToFolder": "[Destination-AdvancedCsharp.Test]",
+    //  "FromFolders": [ "Collections\\Demos" ]
+    //},
+    //{
+    //  "Name": "Collections - exercises",
+    //  //"Action": "CopyWithoutSolution",
+    //  "FromFolderBase": "[AdvancedCsharp.Test]",
+    //  "ToFolder": "[Destination-AdvancedCsharp.Test]",
+    //  "FromFolders": [ "Collections\\Exercises" ]
+    //},
 
-    // -------------- Pubsub --------------
-    {
-      "Name": "Pubsub - demo",
-      "FromFolderBase": "[AdvancedCsharp.Test]",
-      "ToFolder": "[Destination-AdvancedCsharp.Test]",
-      "FromFolders": [ "PubSub\\Demos" ]
-    },
-    {
-      "Name": "Pubsub - exercises",
-      // "Action": "CopyWithoutSolution",
-      "FromFolderBase": "[AdvancedCsharp.Test]",
-      "ToFolder": "[Destination-AdvancedCsharp.Test]",
-      "FromFolders": [ "PubSub\\Exercises" ]
-    },
+    //// -------------- Pubsub --------------
+    //{
+    //  "Name": "Pubsub - demo",
+    //  "FromFolderBase": "[AdvancedCsharp.Test]",
+    //  "ToFolder": "[Destination-AdvancedCsharp.Test]",
+    //  "FromFolders": [ "PubSub\\Demos" ]
+    //},
+    //{
+    //  "Name": "Pubsub - exercises",
+    //  // "Action": "CopyWithoutSolution",
+    //  "FromFolderBase": "[AdvancedCsharp.Test]",
+    //  "ToFolder": "[Destination-AdvancedCsharp.Test]",
+    //  "FromFolders": [ "PubSub\\Exercises" ]
+    //},
 
-    // -------------- DAY III --------------
+    //// -------------- DAY III --------------
 
-    // -------------- Linq --------------
-    {
-      "Name": "Linq - demos",
-      "FromFolders": [ "Linq\\Demos" ]
-    },
-    {
-      "Name": "Linq - ListOfStrings",
-      //"Action": "CopyWithoutSolution",
-      "FromFolders": [ "Linq\\ListOfStrings" ]
-    },
-    {
-      "Name": "Linq - ListOfCustomers",
-      //"Action": "CopyWithoutSolution",
-      "FromFolders": [ "Linq\\ListOfCustomers" ]
-    },
-    // -------------- Operator overloading --------------
+    //// -------------- Linq --------------
+    //{
+    //  "Name": "Linq - demos",
+    //  "FromFolders": [ "Linq\\Demos" ]
+    //},
+    //{
+    //  "Name": "Linq - ListOfStrings",
+    //  //"Action": "CopyWithoutSolution",
+    //  "FromFolders": [ "Linq\\ListOfStrings" ]
+    //},
+    //{
+    //  "Name": "Linq - ListOfCustomers",
+    //  //"Action": "CopyWithoutSolution",
+    //  "FromFolders": [ "Linq\\ListOfCustomers" ]
+    //},
+    //// -------------- Operator overloading --------------
 
-    {
-      "Name": "Operator overloading - demos",
-      "FromFolderBase": "[AdvancedCsharp.Test]",
-      "ToFolder": "[Destination-AdvancedCsharp.Test]",
-      "FromFolders": [ "OperatorOverloading\\Demos" ]
-    },
-    {
-      "Name": "Operator overloading - exercises",
-      // "Action": "CopyWithoutSolution",
-      "FromFolderBase": "[AdvancedCsharp.Test]",
-      "ToFolder": "[Destination-AdvancedCsharp.Test]",
-      "FromFolders": [ "OperatorOverloading\\Exercises" ]
-    },
+    //{
+    //  "Name": "Operator overloading - demos",
+    //  "FromFolderBase": "[AdvancedCsharp.Test]",
+    //  "ToFolder": "[Destination-AdvancedCsharp.Test]",
+    //  "FromFolders": [ "OperatorOverloading\\Demos" ]
+    //},
+    //{
+    //  "Name": "Operator overloading - exercises",
+    //  // "Action": "CopyWithoutSolution",
+    //  "FromFolderBase": "[AdvancedCsharp.Test]",
+    //  "ToFolder": "[Destination-AdvancedCsharp.Test]",
+    //  "FromFolders": [ "OperatorOverloading\\Exercises" ]
+    //},
 
-    // -------------- Tasks --------------
+    //// -------------- Tasks --------------
 
-    {
-      "Name": "Tasks - project",
-      "FromFolderBase": "[AdvancedCsharp]\\TaskLab",
-      "ToFolder": "[Destination-Root]\\TaskLab"
-    },
+    //{
+    //  "Name": "Tasks - project",
+    //  "FromFolderBase": "[AdvancedCsharp]\\TaskLab",
+    //  "ToFolder": "[Destination-Root]\\TaskLab"
+    //},
 
-    {
-      "Name": "Tasks - demos",
-      "FromFolderBase": "[AdvancedCsharp.Test]",
-      "ToFolder": "[Destination-AdvancedCsharp.Test]",
-      "FromFolders": [ "Tasks\\Demos" ]
-    },
+    //{
+    //  "Name": "Tasks - demos",
+    //  "FromFolderBase": "[AdvancedCsharp.Test]",
+    //  "ToFolder": "[Destination-AdvancedCsharp.Test]",
+    //  "FromFolders": [ "Tasks\\Demos" ]
+    //},
 
-    {
-      "Name": "Tasks - exercises",
-      //"Action": "CopyWithoutSolution",
-      "FromFolderBase": "[AdvancedCsharp.Test]",
-      "ToFolder": "[Destination-AdvancedCsharp.Test]",
-      "FromFolders": [ "Tasks\\Exercises" ]
-    },
+    //{
+    //  "Name": "Tasks - exercises",
+    //  //"Action": "CopyWithoutSolution",
+    //  "FromFolderBase": "[AdvancedCsharp.Test]",
+    //  "ToFolder": "[Destination-AdvancedCsharp.Test]",
+    //  "FromFolders": [ "Tasks\\Exercises" ]
+    //},
 
-    // -------------- Parallel --------------
+    //// -------------- Parallel --------------
 
-    {
-      "Name": "Parallel - demos",
-      "FromFolderBase": "[AdvancedCsharp.Test]",
-      "ToFolder": "[Destination-AdvancedCsharp.Test]",
-      "FromFolders": [ "Parallels\\Demos" ]
-    },
-    {
-      "Name": "Parallel - exercises",
-      //"Action": "CopyWithoutSolution",
-      "FromFolderBase": "[AdvancedCsharp.Test]",
-      "ToFolder": "[Destination-AdvancedCsharp.Test]",
-      "FromFolders": [ "Parallels\\Exercises" ]
-    }
+    //{
+    //  "Name": "Parallel - demos",
+    //  "FromFolderBase": "[AdvancedCsharp.Test]",
+    //  "ToFolder": "[Destination-AdvancedCsharp.Test]",
+    //  "FromFolders": [ "Parallels\\Demos" ]
+    //},
+    //{
+    //  "Name": "Parallel - exercises",
+    //  //"Action": "CopyWithoutSolution",
+    //  "FromFolderBase": "[AdvancedCsharp.Test]",
+    //  "ToFolder": "[Destination-AdvancedCsharp.Test]",
+    //  "FromFolders": [ "Parallels\\Exercises" ]
+    //}
 
   ]
 }
