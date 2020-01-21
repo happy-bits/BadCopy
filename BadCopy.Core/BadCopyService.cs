@@ -80,21 +80,37 @@ namespace BadCopy.Core
             if (!Directory.Exists(folderToDelete))
                 return 0;
 
-            var allFolders = Directory.EnumerateDirectories(folderToDelete, "*.*", SearchOption.AllDirectories).ToArray();
-            var deletedFolders = 0;
-            foreach (var folder in allFolders)
-            {
-                if (folder.Contains(@"\.vs\") || folder.EndsWith(@"\.vs") || folder.Contains(@"\.git\") || folder.EndsWith(@"\.git"))
-                //if (folder.Contains(@"\.git\") || folder.EndsWith(@"\.git"))
-                    continue;
+            int totaldeletedfolders = 0;
 
-                if (Directory.Exists(folder))
+            while(true)
+            {
+                string[] allFolders = GetAllSubFolders(folderToDelete);
+
+                int deletedFolders = 0;
+
+                foreach (var folder in allFolders)
                 {
-                    Directory.Delete(folder, true);
-                    deletedFolders++;
+                    if (folder.Contains(@"\.vs\") || folder.EndsWith(@"\.vs"))
+                        continue;
+
+                    if (Directory.EnumerateDirectories(folder, "*.*", SearchOption.AllDirectories).Count() == 0)
+                    {
+                        Directory.Delete(folder, true);
+                        deletedFolders++;
+                        totaldeletedfolders++;
+                    }
                 }
+                if (deletedFolders == 0)
+                    break;
             }
-            return deletedFolders;
+
+            return totaldeletedfolders;
+
+        }
+
+        private static string[] GetAllSubFolders(string folderToDelete)
+        {
+            return Directory.EnumerateDirectories(folderToDelete, "*.*", SearchOption.AllDirectories).ToArray();
         }
 
         // todo: behövs båda dessa metoder?
