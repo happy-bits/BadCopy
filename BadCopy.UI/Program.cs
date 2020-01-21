@@ -167,7 +167,7 @@ namespace BadCopy.UI
             }
             catch
             {
-                throw new Exception("Found the file 'badcopy.json' but it was in the wrong format. Check the format of the file.");
+                throw new Exception($"Found the file '{configFileName}' but it was in the wrong format. Check the format of the file.");
             }
 
         }

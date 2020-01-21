@@ -273,17 +273,31 @@
       "FromFolderBase": "[AdvancedCsharp.Test]",
       "ToFolder": "[Destination-AdvancedCsharp.Test]",
       "FromFolders": [ "Tasks\\Demos" ]
+    },
+
+    {
+      "Name": "Tasks - exercises",
+      //"Action": "CopyWithoutSolution",
+      "FromFolderBase": "[AdvancedCsharp.Test]",
+      "ToFolder": "[Destination-AdvancedCsharp.Test]",
+      "FromFolders": [ "Tasks\\Exercises" ]
+    },
+
+    // -------------- Parallel --------------
+
+    {
+      "Name": "Parallel - demos",
+      "FromFolderBase": "[AdvancedCsharp.Test]",
+      "ToFolder": "[Destination-AdvancedCsharp.Test]",
+      "FromFolders": [ "Parallels\\Demos" ]
+    },
+    {
+      "Name": "Parallel - exercises",
+      //"Action": "CopyWithoutSolution",
+      "FromFolderBase": "[AdvancedCsharp.Test]",
+      "ToFolder": "[Destination-AdvancedCsharp.Test]",
+      "FromFolders": [ "Parallels\\Exercises" ]
     }
 
-    /*
-    (throughput = genomströmning eller kapacitet)
-
-  Demo: Advanced -> TaskLab (ett separat projekt i AdvancedCSharp. En konsolapp med primtal. Bra start för att visa syftet). Sedan Demo1, 2, 3 under "Tasks".
-
-  Övning: Exercise1
-
-  Extra övning: Exercise2
-
-    */
   ]
 }
