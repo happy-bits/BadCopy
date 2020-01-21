@@ -19,10 +19,10 @@ namespace BadCopy.UI
             // todo: inställning: börja med att ta bort allt i målet
             // todo: validering av badconfig.json (ex att FromFolders finns)
 
-            Console.BufferWidth = 80;
-            Console.WindowWidth = 80;
-            Console.BufferHeight = 20;
+            Console.WindowWidth = 120;
             Console.WindowHeight = 20;
+            Console.BufferWidth = 120;
+            Console.BufferHeight = 300;
             //Console.WindowTop = 1;
             //Console.WindowLeft = 1;
 

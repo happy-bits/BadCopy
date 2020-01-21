@@ -175,12 +175,54 @@
       "SpecificFiles": [ "Demo1_StringDataStore.cs", "Demo2_SampleCollection.cs" ]
     },
     {
-      //"Action": "CopyWithoutSolution",
       "Name": "Indexers - exercises",
+      //"Action": "CopyWithoutSolution",
       "FromFolderBase": "[AdvancedCsharp.Test]",
       "ToFolder": "[Destination-AdvancedCsharp.Test]",
       "FromFolders": [ "Indexers" ],
       "SpecificFiles": [ "Ex1_MyArray.cs", "Ex2_AroundZero.cs" ]
+    },
+    // -------------- Generics --------------
+    {
+      "Name": "Generics - demos",
+      "FromFolderBase": "[AdvancedCsharp.Test]",
+      "ToFolder": "[Destination-AdvancedCsharp.Test]",
+      "FromFolders": [ "Generics\\Demos" ]
+    },
+    {
+      "Name": "Generics - exercises",
+      //"Action": "CopyWithoutSolution",
+      "FromFolderBase": "[AdvancedCsharp.Test]",
+      "ToFolder": "[Destination-AdvancedCsharp.Test]",
+      "FromFolders": [ "Generics\\Exercises" ]
+    },
+    // -------------- Collections --------------
+    {
+      "Name": "Collections - demo",
+      //"Action": "CopyWithoutSolution",
+      "FromFolderBase": "[AdvancedCsharp.Test]",
+      "ToFolder": "[Destination-AdvancedCsharp.Test]",
+      "FromFolders": [ "Collections\\Demos" ]
+    },
+    {
+      "Name": "Collections - exercises",
+      //"Action": "CopyWithoutSolution",
+      "FromFolderBase": "[AdvancedCsharp.Test]",
+      "ToFolder": "[Destination-AdvancedCsharp.Test]",
+      "FromFolders": [ "Collections\\Exercises" ]
     }
+    /*
+    
+### Using Collections (+Enumerating Collections)
+
+14-16
+
+Demo: Advanced -> Collections. 1-4.
+Övning: Exercise1_CustomSorting
+
+Extra övningar
+- Exercise2_HashSets
+
+    */
   ]
 }
