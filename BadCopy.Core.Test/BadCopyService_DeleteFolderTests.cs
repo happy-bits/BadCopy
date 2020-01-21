@@ -19,9 +19,12 @@ namespace BadCopy.Core.Test
 
             Directory.CreateDirectory(@"A");
             Directory.CreateDirectory(@"A\B");
+            File.WriteAllText(@"A\B\textfile.txt", "should be gone"); // ska tas bort
             Directory.CreateDirectory(@"A\B\.vs");
+            File.WriteAllText(@"A\B\.vs\textfile.txt", "this should stay"); 
             Directory.CreateDirectory(@"A\B\.vs\C");
             Directory.CreateDirectory(@"A\D"); // ska tas bort
+            File.WriteAllText(@"A\D\textfile.txt", "should be gone"); // ska tas bort
             Directory.CreateDirectory(@"A\E"); // ska tas bort
 
             var nrDeleted = new BadCopyService().DeleteFolder("A");
@@ -36,6 +39,11 @@ namespace BadCopy.Core.Test
                 @"A\B\.vs",
                 @"A\B\.vs\C",
             }, subDirs);
+
+            Assert.IsTrue(File.Exists(@"A\B\.vs\textfile.txt"));
+
+            Assert.IsFalse(File.Exists(@"A\B\textfile.txt"));
+            Assert.IsFalse(File.Exists(@"A\D\textfile.txt"));
 
         }
 

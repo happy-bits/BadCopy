@@ -254,23 +254,35 @@
     },
     {
       "Name": "Operator overloading - exercises",
-     // "Action": "CopyWithoutSolution",
+      // "Action": "CopyWithoutSolution",
       "FromFolderBase": "[AdvancedCsharp.Test]",
       "ToFolder": "[Destination-AdvancedCsharp.Test]",
       "FromFolders": [ "OperatorOverloading\\Exercises" ]
+    },
+
+    // -------------- Tasks --------------
+
+    {
+      "Name": "Tasks - project",
+      "FromFolderBase": "[AdvancedCsharp]\\TaskLab",
+      "ToFolder": "[Destination-Root]\\TaskLab"
+    },
+
+    {
+      "Name": "Tasks - demos",
+      "FromFolderBase": "[AdvancedCsharp.Test]",
+      "ToFolder": "[Destination-AdvancedCsharp.Test]",
+      "FromFolders": [ "Tasks\\Demos" ]
     }
 
-
     /*
-    
-### Operator Overloading
+    (throughput = genomströmning eller kapacitet)
 
-11-14
+  Demo: Advanced -> TaskLab (ett separat projekt i AdvancedCSharp. En konsolapp med primtal. Bra start för att visa syftet). Sedan Demo1, 2, 3 under "Tasks".
 
-Demo: Advanced -> OperatorOverloading. 1-3 (vektorer, coordinater och fractions)
+  Övning: Exercise1
 
-Övning: Exercise1_Tea (en kundkorg med teer, ganska svår)
-
+  Extra övning: Exercise2
 
     */
   ]
