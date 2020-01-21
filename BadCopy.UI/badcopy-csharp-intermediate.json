@@ -210,18 +210,32 @@
       "FromFolderBase": "[AdvancedCsharp.Test]",
       "ToFolder": "[Destination-AdvancedCsharp.Test]",
       "FromFolders": [ "Collections\\Exercises" ]
+    },
+
+    // -------------- Pubsub --------------
+    {
+      "Name": "Pubsub - demo",
+      "FromFolderBase": "[AdvancedCsharp.Test]",
+      "ToFolder": "[Destination-AdvancedCsharp.Test]",
+      "FromFolders": [ "PubSub\\Demos" ]
+    },
+    {
+      "Name": "Pubsub - exercises",
+      "Action": "CopyWithoutSolution",
+      "FromFolderBase": "[AdvancedCsharp.Test]",
+      "ToFolder": "[Destination-AdvancedCsharp.Test]",
+      "FromFolders": [ "PubSub\\Exercises" ]
     }
+
     /*
     
-### Using Collections (+Enumerating Collections)
 
-14-16
+### Decoupling application Logic and handling events
 
-Demo: Advanced -> Collections. 1-4.
-Övning: Exercise1_CustomSorting
+16-17
 
-Extra övningar
-- Exercise2_HashSets
+Demo: Advanced -> EventDrivenArchitecture 1-3. 
+Övning: Exercise1_Pubsub_HotelRooms
 
     */
   ]
