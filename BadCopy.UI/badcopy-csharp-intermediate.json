@@ -10,15 +10,17 @@
     },
     {
       "name": "[AdvancedCsharp]",
-      "value": "C:\\Project\\AdvancedC#\\AdvancedCsharp"
+      "value": "C:\\Project\\AdvancedCsharp\\AdvancedCsharp",
+      //"value": "C:\\Project\\AdvancedC#\\AdvancedCsharp" // desktop
     },
     {
       "name": "[AdvancedCsharp.Test]",
-      "value": "C:\\Project\\AdvancedC#\\AdvancedCsharp\\AdvancedCsharp.Test"
+      "value": "C:\\Project\\AdvancedCsharp\\AdvancedCsharp\\AdvancedCsharp.Test",
+      //"value": "C:\\Project\\AdvancedC#\\AdvancedCsharp\\AdvancedCsharp.Test", // desktop
     },
     {
       "name": "[Destination-Root]",
-      "value": "C:\\TMP\\Student\\"
+      "value": "C:\\TMP\\Student"
     },
     {
       "name": "[Destination-AdvancedCsharp.Test]",
