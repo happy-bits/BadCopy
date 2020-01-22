@@ -36,10 +36,10 @@
       "value": "C:\\TMP\\CSharp-Intermediate\\CSharpCourse"
     }
   ],
-  "Action":  "Copy",
+  "Action": "Copy",
   "ReplaceSolutionWith": "\n// todo: add code here\n",
   "FromFolderBase": "[CSharpCourse]",
-  
+
   "CopyStyle": "Clone",
   "ToFolder": "[Destination-CSharpCourse]",
 
@@ -79,105 +79,88 @@
     },
     {
       "Name": "Cars solution",
-       "Action": "CopyWithoutSolution",
+      //"Action": "CopyWithoutSolution",
       "FromFolders": [ "Classes\\Cars" ]
     },
 
-    //// Extra 
+    // Extra 
 
-    //{
-    //  "Name": "Books exercises",
-    //  "FromFolders": [ "Classes\\Books\\Exercises" ]
-    //},
+    {
+      "Name": "Books exercises",
+      "FromFolders": [ "Classes\\Books\\Exercises" ]
+    },
 
-    //{
-    //  "Name": "Books solution",
-    //  "FromFolders": [ "Classes\\Books" ]
-    //},
-    //// -------------- Inheritance --------------
-    //{
-    //  "Name": "Inheritance demo",
-    //  "FromFolders": [ "Inheritance\\Demo" ]
-    //},
-    //{
-    //  "Name": "Clas Ohlson exercise",
-    //  "FromFolders": [ "Inheritance\\ClasOhlson\\Exercises" ]
-    //},
-    //{
-    //  "Name": "Clas Ohlson solution",
-    //  "FromFolders": [ "Inheritance\\ClasOhlson" ]
-    //},
-    //// Extra
-    //{
-    //  "Name": "Shapes demo",
-    //  "FromFolders": [ "Inheritance\\Shapes\\Exercises" ]
-    //},
-    //{
-    //  "Name": "Shapes solution",
-    //  "FromFolders": [ "Inheritance\\Shapes" ]
-    //},
-    //// -------------- Interfaces --------------
+    {
+      "Name": "Books solution",
+      "FromFolders": [ "Classes\\Books" ]
+    },
+    // -------------- Inheritance --------------
+    {
+      "Name": "Inheritance demo",
+      "FromFolders": [ "Inheritance\\Demo" ]
+    },
+    {
+      "Name": "Clas Ohlson exercise",
+      // "Action": "CopyWithoutSolution",
+      "FromFolders": [ "Inheritance\\ClasOhlson" ]
+    },
+    // Extra
+    {
+      "Name": "Shapes demo",
+      "FromFolders": [ "Inheritance\\Shapes\\Exercises" ]
+    },
+    {
+      "Name": "Shapes solution",
+      "FromFolders": [ "Inheritance\\Shapes" ]
+    },
+    // -------------- Interfaces --------------
 
-    //// (jag kodar) Extra uppgift
+    // (jag kodar) Extra uppgift
 
-    //{
-    //  "Name": "Axes and horses",
-    //  "FromFolders": [ "Interfaces\\AxesAndHorses\\Exercises" ]
-    //},
+    {
+      "Name": "Axes and horses",
+      //"Action": "CopyWithoutSolution",
+      "FromFolders": [ "Interfaces\\AxesAndHorses" ]
+    },
 
-    //// (jag visar) Extra uppgift
+    // (jag visar) Extra uppgift
 
-    //{
-    //  "Name": "File loggers",
-    //  "FromFolders": [ "Interfaces\\FileLoggers\\Exercises" ]
-    //},
+    {
+      "Name": "File loggers",
+      "FromFolders": [ "Interfaces\\FileLoggers" ]
+    },
 
-    //{
-    //  "Name": "Rockstars",
-    //  "FromFolders": [ "Interfaces\\Rockstars\\Exercises" ]
-    //},
-    //{
-    //  "Name": "Rockstars - solution",
-    //  "FromFolders": [ "Interfaces\\Rockstars" ]
-    //},
+    {
+      "Name": "Rockstars",
+      //"Action": "CopyWithoutSolution",
+      "FromFolders": [ "Interfaces\\Rockstars" ]
+    },
 
-    //{
-    //  "Name": "Axes and horses - solution",
-    //  "FromFolders": [ "Interfaces\\AxesAndHorses" ]
-    //},
+    {
+      "Name": "AbstractVsInterfaces",
+      "FromFolders": [ "Interfaces\\AbstractVsInterfaces" ]
+    },
 
-    //{
-    //  "Name": "File loggers - solution",
-    //  "FromFolders": [ "Interfaces\\FileLoggers" ]
-    //},
+    // -------------- Properties --------------
 
-
-    //// -------------- Properties --------------
-
-    //{
-    //  "Name": "Getters - demo",
-    //  "FromFolders": [ "Property\\DemoGetter" ]
-    //},
-    //{
-    //  "Name": "Getters - demo",
-    //  "FromFolders": [ "Property\\DemoSetter" ]
-    //},
-    //{
-    //  "Name": "Getters - exercises",
-    //  "FromFolders": [ "Property\\GetAccessor\\Exercises" ]
-    //},
-    //{
-    //  "Name": "Setters - exercises",
-    //  "FromFolders": [ "Property\\SetAccessor\\Exercises" ]
-    //},
-    //{
-    //  "Name": "Getters - solutions",
-    //  "FromFolders": [ "Property\\GetAccessor" ]
-    //},
-    //{
-    //  "Name": "Setters - solutions",
-    //  "FromFolders": [ "Property\\SetAccessor" ]
-    //},
+    {
+      "Name": "Getters - demo",
+      "FromFolders": [ "Property\\DemoGetter" ]
+    },
+    {
+      "Name": "Getters - demo",
+      "FromFolders": [ "Property\\DemoSetter" ]
+    },
+    {
+      "Name": "Getters - solutions",
+      //"Action": "CopyWithoutSolution",
+      "FromFolders": [ "Property\\GetAccessor" ]
+    },
+    {
+      "Name": "Setters - solutions",
+      //"Action": "CopyWithoutSolution",
+      "FromFolders": [ "Property\\SetAccessor" ]
+    },
 
     //// -------------- DAY II --------------
 
