@@ -10,6 +10,10 @@
     "C# Intermediate - last": {
       "commandName": "Project",
       "commandLineArgs": "--config-file=badcopy-csharp-intermediate.json --only-last-batches=1"
+    },
+    "C# Intermediate - last 3": {
+      "commandName": "Project",
+      "commandLineArgs": "--config-file=badcopy-csharp-intermediate.json --only-last-batches=3"
     }
 
   }

@@ -25,15 +25,15 @@
     },
     {
       "name": "[Destination-Root]",
-      "value": "C:\\TMP\\Student"
+      "value": "C:\\TMP\\CSharp-Intermediate"
     },
     {
       "name": "[Destination-AdvancedCsharp.Test]",
-      "value": "C:\\TMP\\Student\\AdvancedCsharp.Test"
+      "value": "C:\\TMP\\CSharp-Intermediate\\AdvancedCsharp.Test"
     },
     {
       "name": "[Destination-CSharpCourse]",
-      "value": "C:\\TMP\\Student\\CSharpCourse"
+      "value": "C:\\TMP\\CSharp-Intermediate\\CSharpCourse"
     }
   ],
   "Action":  "Copy",
@@ -71,7 +71,7 @@
       "Name": "Program.cs",
       "SpecificFiles": [ "Program.cs" ]
     },
-    
+
     // -------------- Classes --------------
     {
       "Name": "Cars exercises",
@@ -79,41 +79,53 @@
     },
     {
       "Name": "Cars solution",
-      //"Action": "CopyWithoutSolution",
+       "Action": "CopyWithoutSolution",
       "FromFolders": [ "Classes\\Cars" ]
     },
-    
-    // Extra 
-    
-    {
-      "Name": "Books exercises",
-      "FromFolders": [ "Classes\\Books\\Exercises" ]
-    },
 
-    {
-      "Name": "Books solution",
-      "FromFolders": [ "Classes\\Books" ]
-    },
-    // -------------- Inheritance --------------
-    {
-      "Name": "Inheritance demo",
-      "FromFolders": [ "Inheritance\\Demo" ]
-    },
-    {
-      "Name": "Clas Ohlson exercise",
-      "FromFolders": [ "Inheritance\\ClasOhlson\\Exercises" ]
-    },
-    {
-      "Name": "Clas Ohlson solution",
-      "FromFolders": [ "Inheritance\\ClasOhlson" ]
-    },
+    //// Extra 
 
+    //{
+    //  "Name": "Books exercises",
+    //  "FromFolders": [ "Classes\\Books\\Exercises" ]
+    //},
+
+    //{
+    //  "Name": "Books solution",
+    //  "FromFolders": [ "Classes\\Books" ]
+    //},
+    //// -------------- Inheritance --------------
+    //{
+    //  "Name": "Inheritance demo",
+    //  "FromFolders": [ "Inheritance\\Demo" ]
+    //},
+    //{
+    //  "Name": "Clas Ohlson exercise",
+    //  "FromFolders": [ "Inheritance\\ClasOhlson\\Exercises" ]
+    //},
+    //{
+    //  "Name": "Clas Ohlson solution",
+    //  "FromFolders": [ "Inheritance\\ClasOhlson" ]
+    //},
+    //// Extra
+    //{
+    //  "Name": "Shapes demo",
+    //  "FromFolders": [ "Inheritance\\Shapes\\Exercises" ]
+    //},
+    //{
+    //  "Name": "Shapes solution",
+    //  "FromFolders": [ "Inheritance\\Shapes" ]
+    //},
     //// -------------- Interfaces --------------
+
+    //// (jag kodar) Extra uppgift
 
     //{
     //  "Name": "Axes and horses",
     //  "FromFolders": [ "Interfaces\\AxesAndHorses\\Exercises" ]
     //},
+
+    //// (jag visar) Extra uppgift
 
     //{
     //  "Name": "File loggers",
@@ -123,6 +135,10 @@
     //{
     //  "Name": "Rockstars",
     //  "FromFolders": [ "Interfaces\\Rockstars\\Exercises" ]
+    //},
+    //{
+    //  "Name": "Rockstars - solution",
+    //  "FromFolders": [ "Interfaces\\Rockstars" ]
     //},
 
     //{
@@ -135,10 +151,6 @@
     //  "FromFolders": [ "Interfaces\\FileLoggers" ]
     //},
 
-    //{
-    //  "Name": "Rockstars - solution",
-    //  "FromFolders": [ "Interfaces\\Rockstars" ]
-    //},
 
     //// -------------- Properties --------------
 

@@ -9,6 +9,7 @@ namespace BadCopy.Core
         public string FromFile { get; set; }
         public string ToFile { get; set; }
         public Action Action { get; set; }
+        public bool Binary { get; set; }
 
         public static FileInfo Clone(FileInfo fi)
         {
@@ -17,7 +18,8 @@ namespace BadCopy.Core
                 BatchName = fi.BatchName,
                 FromFile = fi.FromFile,
                 ToFile = fi.ToFile,
-                Action = fi.Action
+                Action = fi.Action,
+                Binary = fi.Binary
             };
         }
 

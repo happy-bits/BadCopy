@@ -38,7 +38,8 @@ namespace BadCopy.Core
                         BatchName = batch.Name,
                         FromFile = Path.Combine(fullfilename),
                         ToFile = Path.Combine(batch.ToFolder, fullfilenameWithoutFromFolder),
-                        Action = batch.Action
+                        Action = batch.Action,
+                        Binary = fullfilename.ToUpper().EndsWith(".PNG")
                     });
                 }
             }
@@ -99,7 +100,7 @@ namespace BadCopy.Core
 
                     // todo: gör detta till en inställning
 
-                    if (IsFolderOrSubFolder(folder, ".vs") || IsFolderOrSubFolder(folder, ".git")) 
+                    if (IsFolderOrSubFolder(folder, ".vs") || IsFolderOrSubFolder(folder, ".git"))
                         continue;
 
                     DeleteFilesInFolder(folder);
@@ -141,11 +142,27 @@ namespace BadCopy.Core
             var deletedFiles = 0;
             foreach (var file in allFiles)
             {
+                // todo: gör detta konfigureringsbart
+
+                if (GetFilename(file) == ".gitignore")
+                    continue;
                 File.Delete(file);
                 deletedFiles++;
             }
             return deletedFiles;
         }
+
+        private string GetFilename(string filenameWithPath)
+        {
+            if (filenameWithPath.IndexOf('\\') == -1)
+                return filenameWithPath;
+
+            return filenameWithPath.Split('\\').Last();
+
+            throw new NotImplementedException();
+        }
+
+        // todo: refactor
 
         public CopyResult Copy(List<FileInfo> files)
         {
@@ -163,41 +180,57 @@ namespace BadCopy.Core
 
             foreach (var file in result.CopyResultFiles)
             {
-                string content = null;
-
-                try
-                {
-                    content = File.ReadAllText(file.FileInfo.FromFile);
-                }
-                catch
-                {
-                    file.State = CopyResultFileState.FailedRead;
-                    continue;
-                }
+                CopyResultFileState? successState = null;
                 string newcontent = null;
 
-                CopyResultFileState? successState = null;
-
-                switch (file.FileInfo.Action)
+                if (file.FileInfo.Binary)
                 {
-                    case Action.CopyWithoutSolution:
-                        newcontent = RemoveSolutionRegion(content);
-                        successState = CopyResultFileState.SuccessNoSolution;
-                        break;
-                    case Action.Copy:
-                        newcontent = content;
-                        successState = CopyResultFileState.SuccessClone;
-                        break;
-                    default:
-                        file.State = CopyResultFileState.UnknownCopyStyle;
-                        continue;
+                    successState = CopyResultFileState.SuccessClone;
                 }
+                else
+                {
+                    string content = null;
 
+                    try
+                    {
+                        content = File.ReadAllText(file.FileInfo.FromFile);
+                    }
+                    catch
+                    {
+                        file.State = CopyResultFileState.FailedRead;
+                        continue;
+                    }
+
+
+                    switch (file.FileInfo.Action)
+                    {
+                        case Action.CopyWithoutSolution:
+                            newcontent = RemoveSolutionRegion(content);
+                            successState = CopyResultFileState.SuccessNoSolution;
+                            break;
+                        case Action.Copy:
+                            newcontent = content;
+                            successState = CopyResultFileState.SuccessClone;
+                            break;
+                        default:
+                            file.State = CopyResultFileState.UnknownCopyStyle;
+                            continue;
+                    }
+                }
                 try
                 {
                     var directory = GetDirectory(file.FileInfo.ToFile);
                     CreateDirectoryIfNotExist(directory);
-                    File.WriteAllText(file.FileInfo.ToFile, newcontent);
+
+                    if (file.FileInfo.Binary)
+                    {
+                        File.Copy(file.FileInfo.FromFile, file.FileInfo.ToFile, true);
+                    }
+                    else
+                    {
+                        File.WriteAllText(file.FileInfo.ToFile, newcontent);
+                    }
+
                 }
                 catch
                 {
