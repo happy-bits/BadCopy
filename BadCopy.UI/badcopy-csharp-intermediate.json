@@ -208,7 +208,7 @@
     // -------------- Collections --------------
     {
       "Name": "Collections",
-     // "Action": "CopyWithoutSolution",
+      // "Action": "CopyWithoutSolution",
       "FromFolderBase": "[AdvancedCsharp.Test]",
       "ToFolder": "[Destination-AdvancedCsharp.Test]",
       "FromFolders": [ "Collections" ]
@@ -223,61 +223,32 @@
       "FromFolders": [ "PubSub" ]
     },
 
-    //// -------------- DAY III --------------
+    // -------------- DAY III --------------
 
-    //// -------------- Linq --------------
-    //{
-    //  "Name": "Linq - demos",
-    //  "FromFolders": [ "Linq\\Demos" ]
-    //},
-    //{
-    //  "Name": "Linq - ListOfStrings",
-    //  //"Action": "CopyWithoutSolution",
-    //  "FromFolders": [ "Linq\\ListOfStrings" ]
-    //},
-    //{
-    //  "Name": "Linq - ListOfCustomers",
-    //  //"Action": "CopyWithoutSolution",
-    //  "FromFolders": [ "Linq\\ListOfCustomers" ]
-    //},
-    //// -------------- Operator overloading --------------
+    // -------------- Linq --------------
+    {
+      "Name": "Linq - ListOfCustomers",
+      //"Action": "CopyWithoutSolution",
+      "FromFolders": [ "Linq" ]
+    },
+    // -------------- Operator overloading --------------
 
-    //{
-    //  "Name": "Operator overloading - demos",
-    //  "FromFolderBase": "[AdvancedCsharp.Test]",
-    //  "ToFolder": "[Destination-AdvancedCsharp.Test]",
-    //  "FromFolders": [ "OperatorOverloading\\Demos" ]
-    //},
-    //{
-    //  "Name": "Operator overloading - exercises",
-    //  // "Action": "CopyWithoutSolution",
-    //  "FromFolderBase": "[AdvancedCsharp.Test]",
-    //  "ToFolder": "[Destination-AdvancedCsharp.Test]",
-    //  "FromFolders": [ "OperatorOverloading\\Exercises" ]
-    //},
+    {
+      "Name": "Operator overloading",
+      //"Action": "CopyWithoutSolution",
+      "FromFolderBase": "[AdvancedCsharp.Test]",
+      "ToFolder": "[Destination-AdvancedCsharp.Test]",
+      "FromFolders": [ "OperatorOverloading" ]
+    },
+    // -------------- Tasks --------------
 
-    //// -------------- Tasks --------------
-
-    //{
-    //  "Name": "Tasks - project",
-    //  "FromFolderBase": "[AdvancedCsharp]\\TaskLab",
-    //  "ToFolder": "[Destination-Root]\\TaskLab"
-    //},
-
-    //{
-    //  "Name": "Tasks - demos",
-    //  "FromFolderBase": "[AdvancedCsharp.Test]",
-    //  "ToFolder": "[Destination-AdvancedCsharp.Test]",
-    //  "FromFolders": [ "Tasks\\Demos" ]
-    //},
-
-    //{
-    //  "Name": "Tasks - exercises",
-    //  //"Action": "CopyWithoutSolution",
-    //  "FromFolderBase": "[AdvancedCsharp.Test]",
-    //  "ToFolder": "[Destination-AdvancedCsharp.Test]",
-    //  "FromFolders": [ "Tasks\\Exercises" ]
-    //},
+    {
+      "Name": "Tasks - exercises",
+      //"Action": "CopyWithoutSolution",
+      "FromFolderBase": "[AdvancedCsharp.Test]",
+      "ToFolder": "[Destination-AdvancedCsharp.Test]",
+      "FromFolders": [ "Tasks" ]
+    },
 
     //// -------------- Parallel --------------
 
