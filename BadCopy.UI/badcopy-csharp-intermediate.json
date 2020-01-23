@@ -185,55 +185,43 @@
     },
     {
       "Name": "Indexers - Exercises",
-      "Action": "CopyWithoutSolution",
+      //"Action": "CopyWithoutSolution",
       "FromFolderBase": "[AdvancedCsharp.Test]",
       "ToFolder": "[Destination-AdvancedCsharp.Test]",
       "FromFolders": [ "Indexers\\Exercises" ]
     },
 
-    //// -------------- Generics --------------
-    //{
-    //  "Name": "Generics - demos",
-    //  "FromFolderBase": "[AdvancedCsharp.Test]",
-    //  "ToFolder": "[Destination-AdvancedCsharp.Test]",
-    //  "FromFolders": [ "Generics\\Demos" ]
-    //},
-    //{
-    //  "Name": "Generics - exercises",
-    //  //"Action": "CopyWithoutSolution",
-    //  "FromFolderBase": "[AdvancedCsharp.Test]",
-    //  "ToFolder": "[Destination-AdvancedCsharp.Test]",
-    //  "FromFolders": [ "Generics\\Exercises" ]
-    //},
-    //// -------------- Collections --------------
-    //{
-    //  "Name": "Collections - demo",
-    //  "FromFolderBase": "[AdvancedCsharp.Test]",
-    //  "ToFolder": "[Destination-AdvancedCsharp.Test]",
-    //  "FromFolders": [ "Collections\\Demos" ]
-    //},
-    //{
-    //  "Name": "Collections - exercises",
-    //  //"Action": "CopyWithoutSolution",
-    //  "FromFolderBase": "[AdvancedCsharp.Test]",
-    //  "ToFolder": "[Destination-AdvancedCsharp.Test]",
-    //  "FromFolders": [ "Collections\\Exercises" ]
-    //},
+    // -------------- Generics --------------
+    {
+      "Name": "Generics - demos",
+      "FromFolderBase": "[AdvancedCsharp.Test]",
+      "ToFolder": "[Destination-AdvancedCsharp.Test]",
+      "FromFolders": [ "Generics\\Demos" ]
+    },
+    {
+      "Name": "Generics - exercises",
+      //"Action": "CopyWithoutSolution",
+      "FromFolderBase": "[AdvancedCsharp.Test]",
+      "ToFolder": "[Destination-AdvancedCsharp.Test]",
+      "FromFolders": [ "Generics\\Exercises" ]
+    },
+    // -------------- Collections --------------
+    {
+      "Name": "Collections",
+     // "Action": "CopyWithoutSolution",
+      "FromFolderBase": "[AdvancedCsharp.Test]",
+      "ToFolder": "[Destination-AdvancedCsharp.Test]",
+      "FromFolders": [ "Collections" ]
+    },
 
-    //// -------------- Pubsub --------------
-    //{
-    //  "Name": "Pubsub - demo",
-    //  "FromFolderBase": "[AdvancedCsharp.Test]",
-    //  "ToFolder": "[Destination-AdvancedCsharp.Test]",
-    //  "FromFolders": [ "PubSub\\Demos" ]
-    //},
-    //{
-    //  "Name": "Pubsub - exercises",
-    //  //"Action": "CopyWithoutSolution",
-    //  "FromFolderBase": "[AdvancedCsharp.Test]",
-    //  "ToFolder": "[Destination-AdvancedCsharp.Test]",
-    //  "FromFolders": [ "PubSub\\Exercises" ]
-    //},
+    // -------------- Pubsub --------------
+    {
+      "Name": "Pubsub",
+      //"Action": "CopyWithoutSolution",
+      "FromFolderBase": "[AdvancedCsharp.Test]",
+      "ToFolder": "[Destination-AdvancedCsharp.Test]",
+      "FromFolders": [ "PubSub" ]
+    },
 
     //// -------------- DAY III --------------
 
