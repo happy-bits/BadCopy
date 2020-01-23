@@ -11,17 +11,14 @@
     {
       "name": "[AdvancedCsharp-Root]",
       "value": "C:\\Project\\AdvancedCsharp"
-      //"value": "C:\\Project\\AdvancedC#" // desktop
     },
     {
       "name": "[AdvancedCsharp]",
       "value": "C:\\Project\\AdvancedCsharp\\AdvancedCsharp"
-      //"value": "C:\\Project\\AdvancedC#\\AdvancedCsharp" // desktop
     },
     {
       "name": "[AdvancedCsharp.Test]",
       "value": "C:\\Project\\AdvancedCsharp\\AdvancedCsharp\\AdvancedCsharp.Test"
-      //"value": "C:\\Project\\AdvancedC#\\AdvancedCsharp\\AdvancedCsharp.Test", // desktop
     },
     {
       "name": "[Destination-Root]",
@@ -164,37 +161,36 @@
 
     //// -------------- DAY II --------------
 
-    //// -------------- (project files and new solution file) --------------
-    //{
-    //  "Name": "Project file",
-    //  "FromFolderBase": "[AdvancedCsharp.Test]\\_ProjectFile01\\",
-    //  "ToFolder": "[Destination-AdvancedCsharp.Test]",
-    //  "SpecificFiles": [ "AdvancedCsharp.Test.csproj" ]
-    //},
-    //{
-    //  "Name": "Solution file",
-    //  "FromFolderBase": "[AdvancedCsharp]",
-    //  "ToFolder": "[Destination-Root]",
-    //  "SpecificFiles": [ "Intermediate.sln" ]
-    //},
+    // -------------- (project files and new solution file) --------------
+    {
+      "Name": "Project file",
+      "FromFolderBase": "[AdvancedCsharp-Root]\\ProjectFiles\\",
+      "ToFolder": "[Destination-AdvancedCsharp.Test]",
+      "SpecificFiles": [ "AdvancedCsharp.Test.csproj" ]
+    },
+    {
+      "Name": "Solution file",
+      "FromFolderBase": "[AdvancedCsharp-Root]\\SolutionFiles",
+      "ToFolder": "[Destination-Root]",
+      "SpecificFiles": [ "Intermediate02.sln" ]
+    },
 
-    //// -------------- Indexers --------------
+    // -------------- Indexers --------------
 
-    //{
-    //  "Name": "Indexers - demo",
-    //  "FromFolderBase": "[AdvancedCsharp.Test]",
-    //  "ToFolder": "[Destination-AdvancedCsharp.Test]",
-    //  "FromFolders": [ "Indexers" ],
-    //  "SpecificFiles": [ "Demo1_StringDataStore.cs", "Demo2_SampleCollection.cs" ]
-    //},
-    //{
-    //  "Name": "Indexers - exercises",
-    //  //"Action": "CopyWithoutSolution",
-    //  "FromFolderBase": "[AdvancedCsharp.Test]",
-    //  "ToFolder": "[Destination-AdvancedCsharp.Test]",
-    //  "FromFolders": [ "Indexers" ],
-    //  "SpecificFiles": [ "Ex1_MyArray.cs", "Ex2_AroundZero.cs" ]
-    //},
+    {
+      "Name": "Indexers - demo",
+      "FromFolderBase": "[AdvancedCsharp.Test]",
+      "ToFolder": "[Destination-AdvancedCsharp.Test]",
+      "FromFolders": [ "Indexers\\Demos" ]
+    },
+    {
+      "Name": "Indexers - Exercises",
+      "Action": "CopyWithoutSolution",
+      "FromFolderBase": "[AdvancedCsharp.Test]",
+      "ToFolder": "[Destination-AdvancedCsharp.Test]",
+      "FromFolders": [ "Indexers\\Exercises" ]
+    },
+
     //// -------------- Generics --------------
     //{
     //  "Name": "Generics - demos",
@@ -212,7 +208,6 @@
     //// -------------- Collections --------------
     //{
     //  "Name": "Collections - demo",
-    //  //"Action": "CopyWithoutSolution",
     //  "FromFolderBase": "[AdvancedCsharp.Test]",
     //  "ToFolder": "[Destination-AdvancedCsharp.Test]",
     //  "FromFolders": [ "Collections\\Demos" ]
@@ -234,7 +229,7 @@
     //},
     //{
     //  "Name": "Pubsub - exercises",
-    //  // "Action": "CopyWithoutSolution",
+    //  //"Action": "CopyWithoutSolution",
     //  "FromFolderBase": "[AdvancedCsharp.Test]",
     //  "ToFolder": "[Destination-AdvancedCsharp.Test]",
     //  "FromFolders": [ "PubSub\\Exercises" ]
