@@ -1,0 +1,36 @@
+{
+  "Variables": [
+    {
+      "name": "[Workout]",
+      "value": "C:\\Project\\Workout"
+    },
+    {
+      "name": "[Destination-Workout]",
+      "value": "C:\\TMP\\Workout"
+    }
+  ],
+  "Action": "Copy",
+  "TransformationNames": [ "WorkoutTransformation" ],
+  "FromFolderBase": "[Workout]",
+
+  "ToFolder": "[Destination-Workout]",
+
+  "Batches": [
+    {
+      "Action": "DeleteFolder",
+      "FolderToDelete": "[Destination-Workout]"
+    },
+    {
+      "Action": "Copy",
+      "SpecificFiles": [ "Workout.Test-no-references.csproj" ],
+      "RenameFilesTo": [ "Workout.Test.csproj" ],
+      "FromFolders": [ "Workout.Test" ]
+    },
+
+    {
+     // "Action": "Transform",
+      "FromFolders": [ "Workout.Test\\Level1" ]
+    }
+
+  ]
+}

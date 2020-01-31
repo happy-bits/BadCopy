@@ -167,7 +167,7 @@ namespace BadCopy.UI
             {
                 return JsonConvert.DeserializeObject<BadCopyConfigFile>(filecontent);
             }
-            catch
+            catch (Exception ex)
             {
                 throw new Exception($"Found the file '{configFileName}' but it was in the wrong format. Check the format of the file.");
             }

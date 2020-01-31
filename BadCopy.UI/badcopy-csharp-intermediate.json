@@ -34,10 +34,9 @@
     }
   ],
   "Action": "Copy",
-  "TransformationName": "RemoveSolutionRegionTransformation",
+  "TransformationNames": [ "RemoveSolutionRegionTransformation" ],
   "FromFolderBase": "[CSharpCourse]",
 
-  "CopyStyle": "Clone",
   "ToFolder": "[Destination-CSharpCourse]",
 
   "Batches": [
@@ -76,7 +75,7 @@
     },
     {
       "Name": "Cars solution",
-      //"Action": "CopyWithoutSolution",
+      //"Action": "Transform",
       "FromFolders": [ "Classes\\Cars" ]
     },
 
@@ -98,7 +97,7 @@
     },
     {
       "Name": "Clas Ohlson exercise",
-      // "Action": "CopyWithoutSolution",
+      // "Action": "Transform",
       "FromFolders": [ "Inheritance\\ClasOhlson" ]
     },
     // Extra
@@ -116,7 +115,7 @@
 
     {
       "Name": "Axes and horses",
-      //"Action": "CopyWithoutSolution",
+      //"Action": "Transform",
       "FromFolders": [ "Interfaces\\AxesAndHorses" ]
     },
 
@@ -129,7 +128,7 @@
 
     {
       "Name": "Rockstars",
-      //"Action": "CopyWithoutSolution",
+      //"Action": "Transform",
       "FromFolders": [ "Interfaces\\Rockstars" ]
     },
 
@@ -150,12 +149,12 @@
     },
     {
       "Name": "Getters - solutions",
-      //"Action": "CopyWithoutSolution",
+      //"Action": "Transform",
       "FromFolders": [ "Property\\GetAccessor" ]
     },
     {
       "Name": "Setters - solutions",
-      //"Action": "CopyWithoutSolution",
+      //"Action": "Transform",
       "FromFolders": [ "Property\\SetAccessor" ]
     },
 
@@ -185,7 +184,7 @@
     },
     {
       "Name": "Indexers - Exercises",
-      //"Action": "CopyWithoutSolution",
+      //"Action": "Transform",
       "FromFolderBase": "[AdvancedCsharp.Test]",
       "ToFolder": "[Destination-AdvancedCsharp.Test]",
       "FromFolders": [ "Indexers\\Exercises" ]
@@ -200,7 +199,7 @@
     },
     {
       "Name": "Generics - exercises",
-      //"Action": "CopyWithoutSolution",
+      //"Action": "Transform",
       "FromFolderBase": "[AdvancedCsharp.Test]",
       "ToFolder": "[Destination-AdvancedCsharp.Test]",
       "FromFolders": [ "Generics\\Exercises" ]
@@ -208,7 +207,7 @@
     // -------------- Collections --------------
     {
       "Name": "Collections",
-      // "Action": "CopyWithoutSolution",
+      // "Action": "Transform",
       "FromFolderBase": "[AdvancedCsharp.Test]",
       "ToFolder": "[Destination-AdvancedCsharp.Test]",
       "FromFolders": [ "Collections" ]
@@ -217,7 +216,7 @@
     // -------------- Pubsub --------------
     {
       "Name": "Pubsub",
-      //"Action": "CopyWithoutSolution",
+      //"Action": "Transform",
       "FromFolderBase": "[AdvancedCsharp.Test]",
       "ToFolder": "[Destination-AdvancedCsharp.Test]",
       "FromFolders": [ "PubSub" ]
@@ -228,14 +227,14 @@
     // -------------- Linq --------------
     {
       "Name": "Linq - ListOfCustomers",
-      //"Action": "CopyWithoutSolution",
+      //"Action": "Transform",
       "FromFolders": [ "Linq" ]
     },
     // -------------- Operator overloading --------------
 
     {
       "Name": "Operator overloading",
-      //"Action": "CopyWithoutSolution",
+      //"Action": "Transform",
       "FromFolderBase": "[AdvancedCsharp.Test]",
       "ToFolder": "[Destination-AdvancedCsharp.Test]",
       "FromFolders": [ "OperatorOverloading" ]
@@ -244,7 +243,7 @@
 
     {
       "Name": "Tasks - exercises",
-      //"Action": "CopyWithoutSolution",
+      //"Action": "Transform",
       "FromFolderBase": "[AdvancedCsharp.Test]",
       "ToFolder": "[Destination-AdvancedCsharp.Test]",
       "FromFolders": [ "Tasks" ]
@@ -260,7 +259,7 @@
     //},
     //{
     //  "Name": "Parallel - exercises",
-    //  //"Action": "CopyWithoutSolution",
+    //  //"Action": "Transform",
     //  "FromFolderBase": "[AdvancedCsharp.Test]",
     //  "ToFolder": "[Destination-AdvancedCsharp.Test]",
     //  "FromFolders": [ "Parallels\\Exercises" ]

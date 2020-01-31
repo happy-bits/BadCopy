@@ -28,17 +28,25 @@ namespace BadCopy.Core
             {
                 var path = batch.FromFolderBase == null ? folder : Path.Combine(batch.FromFolderBase, folder);
                 string[] files = GetAllFilesInFolderAndSubfolders(path, batch.SpecificFiles, batch.SpecificFileEndings, batch.SkipFolders);
+
+                int index = 0;
                 foreach (var fullfilename in files)
                 {
-                    var fullfilenameWithoutFromFolder = RemoveFirstPartOfString(fullfilename, batch.FromFolderBase).TrimStart('\\');
+                    var toFile = RemoveFirstPartOfString(fullfilename, batch.FromFolderBase).TrimStart('\\');
+
+                    if (batch.RenameFilesTo != null)
+                        toFile = batch.RenameFilesTo[index];
+
                     result.Add(new FileInfo
                     {
                         BatchName = batch.Name,
                         FromFile = Path.Combine(fullfilename),
-                        ToFile = Path.Combine(batch.ToFolder, fullfilenameWithoutFromFolder),
+                        ToFile = Path.Combine(batch.ToFolder, toFile),
                         Action = batch.Action,
-                        Binary = fullfilename.ToUpper().EndsWith(".PNG")
+                        Binary = fullfilename.ToUpper().EndsWith(".PNG"),
+                        Transformations = batch.Transformations,
                     });
+                    index++;
                 }
             }
             return result;

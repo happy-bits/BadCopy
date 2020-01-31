@@ -18,6 +18,7 @@ namespace BadCopy.Core
 
         public List<string> FromFolders { get; set; }
         public List<string> SpecificFiles { get; set; }
+        public List<string> RenameFilesTo { get; set; }
         public List<string> SpecificFileEndings { get; set; }
         public List<string> SkipFolders { get; set; }
         public List<Variable> Variables { get; set; } 
@@ -34,6 +35,7 @@ namespace BadCopy.Core
                     switch (name)
                     {
                         case "RemoveSolutionRegionTransformation": result.Add(new ReplaceSolutionRegionWithTodo());break;
+                        case "WorkoutTransformation": result.Add(new WorkoutTransformation());break;
                         default: throw new System.Exception("Unknown transformation " + name);
                     }
                 }

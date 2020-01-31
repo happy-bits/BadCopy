@@ -14,6 +14,14 @@
     "C# Intermediate - last 3": {
       "commandName": "Project",
       "commandLineArgs": "--config-file=badcopy-csharp-intermediate.json --only-last-batches=3"
+    },
+    "Workout": {
+      "commandName": "Project",
+      "commandLineArgs": "--config-file=badcopy-workout.json"
+    },
+    "Workout - last": {
+      "commandName": "Project",
+      "commandLineArgs": "--config-file=badcopy-workout.json --only-last-batches=1"
     }
 
   }
