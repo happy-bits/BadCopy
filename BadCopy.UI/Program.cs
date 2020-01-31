@@ -16,11 +16,11 @@ namespace BadCopy.UI
             // todo: refactor denna supermetod
             //try
             //{
+            // todo: transformation som kommenterar alla rader i filen!
             // todo: inställning: börja med att ta bort allt i målet
             // todo: validering av badconfig.json (ex att FromFolders finns)
             // todo: koppla ihop FromFolder och ToFolder så det blir en variabel. Ett par.
             // todo: kunna byta namn på en fil (iallafall när man kopierar filen rätt av)
-
             SetWindowSize();
 
             var bcs = new BadCopyService();

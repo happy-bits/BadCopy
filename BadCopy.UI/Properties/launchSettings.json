@@ -22,6 +22,10 @@
     "Workout - last": {
       "commandName": "Project",
       "commandLineArgs": "--config-file=badcopy-workout.json --only-last-batches=1"
+    },
+    "Workout - last 3": {
+      "commandName": "Project",
+      "commandLineArgs": "--config-file=badcopy-workout.json --only-last-batches=3"
     }
 
   }

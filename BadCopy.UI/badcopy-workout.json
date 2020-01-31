@@ -32,16 +32,25 @@
       "FromFolders": [ "" ]
     },
     {
-      // "Action": "Transform",
+      "Action": "Transform",
       "FromFolders": [ "Workout.Test\\Level1" ]
     },
     {
-      //"Action": "Transform",
+      "Action": "Transform",
       "FromFolders": [ "Workout.Test\\Level2" ]
     },
     {
-      //"Action": "Transform",
+      "Action": "Transform",
       "FromFolders": [ "Workout.Test\\Level3" ]
+    },
+    // todo: lägg till kommenterings-transformation
+    {
+      "FromFolders": [ "Workout.Test\\Level4" ],
+      "SpecificFiles": [ "AddNumberEngineTest.cs" ]
+    },
+    {
+      "FromFolders": [ "Workout.Test\\Level4" ],
+      "SpecificFiles": [ "GuessingGameTests.cs" ]
     }
 
 
