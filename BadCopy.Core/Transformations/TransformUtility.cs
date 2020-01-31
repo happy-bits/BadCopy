@@ -9,19 +9,10 @@ namespace BadCopy.Core.Transformations
 {
     public class TransformUtility
     {
-        public List<string> GetMethodsRows(string s)
+
+        public List<string> GetTestMethodSignatures(string s)
         {
-            //var result = Regex.Match(s, @"((\s*?)( *(public|private).*).*)+", RegexOptions.);
-            var result = new List<string>();
-
-            var splitt = s.Split("public");
-
-            for(var i=1; i<splitt.Length; i++)
-            {
-                result.Add("public" + splitt[i].Split('\n','\r')[0]);
-            }
-
-            return result;
+            return Regex.Matches(s, @"(\[TestMethod\]\s*)(public.*)").Select(x=>x.Groups[2].Value.Trim()).ToList();
         }
     }
 }
