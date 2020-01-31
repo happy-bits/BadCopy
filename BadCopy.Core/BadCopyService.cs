@@ -203,7 +203,11 @@ namespace BadCopy.Core
                     switch (file.FileInfo.Action)
                     {
                         case Action.Transform:
-                            newcontent = file.FileInfo.Transformation.Transform(content);
+
+                            foreach(var trans in file.FileInfo.Transformations)
+                            {
+                                newcontent = trans.Transform(content);
+                            }
                             successState = CopyResultFileState.SuccessNoSolution;
                             break;
                         case Action.Copy:

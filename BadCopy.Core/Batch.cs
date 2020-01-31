@@ -23,17 +23,23 @@ namespace BadCopy.Core
         public List<Variable> Variables { get; set; } 
         public string FolderToDelete { get => ReplaceVariablesWithValues(_folderToDelete); set => _folderToDelete = value; }
 
-        public string TransformationName { get; set; } // används bara vid inläsning av jsonfilen
-        public Transformation Transformation { get { 
-            
-                switch (TransformationName)
+        public string[] TransformationNames { get; set; } // används bara vid inläsning av jsonfilen
+
+        public Transformation[] Transformations { get {
+
+                var result = new List<Transformation>();
+                foreach(string name in TransformationNames)
                 {
-                    case "RemoveSolutionRegionTransformation": return new ReplaceSolutionRegionWithTodo();
-                    default: throw new System.Exception("Unknown transformation "+ TransformationName);
+                    
+                    switch (name)
+                    {
+                        case "RemoveSolutionRegionTransformation": result.Add(new ReplaceSolutionRegionWithTodo());break;
+                        default: throw new System.Exception("Unknown transformation " + name);
+                    }
                 }
+                return result.ToArray();
             }
         }
-
 
         private string ReplaceVariablesWithValues(string valueWithVariables)
         {

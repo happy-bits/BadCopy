@@ -10,7 +10,7 @@ namespace BadCopy.Core
 
         public string FromFolderBase { get; set; }
         public string ToFolder { get; set; }
-        public string TransformationName { get; set; }
+        public string[] TransformationNames { get; set; }
         
         public List<string> FromFolders { get; set; }
         public List<string> SpecificFiles { get; set; }
@@ -40,7 +40,7 @@ namespace BadCopy.Core
                 if (b.SpecificFileEndings == null) b.SpecificFileEndings = SpecificFileEndings;
                 if (b.SkipFolders == null) b.SkipFolders = SkipFolders;
                 if (b.Action == Action.Unknown) b.Action = Action;
-                if (b.TransformationName == null) b.TransformationName = TransformationName;
+                if (b.TransformationNames == null) b.TransformationNames = TransformationNames;
             }
             return result;
         }
