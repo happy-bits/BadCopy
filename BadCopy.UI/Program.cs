@@ -33,8 +33,6 @@ namespace BadCopy.UI
 
             cc.Space();
 
-            bcs.ReplaceSolutionWith = config.ReplaceSolutionWith;
-
             var batchesToRun = commandargs.OnlyLastBatches == null ? config.Batches : config.Batches.TakeLast((int)commandargs.OnlyLastBatches);
             foreach (var batch in batchesToRun)
             {
@@ -49,7 +47,7 @@ namespace BadCopy.UI
                         break;
 
                     case Core.Action.Copy:
-                    case Core.Action.CopyWithoutSolution:
+                    case Core.Action.Transform:
 
                         var files = bcs.GetFilesToCopy(batch);
                         var result = bcs.Copy(files);

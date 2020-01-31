@@ -4,7 +4,7 @@
     {
         Unknown, 
         Copy,
-        CopyWithoutSolution,
+        Transform,
         DeleteFolder
     }
 }

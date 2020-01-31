@@ -34,7 +34,7 @@
     }
   ],
   "Action": "Copy",
-  "ReplaceSolutionWith": "\n// todo: add code here\n",
+  "TransformationName": "RemoveSolutionRegionTransformation",
   "FromFolderBase": "[CSharpCourse]",
 
   "CopyStyle": "Clone",
@@ -248,7 +248,7 @@
       "FromFolderBase": "[AdvancedCsharp.Test]",
       "ToFolder": "[Destination-AdvancedCsharp.Test]",
       "FromFolders": [ "Tasks" ]
-    },
+    }
 
     //// -------------- Parallel --------------
 

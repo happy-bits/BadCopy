@@ -12,8 +12,6 @@ namespace BadCopy.Core
 
     public class BadCopyService
     {
-        public string ReplaceSolutionWith { get; set; } = "";
-
         public class BadCopyServiceException : Exception
         {
             public BadCopyServiceException(string message) : base(message)
@@ -172,7 +170,7 @@ namespace BadCopy.Core
             {
                 var crf = new CopyResultFile
                 {
-                    FileInfo = FileInfo.Clone(file),
+                    FileInfo = file, // FileInfo.Clone(file),
                     State = CopyResultFileState.Incomplete
                 };
                 result.CopyResultFiles.Add(crf);
@@ -204,8 +202,8 @@ namespace BadCopy.Core
 
                     switch (file.FileInfo.Action)
                     {
-                        case Action.CopyWithoutSolution:
-                            newcontent = RemoveSolutionRegion(content);
+                        case Action.Transform:
+                            newcontent = file.FileInfo.Transformation.Transform(content);
                             successState = CopyResultFileState.SuccessNoSolution;
                             break;
                         case Action.Copy:
@@ -251,17 +249,6 @@ namespace BadCopy.Core
 
         // todo: gör mer generisk så det inte behöver vara exakt "#region solution" (kunna skicka in ett regex)
 
-        public string RemoveSolutionRegion(string content)
-        {
-            content = content.Replace("\r\n", "\n"); // todo: rätt att göra det här?
-
-            // todo: snyggare sätt där detta inte behövs?
-
-            if (content.Trim().EndsWith("#endregion"))
-                content += "\n";
-
-            return Regex.Replace(content, @"[ \t]*#region solution\s*\n[\s\S]*?\n\s*#endregion[ \t]*\n", ReplaceSolutionWith, RegexOptions.Multiline);
-        }
 
         private string GetDirectory(string fullfilename)
         {
