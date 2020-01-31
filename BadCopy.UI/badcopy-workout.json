@@ -22,15 +22,28 @@
     },
     {
       "Action": "Copy",
-      "SpecificFiles": [ "Workout.Test-no-references.csproj" ],
-      "RenameFilesTo": [ "Workout.Test.csproj" ],
-      "FromFolders": [ "Workout.Test" ]
+      "SpecificFiles": [ "Workout.Test\\Workout.Test-no-references.csproj" ],
+      "RenameFilesTo": [ "Workout.Test\\Workout.Test.csproj" ]
     },
-
     {
-     // "Action": "Transform",
+      "Action": "Copy",
+      "SpecificFiles": [ "Workout-01-just-one-project.sln" ],
+      "RenameFilesTo": [ "Workout.sln" ],
+      "FromFolders": [ "" ]
+    },
+    {
+      // "Action": "Transform",
       "FromFolders": [ "Workout.Test\\Level1" ]
+    },
+    {
+      //"Action": "Transform",
+      "FromFolders": [ "Workout.Test\\Level2" ]
+    },
+    {
+      //"Action": "Transform",
+      "FromFolders": [ "Workout.Test\\Level3" ]
     }
+
 
   ]
 }
