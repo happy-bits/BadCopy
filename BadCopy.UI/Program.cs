@@ -13,14 +13,18 @@ namespace BadCopy.UI
 
         static void Main(params string[] args)
         {
+            // todo: transformation som kommenterar alla rader i filen!
+            // todo: transformation: ta bort allt efter "## Hint" !
+            // todo: se över json-filerna, hur använder jag dem. går det att förenkla? (ex med mappar)
+            // todo: felhantering. skicka mycket exception och kedja ihop dem. visa felmeddelanden och undermeddelanden.
             // todo: refactor denna supermetod
+            // todo: förenkling av objekten FileInfo, BadCopyConfig etc
+            // todo: validering av badconfig.json (ex att FromFolders finns)
+
+            // todo: koppla ihop FromFolder och ToFolder så det blir en variabel. Ett par.
+
             //try
             //{
-            // todo: transformation som kommenterar alla rader i filen!
-            // todo: inställning: börja med att ta bort allt i målet
-            // todo: validering av badconfig.json (ex att FromFolders finns)
-            // todo: koppla ihop FromFolder och ToFolder så det blir en variabel. Ett par.
-            // todo: kunna byta namn på en fil (iallafall när man kopierar filen rätt av)
             SetWindowSize();
 
             var bcs = new BadCopyService();
