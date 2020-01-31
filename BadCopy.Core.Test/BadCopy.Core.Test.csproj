@@ -17,4 +17,13 @@
     <ProjectReference Include="..\BadCopy.Core\BadCopy.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="WorkoutSamples\01-expected.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="WorkoutSamples\01.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

@@ -1,0 +1,61 @@
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Workout.Test.Level1
+{
+
+    [TestClass]
+    public class Add100ToEachNumberTest
+    {
+
+        [TestMethod]
+        public void test1()
+        {
+            var input = new List<int> { 5, 15, 23, 200 };
+            var expected = new List<int> { 105, 115, 123, 300 };
+            var result = Add100ToEachNumber(input);
+
+            CollectionAssert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void test2()
+        {
+            TTTTTTTTTTTTTTTTTTTTTTTTT2
+            TTTTTTTTTTTTTTTTTTTTTTTTT2
+        }
+
+        [TestMethod]
+        public void test3()
+        {
+            TTTTTTTTTTTTT3
+            TTTTTTTTTTTTT3
+            TTTTTTTTTTTTT3
+        }
+
+        public List<int> Meth1(List<int> numbers)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<int> Meth2(List<int> numbers)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<int> Meth3(List<int> numbers)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<int> Meth4(List<int> numbers)
+        {
+            throw new NotImplementedException();
+        }
+
+    }
+}
