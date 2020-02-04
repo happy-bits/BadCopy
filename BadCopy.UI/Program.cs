@@ -16,11 +16,14 @@ namespace BadCopy.UI
             // todo: refactor denna supermetod
             //try
             //{
+            // todo: vilka upprepningar finns i .json-filen. Hur gör jag den enklare?
             // todo: inställning: börja med att ta bort allt i målet
             // todo: validering av badconfig.json (ex att FromFolders finns)
             // todo: koppla ihop FromFolder och ToFolder så det blir en variabel. Ett par.
             // todo: kunna byta namn på en fil (iallafall när man kopierar filen rätt av)
-
+            // todo: kunna kommentar ut kod (för att slippa byggfel)
+            // todo: läs in jsonfil till t.ex BadCopyConfigFile. Validera att den är korrekt (förutom ren syntax) och skapa BadCopyConfig. Skicka annars exception
+            // todo: skapa klasser för transformationer (ex att ta bort regions). skapa klasser för filtering (t.ex inte ha med filer som börjar med "Skip"). En batch kan ha en lista av transformationer och filtreringar (som görs i en ording)
             SetWindowSize();
 
             var bcs = new BadCopyService();
