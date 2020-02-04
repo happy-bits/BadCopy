@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using BadCopy.Core.Transformations;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -23,7 +24,8 @@ namespace BadCopy.Core.Test.Scenario01
                     BatchName="First batch",
                     FromFile = InputFile("A\\1.txt"),
                     ToFile = OutputFile("A\\1.txt"),
-                    Action=Action.CopyWithoutSolution
+                    Action=Action.Transform,
+                    Transformations = new[] { new RemoveSolutionRegion() }
                 }
             };
 
@@ -70,38 +72,43 @@ namespace BadCopy.Core.Test.Scenario01
                     BatchName="First batch",
                     FromFile= InputFile("A\\1.txt"),
                     ToFile = OutputFile("A\\1.txt"),
-                    Action=Action.CopyWithoutSolution
+                    Action=Action.Transform,
+                    Transformations = new[] { new RemoveSolutionRegion() }
                 },
                 new FileInfo{
                     BatchName="First batch",
                     FromFile= InputFile("A\\Sub1\\Sub2\\6.txt"),
                     ToFile = OutputFile("A\\Sub1\\Sub2\\6.txt"),
-                    Action=Action.CopyWithoutSolution
+                    Action=Action.Transform,
+                    Transformations = new[] { new RemoveSolutionRegion() }
                 },
                 new FileInfo{
                     BatchName="First batch",
                     FromFile= InputFile("A\\2-Clone.txt"),
                     ToFile = OutputFile("A\\2-Clone.txt"),
-                    Action=Action.Copy
+                    Action=Action.Copy,
                 },
                 new FileInfo{
                     BatchName="First batch",
                     FromFile= InputFile("A\\3-Simple.txt"),
                     ToFile = OutputFile("A\\3-Simple.txt"),
-                    Action=Action.CopyWithoutSolution
+                    Action=Action.Transform,
+                    Transformations = new[] { new RemoveSolutionRegion() }
                 },
                 new FileInfo{
                     BatchName="First batch",
                     FromFile= InputFile("A\\4-Multiple.txt"),
                     ToFile = OutputFile("A\\4-Multiple.txt"),
-                    Action=Action.CopyWithoutSolution
+                    Transformations = new[] { new RemoveSolutionRegion() },
+                    Action=Action.Transform
                 }
                 ,
                 new FileInfo{
                     BatchName="First batch",
                     FromFile= InputFile("B\\5-Onemore.txt"),
+                    Transformations = new[] { new RemoveSolutionRegion() },
                     ToFile = OutputFile("B\\5-Onemore.txt"),
-                    Action=Action.CopyWithoutSolution
+                    Action=Action.Transform
                 },
             };
 

@@ -13,12 +13,18 @@ namespace BadCopy.UI
 
         static void Main(params string[] args)
         {
+            // todo: transformation som kommenterar alla rader i filen!
+            // todo: transformation: ta bort allt efter "## Hint" !
+            // todo: se över json-filerna, hur använder jag dem. går det att förenkla? (ex med mappar)
+            // todo: felhantering. skicka mycket exception och kedja ihop dem. visa felmeddelanden och undermeddelanden.
             // todo: refactor denna supermetod
             //try
             //{
             // todo: vilka upprepningar finns i .json-filen. Hur gör jag den enklare?
             // todo: inställning: börja med att ta bort allt i målet
+            // todo: förenkling av objekten FileInfo, BadCopyConfig etc
             // todo: validering av badconfig.json (ex att FromFolders finns)
+
             // todo: koppla ihop FromFolder och ToFolder så det blir en variabel. Ett par.
             // todo: kunna byta namn på en fil (iallafall när man kopierar filen rätt av)
             // todo: kunna kommentar ut kod (för att slippa byggfel)
@@ -36,8 +42,6 @@ namespace BadCopy.UI
 
             cc.Space();
 
-            bcs.ReplaceSolutionWith = config.ReplaceSolutionWith;
-
             var batchesToRun = commandargs.OnlyLastBatches == null ? config.Batches : config.Batches.TakeLast((int)commandargs.OnlyLastBatches);
             foreach (var batch in batchesToRun)
             {
@@ -52,7 +56,7 @@ namespace BadCopy.UI
                         break;
 
                     case Core.Action.Copy:
-                    case Core.Action.CopyWithoutSolution:
+                    case Core.Action.Transform:
 
                         var files = bcs.GetFilesToCopy(batch);
                         var result = bcs.Copy(files);
@@ -172,7 +176,7 @@ namespace BadCopy.UI
             {
                 return JsonConvert.DeserializeObject<BadCopyConfigFile>(filecontent);
             }
-            catch
+            catch (Exception ex)
             {
                 throw new Exception($"Found the file '{configFileName}' but it was in the wrong format. Check the format of the file.");
             }

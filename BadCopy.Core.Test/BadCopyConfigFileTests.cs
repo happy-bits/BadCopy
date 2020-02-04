@@ -15,9 +15,8 @@ namespace BadCopy.Core.Test
         {
             var b = new BadCopyConfigFile
             {
-                ReplaceSolutionWith = "A",
                 FromFolderBase = "B",
-                Action = Action.CopyWithoutSolution,
+                Action = Action.Transform,
                 SpecificFiles = new List<string> { "C", "D", "E" },
                 SkipFolders = new List<string> { "H", "I", "J" },
                 Batches = new List<Batch>
@@ -33,9 +32,8 @@ namespace BadCopy.Core.Test
             
             var result = b.MergeConfiguration();
 
-            Assert.AreEqual("A", result.ReplaceSolutionWith);
             Assert.AreEqual("G", result.Batches[0].FromFolderBase);
-            Assert.AreEqual(Action.CopyWithoutSolution, result.Batches[0].Action);
+            Assert.AreEqual(Action.Transform, result.Batches[0].Action);
             CollectionAssert.AreEqual(new List<string> { "C", "D", "E" }, result.Batches[0].SpecificFiles);
             CollectionAssert.AreEqual(new List<string> { "K", "L" }, result.Batches[0].SkipFolders);
         }    
