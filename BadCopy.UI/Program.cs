@@ -15,9 +15,14 @@ namespace BadCopy.UI
         {
             // todo: transformation som kommenterar alla rader i filen!
             // todo: transformation: ta bort allt efter "## Hint" !
+            // todo: lägg till en mini-transformation som tar bort todo!
+            // todo: namnbyte. Murphy. Morphy. Twins
             // todo: se över json-filerna, hur använder jag dem. går det att förenkla? (ex med mappar)
+            // todo: transfomation: [TestMethod] kan vara på andra platser än närmast signaturen
+            // todo: transfomation: klipp på ett smartare sätt så det t.ex går att deklarera saker innan metoder som ska testas
             // todo: felhantering. skicka mycket exception och kedja ihop dem. visa felmeddelanden och undermeddelanden.
             // todo: refactor denna supermetod
+            // todo: Microsoft Code Analysis 2019
             //try
             //{
             // todo: vilka upprepningar finns i .json-filen. Hur gör jag den enklare?
@@ -176,7 +181,7 @@ namespace BadCopy.UI
             {
                 return JsonConvert.DeserializeObject<BadCopyConfigFile>(filecontent);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw new Exception($"Found the file '{configFileName}' but it was in the wrong format. Check the format of the file.");
             }

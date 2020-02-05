@@ -1,12 +1,13 @@
-﻿using System.Text.RegularExpressions;
+﻿using System;
+using System.Text.RegularExpressions;
 
 namespace BadCopy.Core.Transformations
 {
-    public class RemoveSolutionRegion: Transformation
+    public class RemoveSolutionRegion : Transformation
     {
         public override string Transform(string input)
         {
-            input = input.Replace("\r\n", "\n");
+            input = new TransformUtility().AdjustNewLine(input);
 
             if (input.Trim().EndsWith("#endregion"))
                 input += "\n";

@@ -15,14 +15,14 @@ namespace BadCopy.Core.Test
         [TestMethod]
         public void sample_01()
         {
-            var wo = new WorkoutTransformation();
+            var wo = new Workout();
 
             string input = File.ReadAllText("WorkoutSamples\\01.txt");
-            string expected = File.ReadAllText("WorkoutSamples\\01-expected.txt");
+            string[] result = wo.Transform(input).Split('\n');
+            //File.WriteAllText("WorkoutSamples\\01-result.txt", result);
 
-            string result = wo.Transform(input);
-
-            Assert.AreEqual(expected, result);
+            string[] expected = File.ReadAllText("WorkoutSamples\\01-expected.txt").Replace("\r\n", "\n").Split('\n');
+            CollectionAssert.AreEqual(expected, result);
         }    
     }
 }

@@ -178,7 +178,7 @@ namespace BadCopy.Core
             {
                 var crf = new CopyResultFile
                 {
-                    FileInfo = file, // FileInfo.Clone(file),
+                    FileInfo = FileInfo.Clone(file),
                     State = CopyResultFileState.Incomplete
                 };
                 result.CopyResultFiles.Add(crf);

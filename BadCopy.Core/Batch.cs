@@ -34,8 +34,9 @@ namespace BadCopy.Core
                     
                     switch (name)
                     {
-                        case "RemoveSolutionRegionTransformation": result.Add(new ReplaceSolutionRegionWithTodo());break;
-                        case "WorkoutTransformation": result.Add(new WorkoutTransformation());break;
+                        case "RemoveSolutionRegion": result.Add(new RemoveSolutionRegion());break;
+                        case "ReplaceSolutionRegionWithTodo": result.Add(new ReplaceSolutionRegionWithTodo());break;
+                        case "Workout": result.Add(new Workout());break;
                         default: throw new System.Exception("Unknown transformation " + name);
                     }
                 }

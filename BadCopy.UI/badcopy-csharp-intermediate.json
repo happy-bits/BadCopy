@@ -34,7 +34,7 @@
     }
   ],
   "Action": "Copy",
-  "TransformationNames": [ "RemoveSolutionRegionTransformation" ],
+  "TransformationNames": [ "RemoveSolutionRegion" ],
   "FromFolderBase": "[CSharpCourse]",
 
   "ToFolder": "[Destination-CSharpCourse]",

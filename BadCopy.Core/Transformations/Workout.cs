@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace BadCopy.Core.Transformations
 {
-    public class WorkoutTransformation : Transformation
+    public class Workout : Transformation
     {
         TransformUtility _utility = new TransformUtility();
 
         public override string Transform(string input)
         {
+            input = _utility.AdjustNewLine(input);
+
             string firstSolutionMethod = _utility.GetAllNonTestMethodSignatures(input).First();
 
             int index = input.IndexOf(firstSolutionMethod);

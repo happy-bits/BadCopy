@@ -6,11 +6,11 @@
     },
     {
       "name": "[Destination-Workout]",
-      "value": "C:\\TMP\\Workout"
+      "value": "C:\\TMP\\WorkoutMail\\Student"
     }
   ],
   "Action": "Copy",
-  "TransformationNames": [ "WorkoutTransformation" ],
+  "TransformationNames": [ "Workout" ],
   "FromFolderBase": "[Workout]",
 
   "ToFolder": "[Destination-Workout]",
@@ -27,8 +27,8 @@
     },
     {
       "Action": "Copy",
-      "SpecificFiles": [ "Workout-01-just-one-project.sln" ],
-      "RenameFilesTo": [ "Workout.sln" ],
+      "SpecificFiles": [ "Workout.sln" ],
+      //"RenameFilesTo": [ "Workout.sln" ],
       "FromFolders": [ "" ]
     },
     {
@@ -44,14 +44,14 @@
       "FromFolders": [ "Workout.Test\\Level3" ]
     },
     // todo: lägg till kommenterings-transformation
-    {
-      "FromFolders": [ "Workout.Test\\Level4" ],
-      "SpecificFiles": [ "AddNumberEngineTest.cs" ]
-    },
-    {
-      "FromFolders": [ "Workout.Test\\Level4" ],
-      "SpecificFiles": [ "GuessingGameTests.cs" ]
-    }
+    //{
+    //  "FromFolders": [ "Workout.Test\\Level4" ],
+    //  "SpecificFiles": [ "AddNumberEngineTest.cs" ]
+    //},
+    //{
+    //  "FromFolders": [ "Workout.Test\\Level4" ],
+    //  "SpecificFiles": [ "GuessingGameTests.cs" ]
+    //}
 
 
   ]

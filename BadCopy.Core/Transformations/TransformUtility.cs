@@ -15,6 +15,11 @@ namespace BadCopy.Core.Transformations
             return Regex.Matches(s, @"(\[TestMethod\]\s*)(public.*)").Select(x=>x.Groups[2].Value.Trim()).ToList();
         }
 
+        internal string AdjustNewLine(string input)
+        {
+            return input.Replace("\r\n", "\n");
+        }
+
         public List<string> GetAllMethodSignatures(string s)
         {
             return Regex.Matches(s, @"([ \t]*public .*\(.*)").Select(x=>x.Value.Trim()).ToList();
