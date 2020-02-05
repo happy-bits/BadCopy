@@ -13,7 +13,6 @@ namespace BadCopy.UI
 
         static void Main(params string[] args)
         {
-            // todo: transformation som kommenterar alla rader i filen!
             // todo: transformation: ta bort allt efter "## Hint" !
             // todo: lägg till en mini-transformation som tar bort todo!
             // todo: namnbyte. Murphy. Morphy. Twins

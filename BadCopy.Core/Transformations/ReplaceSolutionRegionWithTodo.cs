@@ -6,7 +6,7 @@ namespace BadCopy.Core.Transformations
     {
         public override string Transform(string input)
         {
-            input = input.Replace("\r\n", "\n"); // todo: rätt att göra det här?
+            input = new TransformUtility().AdjustNewLine(input);
 
             // todo: snyggare sätt där detta inte behövs?
 
