@@ -10,7 +10,7 @@
     }
   ],
   "Action": "Copy",
-  "TransformationNames": [ "Workout" ], // ["AddComments"],  //
+  "TransformationNames": [ "RemoveTodo", "Workout" ],
   "FromFolderBase": "[Workout]",
 
   "ToFolder": "[Destination-Workout]",
@@ -42,7 +42,6 @@
     {
       "Action": "Transform",
       "FromFolders": [ "Workout.Test\\Level3" ],
-      "TransformationNames": [ "Workout", "AddComments" ]
     }
     // todo: lägg till kommenterings-transformation
     //{

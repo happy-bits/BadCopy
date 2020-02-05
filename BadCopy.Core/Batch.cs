@@ -34,6 +34,7 @@ namespace BadCopy.Core
                     
                     switch (name)
                     {
+                        case "RemoveTodo": result.Add(new RemoveTodo()); break;
                         case "AddComments": result.Add(new AddComments()); break;
                         case "RemoveSolutionRegion": result.Add(new RemoveSolutionRegion());break;
                         case "ReplaceSolutionRegionWithTodo": result.Add(new ReplaceSolutionRegionWithTodo());break;

@@ -13,10 +13,15 @@ namespace BadCopy.UI
 
         static void Main(params string[] args)
         {
-            // todo: transformation: ta bort allt efter "## Hint" !
             // todo: lägg till en mini-transformation som tar bort todo!
+            // todo: transformation: ta bort allt efter "## Hint" !
             // todo: namnbyte. Murphy. Morphy. Twins
+
+            // todo: generell refactor, se över FileInfo, BadCopyConfig etc
+
             // todo: se över json-filerna, hur använder jag dem. går det att förenkla? (ex med mappar)
+            // todo: koppla ihop FromFolder och ToFolder så det blir en variabel. Ett par.
+            
             // todo: transfomation: [TestMethod] kan vara på andra platser än närmast signaturen
             // todo: transfomation: klipp på ett smartare sätt så det t.ex går att deklarera saker innan metoder som ska testas
             // todo: felhantering. skicka mycket exception och kedja ihop dem. visa felmeddelanden och undermeddelanden.
@@ -24,16 +29,10 @@ namespace BadCopy.UI
             // todo: Microsoft Code Analysis 2019
             //try
             //{
-            // todo: vilka upprepningar finns i .json-filen. Hur gör jag den enklare?
-            // todo: inställning: börja med att ta bort allt i målet
-            // todo: förenkling av objekten FileInfo, BadCopyConfig etc
             // todo: validering av badconfig.json (ex att FromFolders finns)
 
-            // todo: koppla ihop FromFolder och ToFolder så det blir en variabel. Ett par.
-            // todo: kunna byta namn på en fil (iallafall när man kopierar filen rätt av)
-            // todo: kunna kommentar ut kod (för att slippa byggfel)
             // todo: läs in jsonfil till t.ex BadCopyConfigFile. Validera att den är korrekt (förutom ren syntax) och skapa BadCopyConfig. Skicka annars exception
-            // todo: skapa klasser för transformationer (ex att ta bort regions). skapa klasser för filtering (t.ex inte ha med filer som börjar med "Skip"). En batch kan ha en lista av transformationer och filtreringar (som görs i en ording)
+            // todo: skapa klasser för filtering (t.ex inte ha med filer som börjar med "Skip")
             SetWindowSize();
 
             var bcs = new BadCopyService();
