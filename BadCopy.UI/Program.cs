@@ -13,7 +13,7 @@ namespace BadCopy.UI
 
         static void Main(params string[] args)
         {
-            // todo: transformation: ta bort allt efter "## Hint" ! (gärna bara i markup-filer!)
+            // todo: (ej klar) transformation: ta bort allt efter "## Hint" ! (gärna bara i markup-filer!)
 
             // todo: namnbyte. Murphy. Morphy. Twins
 
