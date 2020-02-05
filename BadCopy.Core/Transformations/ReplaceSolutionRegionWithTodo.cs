@@ -4,16 +4,19 @@ namespace BadCopy.Core.Transformations
 {
     public class ReplaceSolutionRegionWithTodo: Transformation
     {
-        public override string Transform(string input)
+        public override string[] Transform(string[] rows)
         {
-            input = new TransformUtility().AdjustNewLine(input);
+            var input = RowsToString(rows);
 
             // todo: snyggare sätt där detta inte behövs?
 
             if (input.Trim().EndsWith("#endregion"))
                 input += "\n";
 
-            return Regex.Replace(input, @"[ \t]*#region solution\s*\n[\s\S]*?\n\s*#endregion[ \t]*\n", "\n// todo: add code here\n", RegexOptions.Multiline);
+            var result = Regex.Replace(input, @"[ \t]*#region solution\s*\n[\s\S]*?\n\s*#endregion[ \t]*\n", "\n// todo: add code here\n", RegexOptions.Multiline);
+
+            return StringToRows(result);
+
         }
     }
 }

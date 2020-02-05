@@ -17,10 +17,18 @@ namespace BadCopy.Core.Test
         public void two_lines()
         {
             var ac = new AddComments();
-            var result = ac.Transform("aaa\nbbb");
-            var expected = "// aaa\n// bbb";
+            
+            var result = ac.Transform(new[] { 
+                "aaa", 
+                "bbb" 
+            });
+            
+            var expected = new[] { 
+                "// aaa", 
+                "// bbb" 
+            };
 
-            Assert.AreEqual(expected, result);
+            CollectionAssert.AreEqual(expected, result);
         }
 
         [TestMethod]

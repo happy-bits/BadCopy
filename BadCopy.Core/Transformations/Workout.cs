@@ -8,11 +8,11 @@ namespace BadCopy.Core.Transformations
 {
     public class Workout : Transformation
     {
-        TransformUtility _utility = new TransformUtility();
-
-        public override string Transform(string input)
+        public override string[] Transform(string[] rows)
         {
-            input = _utility.AdjustNewLine(input);
+            // todo: här hoppar vi tillbaka från array till sträng. Finns alternativt sätt?
+            var _utility = new TransformUtility();
+            string input = string.Join('\n', rows);
 
             string firstSolutionMethod = _utility.GetAllNonTestMethodSignatures(input).First();
 
@@ -30,7 +30,9 @@ namespace BadCopy.Core.Transformations
             result += tabbing + "}\n";
             result += "}\n";
 
-            return result;
+
+            return result.Split('\n');
+
         }
     }
 }

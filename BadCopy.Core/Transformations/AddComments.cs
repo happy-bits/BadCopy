@@ -5,15 +5,11 @@ namespace BadCopy.Core.Transformations
 {
     public class AddComments : Transformation
     {
-        public override string Transform(string input)
+
+        public override string[] Transform(string[] rows)
         {
-            input = new TransformUtility().AdjustNewLine(input);
-
-            var rows = input.Split('\n');
-            var rowsWithComments = rows.Select(r => AddCommentRowHasContent(r));
-            var result = string.Join('\n', rowsWithComments);
-
-            return result;
+            var rowsWithComments = rows.Select(r => AddCommentRowHasContent(r)).ToArray();
+            return rowsWithComments;
         }
 
         private string AddCommentRowHasContent(string row)
