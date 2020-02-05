@@ -187,15 +187,14 @@ namespace BadCopy.Core
             foreach (var file in result.CopyResultFiles)
             {
                 CopyResultFileState? successState = null;
-                string newcontent = null;
 
+                string content = null;
                 if (file.FileInfo.Binary)
                 {
                     successState = CopyResultFileState.SuccessClone;
                 }
                 else
                 {
-                    string content = null;
 
                     try
                     {
@@ -214,12 +213,11 @@ namespace BadCopy.Core
 
                             foreach(var trans in file.FileInfo.Transformations)
                             {
-                                newcontent = trans.Transform(content);
+                                content = trans.Transform(content);
                             }
                             successState = CopyResultFileState.SuccessNoSolution;
                             break;
                         case Action.Copy:
-                            newcontent = content;
                             successState = CopyResultFileState.SuccessClone;
                             break;
                         default:
@@ -238,7 +236,7 @@ namespace BadCopy.Core
                     }
                     else
                     {
-                        File.WriteAllText(file.FileInfo.ToFile, newcontent);
+                        File.WriteAllText(file.FileInfo.ToFile, content);
                     }
 
                 }
