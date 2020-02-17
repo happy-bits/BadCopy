@@ -153,27 +153,55 @@ namespace BadCopy.Core.Test
         {
             var actual = new RemoveHint().Transform(new[] {
                 "aa",
-                "aa",
+                "bb",
                 "## Hint",
                 "## Hint",
                 "## Hint",
-                "bbb",
-                "bbb",
-                "bbb",
+                "cc",
+                "dd",
+                "ee",
 
             });
 
             var expected = new[] {
                 "aa",
-                "aa",
-                "bbb",
-                "bbb",
-                "bbb",
+                "bb",
             };
 
             CollectionAssert.AreEqual(expected, actual);
 
         }
+
+        [TestMethod]
+        public void multiple_hitns()
+        {
+            var actual = new RemoveHint().Transform(new[] {
+                "1",                
+                "## Hint",
+                "2",
+                "## Hint",
+                "3",
+                "## AAAAAA",
+                "4",
+                "## Hint",
+                "5",
+                "## BBBBBBBB",
+                "6",
+
+            });
+
+            var expected = new[] {
+                "1",
+                "## AAAAAA",
+                "4",
+                "## BBBBBBBB",
+                "6",
+            };
+
+            CollectionAssert.AreEqual(expected, actual);
+
+        }
+
 
 
 

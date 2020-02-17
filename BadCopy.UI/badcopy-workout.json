@@ -41,7 +41,11 @@
     },
     {
       "Action": "Transform",
-      "FromFolders": [ "Workout.Test\\Level3" ],
+      "FromFolders": [ "Workout.Test\\Level3" ]
+    },
+    {
+      "Action": "Transform",
+      "FromFolders": [ "Workout.Test\\Misc" ]
     }
     // todo: lägg till kommenterings-transformation
     //{
