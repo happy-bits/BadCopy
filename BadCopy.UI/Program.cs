@@ -16,8 +16,11 @@ namespace BadCopy.UI
             // todo: namnbyte. Murphy. Morphy. Twins
 
             // todo: generell refactor, se över FileInfo, BadCopyConfig etc
+            // todo: kan allt vara en transformation?
+            // todo: skapa klasser för filtering (t.ex inte ha med filer som börjar med "Skip")
 
             // todo: se över json-filerna, hur använder jag dem. går det att förenkla? (ex med mappar)
+            // todo: validering av badconfig.json (ex att FromFolders finns)
             // todo: koppla ihop FromFolder och ToFolder så det blir en variabel. Ett par.
             
             // todo: transfomation: [TestMethod] kan vara på andra platser än närmast signaturen
@@ -27,10 +30,7 @@ namespace BadCopy.UI
             // todo: Microsoft Code Analysis 2019
             //try
             //{
-            // todo: validering av badconfig.json (ex att FromFolders finns)
 
-            // todo: läs in jsonfil till t.ex BadCopyConfigFile. Validera att den är korrekt (förutom ren syntax) och skapa BadCopyConfig. Skicka annars exception
-            // todo: skapa klasser för filtering (t.ex inte ha med filer som börjar med "Skip")
             SetWindowSize();
 
             var bcs = new BadCopyService();
