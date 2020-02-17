@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BadCopy.Core;
 using static BadCopy.Core.Test.Scenario01.Common;
 
 namespace BadCopy.Core.Test.Scenario01
@@ -25,7 +26,7 @@ namespace BadCopy.Core.Test.Scenario01
                     FromFile = InputFile("A\\1.txt"),
                     ToFile = OutputFile("A\\1.txt"),
                     Action=Action.Transform,
-                    Transformations = new[] { new RemoveSolutionRegion() }
+                    Transforms = new Transform[] { new Transform(new RemoveSolutionRegion()) }
                 }
             };
 
@@ -73,14 +74,14 @@ namespace BadCopy.Core.Test.Scenario01
                     FromFile= InputFile("A\\1.txt"),
                     ToFile = OutputFile("A\\1.txt"),
                     Action=Action.Transform,
-                    Transformations = new[] { new RemoveSolutionRegion() }
+                    Transforms = new[] { new Transform(new RemoveSolutionRegion()) }
                 },
                 new FileInfo{
                     BatchName="First batch",
                     FromFile= InputFile("A\\Sub1\\Sub2\\6.txt"),
                     ToFile = OutputFile("A\\Sub1\\Sub2\\6.txt"),
                     Action=Action.Transform,
-                    Transformations = new[] { new RemoveSolutionRegion() }
+                    Transforms = new[] { new Transform(new RemoveSolutionRegion()) }
                 },
                 new FileInfo{
                     BatchName="First batch",
@@ -93,20 +94,20 @@ namespace BadCopy.Core.Test.Scenario01
                     FromFile= InputFile("A\\3-Simple.txt"),
                     ToFile = OutputFile("A\\3-Simple.txt"),
                     Action=Action.Transform,
-                    Transformations = new[] { new RemoveSolutionRegion() }
+                    Transforms = new[] { new Transform(new RemoveSolutionRegion()) }
                 },
                 new FileInfo{
                     BatchName="First batch",
                     FromFile= InputFile("A\\4-Multiple.txt"),
                     ToFile = OutputFile("A\\4-Multiple.txt"),
-                    Transformations = new[] { new RemoveSolutionRegion() },
+                    Transforms = new[] { new Transform(new RemoveSolutionRegion()) },
                     Action=Action.Transform
                 }
                 ,
                 new FileInfo{
                     BatchName="First batch",
                     FromFile= InputFile("B\\5-Onemore.txt"),
-                    Transformations = new[] { new RemoveSolutionRegion() },
+                    Transforms = new[] { new Transform(new RemoveSolutionRegion()) },
                     ToFile = OutputFile("B\\5-Onemore.txt"),
                     Action=Action.Transform
                 },

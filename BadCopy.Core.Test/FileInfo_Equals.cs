@@ -31,8 +31,8 @@ namespace BadCopy.Core.Test
         [TestMethod]
         public void same_batch_name()
         {
-            var f1 = new FileInfo { BatchName="xxx" };
-            var f2 = new FileInfo { BatchName="xxx" };
+            var f1 = new FileInfo { BatchName = "xxx" };
+            var f2 = new FileInfo { BatchName = "xxx" };
 
             Assert.IsTrue(f1.Equals(f2));
         }
@@ -41,8 +41,8 @@ namespace BadCopy.Core.Test
         [TestMethod]
         public void same_transformations()
         {
-            var f1 = new FileInfo { Transformations = new Transformation[] { new AddComments() } };
-            var f2 = new FileInfo { Transformations = new Transformation[] { new AddComments() } };
+            var f1 = new FileInfo { Transforms = new Transform[] { new Transform(new AddComments()) } };
+            var f2 = new FileInfo { Transforms = new Transform[] { new Transform(new AddComments()) } };
 
             Assert.IsTrue(f1.Equals(f2));
         }
@@ -50,8 +50,20 @@ namespace BadCopy.Core.Test
         [TestMethod]
         public void different_transformations()
         {
-            var f1 = new FileInfo { Transformations = new Transformation[] { new AddComments(), new Workout() } };
-            var f2 = new FileInfo { Transformations = new Transformation[] { new RemoveSolutionRegion(), new AddComments() } };
+            var f1 = new FileInfo
+            {
+                Transforms = new Transform[] {
+                    new Transform (new Workout()),
+                    new Transform (new ReplaceSolutionRegionWithTodo()),
+                }
+            };
+            var f2 = new FileInfo
+            {
+                Transforms = new Transform[] {
+                    new Transform (new Workout()),
+                    new Transform (new RemoveSolutionRegion()),
+                }
+            };
 
             Assert.IsFalse(f1.Equals(f2));
         }
@@ -59,12 +71,24 @@ namespace BadCopy.Core.Test
         [TestMethod]
         public void order_of_transformation_should_matter()
         {
-            var f1 = new FileInfo { Transformations = new Transformation[] { new AddComments(), new RemoveSolutionRegion() } };
-            var f2 = new FileInfo { Transformations = new Transformation[] { new RemoveSolutionRegion(), new AddComments() } };
+            var f1 = new FileInfo
+            {
+                Transforms = new Transform[] {
+                    new Transform (new RemoveSolutionRegion()),
+                    new Transform (new Workout()),
+                }
+            };
+            var f2 = new FileInfo
+            {
+                Transforms = new Transform[] {
+                    new Transform (new Workout()),
+                    new Transform (new RemoveSolutionRegion()),
+                }
+            };
 
             Assert.IsFalse(f1.Equals(f2));
         }
 
- 
+
     }
 }

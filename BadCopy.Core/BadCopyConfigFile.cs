@@ -18,6 +18,7 @@ namespace BadCopy.Core
         public List<string> SkipFolders { get; set; }
         public List<Variable> Variables { get; set; }
         public Action Action { get; set; }
+        public Transform[] Transforms { get; set; }
 
         public BadCopyConfig MergeConfiguration()
         {
@@ -40,7 +41,7 @@ namespace BadCopy.Core
                 if (b.SpecificFileEndings == null) b.SpecificFileEndings = SpecificFileEndings;
                 if (b.SkipFolders == null) b.SkipFolders = SkipFolders;
                 if (b.Action == Action.Unknown) b.Action = Action;
-                if (b.TransformationNames == null) b.TransformationNames = TransformationNames;
+                if (b.Transforms == null) b.Transforms = Transforms;
             }
             return result;
         }

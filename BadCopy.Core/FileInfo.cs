@@ -10,8 +10,9 @@ namespace BadCopy.Core
         public string FromFile { get; set; }
         public string ToFile { get; set; }
         public Action Action { get; set; }
-        public Transformation[] Transformations { get; set; } = new Transformation[] { };
         public bool Binary { get; set; }
+        public Transform[] Transforms { get; set; } = new Transform[] { };
+        public string Extension => FromFile.Split('.').Last();
 
         public bool Equals(FileInfo other)
         {
@@ -21,14 +22,14 @@ namespace BadCopy.Core
                 ToFile == other.ToFile &&
                 Action == other.Action &&
                 Binary == other.Binary &&
-                SameTransformations(Transformations, other.Transformations);
+                SameTransformations(Transforms, other.Transforms);
         }
 
-        private static bool SameTransformations(Transformation[] t1, Transformation[] t2)
+        private static bool SameTransformations(Transform[] t1, Transform[] t2)
         {
             for (int i = 0; i < t1.Length; i++)
             {
-                if (t1[i].GetType() != t2[i].GetType())
+                if (t1[i].Transformation.GetType() != t2[i].Transformation.GetType())
                     return false;
             }
             return true;
@@ -48,14 +49,14 @@ namespace BadCopy.Core
                 Binary = file.Binary,
                 FromFile = file.FromFile,
                 ToFile = file.ToFile,
-                Transformations = (Transformation[])file.Transformations.Clone() // funkar detta? 
+                Transforms = (Transform[])file.Transforms.Clone() // funkar detta? 
             };
         }
 
         // används denna?
         public override int GetHashCode()
         {
-            return HashCode.Combine(BatchName, FromFile, ToFile, Action, Transformations, Binary);
+            return HashCode.Combine(BatchName, FromFile, ToFile, Action, Transforms, Binary);
         }
     }
 }

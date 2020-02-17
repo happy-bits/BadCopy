@@ -44,7 +44,7 @@ namespace BadCopy.Core
                         ToFile = Path.Combine(batch.ToFolder, toFile),
                         Action = batch.Action,
                         Binary = fullfilename.ToUpper().EndsWith(".PNG"),
-                        Transformations = batch.Transformations,
+                        Transforms = batch.Transforms,
                     });
                     index++;
                 }
@@ -211,9 +211,10 @@ namespace BadCopy.Core
                     {
                         case Action.Transform:
 
-                            foreach(var trans in file.FileInfo.Transformations)
+                            foreach(var trans in file.FileInfo.Transforms)
                             {
-                                content = trans.Transform(content);
+                                if (trans.AcceptAllFiles || trans.FileExtensions.Contains(file.FileInfo.Extension))
+                                    content = trans.Transformation.Transform(content);
                             }
                             successState = CopyResultFileState.SuccessNoSolution;
                             break;
